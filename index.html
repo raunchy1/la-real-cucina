@@ -210,7 +210,10 @@ a:hover .arr,button:hover .arr{transform:translateX(4px)}
 /* ---------- Hero ---------- */
 .strip{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);min-height:40px;border-bottom:var(--filo);font-size:.6875rem}
 .strip .s2,.strip .s3{display:none}
-.hero h1{margin-top:var(--s7);font-size:var(--t-mega);line-height:.94;letter-spacing:-.035em}
+.marchio{grid-column:1/7;width:clamp(96px,9.5vw,140px);height:auto;margin-top:var(--s4)}
+.brand-mark{width:30px;height:30px;object-fit:contain;flex:none}
+@media (max-width:899px){.marchio{grid-column:1/-1;width:clamp(84px,20vw,116px)}}
+.hero h1{margin-top:var(--s5);font-size:var(--t-mega);line-height:.94;letter-spacing:-.035em}
 .hero h1 .ln{display:block}
 .hero h1 .it{color:var(--vermiglio);font-style:italic}
 .hero-txt{margin-top:var(--s5);display:flex;flex-direction:column;gap:var(--s5)}
@@ -472,7 +475,7 @@ figcaption span:last-child{text-align:right}
 
 <header class="header">
 <div class="shell">
-<a class="brand" href="#top" aria-label="La Real Cucina, torna all’inizio">La Real Cucina</a>
+<a class="brand" href="#top" aria-label="La Real Cucina, torna all’inizio"><img class="brand-mark" src="assets/logo-la-real-cucina.png" alt="" width="560" height="560" decoding="async">La Real Cucina</a>
 <nav class="nav label forte" aria-label="Navigazione principale">
 <a href="#cucina">01 La cucina</a>
 <a href="#carta">02 La carta</a>
@@ -507,6 +510,7 @@ figcaption span:last-child{text-align:right}
 <span class="s3">Via della Consolata 7D</span>
 <span class="s4" data-status>Pranzo e cena</span>
 </p>
+<img class="marchio" src="assets/logo-la-real-cucina.png" alt="Stemma de La Real Cucina: corona, cappello da chef, forchetta e cucchiaio" width="560" height="560" decoding="async">
 <h1 id="h-title" class="full"><span class="ln">Tradizione</span> <span class="ln">piemontese,</span> <span class="ln it">fatta in casa.</span></h1>
 <div class="hero-txt full">
 <p>Pasta fresca, agnolotti e piatti della tradizione preparati nella nostra gastronomia, e serviti al tavolo nel bistrot di Via della Consolata, nel Quadrilatero Romano.</p>
