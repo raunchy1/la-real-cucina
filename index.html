@@ -71,154 +71,196 @@
 <!-- TODO: verificare lat/long esatte su Google Maps -->
 
 <style>
+/* Hallmark · checked · built: the project · redesign: polish · copy: verbatim · theme: custom (by request: the approved dark editorial direction) · posture: committed · nav: wordmark, numbered links, one action · footer: seal, three columns, fitted wordmark · hero: banner · job: book a table */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 · weakest: E, the reveal ran on every paragraph and list row; cut to one curtain on the photographs */
+/* Hallmark · dismissed 58 · the owner asked to keep every word of the v3 Italian copy, history and palazzo included */
+/* Hallmark · dismissed 69 · the opening hours repeat on purpose: the facts list, the booking block, the live table and the footer each serve a different visitor */
+
 :root{
+  /* colore */
   --nero:#17110f;          /* fondo: nero caldo */
   --nero-2:#1f1815;
   --crema:#eee4d3;         /* testo */
-  --muto:#a19482;          /* testo secondario */
+  --crema-hi:#fff8ec;
+  --muto:#a19482;          /* testo secondario: 6.3:1 su --nero */
   --linea:rgba(238,228,211,.16);
   --linea-forte:rgba(238,228,211,.32);
   --bordeaux:#7a1f2b;      /* unico accento */
   --bordeaux-2:#8e2634;
+  --su-bordeaux:rgba(238,228,211,.8);        /* testo secondario sul blocco bordeaux: 5.7:1 */
+  --linea-bordeaux:rgba(238,228,211,.4);
+  --linea-bordeaux-tenue:rgba(238,228,211,.25);
+  --aperto:#6fbf73;        /* stato "aperto ora" */
+  --scrim-alto:rgba(18,13,11,.78);
+  --scrim-medio:rgba(18,13,11,.5);
+  --scrim-basso:rgba(18,13,11,.85);
+
+  /* caratteri */
   --display:"Bodoni Moda", "Didot", "Bodoni 72", serif;
   --sans:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
-  --pad:clamp(1.25rem, 4vw, 3.5rem);
-  --gap:clamp(1rem, 2vw, 2rem);
+
+  /* scala tipografica: cinque misure */
+  --t1:.75rem;                                   /* micro-label, didascalie */
+  --t2:1rem;                                     /* testo, controlli */
+  --t3:clamp(1.25rem, 1.1rem + .5vw, 1.625rem);  /* titoli di voce */
+  --t4:clamp(2rem, 1.25rem + 3vw, 4rem);         /* titoli di sezione */
+  --t5:clamp(3rem, 1rem + 8.5vw, 9rem);          /* hero, prenota, nastro */
+  --lh-display:.95;
+  --lh-head:1.12;
+  --lh-body:1.6;
+  --lh-label:1.4;
+
+  /* scala di spaziatura: 4 8 12 16 24 32 48 64 96 */
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem;
+  --s6:2rem; --s7:3rem; --s8:4rem; --s9:6rem;
+
+  --max:1440px;
+  --pad:var(--s5);
+  --gutter:max(var(--pad), (100% - var(--max)) / 2);
+  --gap:var(--s4);
+  --sec:var(--s8);
   --header:64px;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
+@media (min-width:600px){:root{--pad:var(--s6)}}
+@media (min-width:900px){:root{--gap:var(--s5);--sec:var(--s9)}}
+@media (min-width:1100px){:root{--pad:var(--s7);--header:72px}}
+
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;scroll-padding-top:var(--header);-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--nero);color:var(--crema);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html{overflow-x:clip;scroll-padding-top:var(--header);-webkit-text-size-adjust:100%;scrollbar-color:var(--muto) var(--nero);accent-color:var(--bordeaux)}
+body{margin:0;overflow-x:clip;background:var(--nero);color:var(--crema);caret-color:var(--crema);font:400 var(--t2)/var(--lh-body) var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-p{margin:0 0 1em}
-h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;line-height:.95;letter-spacing:-.01em}
-em{font-style:italic}
+p{margin:0 0 var(--s4);max-width:65ch;text-wrap:pretty}
+h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:400;line-height:var(--lh-head);letter-spacing:-.01em;text-wrap:balance;overflow-wrap:break-word;min-width:0}
 ::selection{background:var(--bordeaux);color:var(--crema)}
-:focus-visible{outline:2px solid var(--crema);outline-offset:4px}
-.skip{position:absolute;left:var(--pad);top:-80px;z-index:200;background:var(--crema);color:var(--nero);padding:.7rem 1rem;font:600 .8rem/1 var(--sans)}
-.skip:focus{top:12px}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--crema);outline-offset:3px}
+.skip{position:absolute;left:var(--pad);top:-80px;z-index:200;display:inline-flex;align-items:center;min-height:44px;background:var(--crema);color:var(--nero);padding:0 var(--s4);font:600 var(--t2)/1 var(--sans)}
+.skip:focus{top:var(--s3)}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.tnum{font-variant-numeric:tabular-nums}
 
-/* ---------- Grid 12 colonne ---------- */
-.shell{padding-inline:var(--pad)}
+/* ---------- Griglia 12 colonne ---------- */
+.shell{padding-inline:var(--gutter)}
 .grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:var(--gap)}
 @media (min-width:900px){.grid{grid-template-columns:repeat(12,minmax(0,1fr))}}
 
-/* ---------- Micro-label ---------- */
-.label{font:600 11px/1.3 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muto)}
-.label b{color:var(--crema);font-weight:600}
-.rule{border:0;border-top:1px solid var(--linea);margin:0}
-.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1rem 0 0;border-top:1px solid var(--linea-forte)}
+/* ---------- Micro-label (sistema approvato: maiuscolo, numerato) ---------- */
+.label{font:600 var(--t1)/var(--lh-label) var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.label b{color:var(--crema);font-weight:600;margin-right:var(--s3)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);padding-top:var(--s4);border-top:1px solid var(--linea-forte)}
+.sec-head .label{white-space:nowrap}
 
-/* ---------- Bottoni (rettangolari, niente ovali) ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:1.6rem;min-height:48px;padding:0 1.25rem;background:var(--bordeaux);color:var(--crema);font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid var(--bordeaux);transition:background .3s,border-color .3s,color .3s}
+/* ---------- Controlli: rettangolari, una sola ricetta piena ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 var(--s5);background:var(--bordeaux);color:var(--crema);font:600 var(--t2)/1 var(--sans);white-space:nowrap;text-decoration:none;border:1px solid var(--bordeaux)}
 .btn:hover{background:var(--bordeaux-2);border-color:var(--bordeaux-2)}
-.btn .arr{display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.btn:hover .arr{transform:translateX(4px)}
+.btn:active{transform:translateY(1px)}
 .btn--crema{background:var(--crema);color:var(--nero);border-color:var(--crema)}
-.btn--crema:hover{background:#fff8ec;border-color:#fff8ec}
-.btn--line{background:transparent;border-color:var(--linea-forte)}
-.btn--line:hover{background:transparent;border-color:var(--crema)}
-.tlink{font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:.9rem 0;border-bottom:1px solid var(--linea-forte);display:inline-flex;gap:.8rem;transition:border-color .3s}
+.btn--crema:hover{background:var(--crema-hi);border-color:var(--crema-hi)}
+.tlink{display:inline-flex;align-items:center;min-height:44px;font:500 var(--t2)/1 var(--sans);white-space:nowrap;text-decoration:none;border-bottom:1px solid var(--linea-forte)}
 .tlink:hover{border-color:var(--crema)}
+.tlink:active{color:var(--muto)}
 
 /* ---------- Header ---------- */
-.header{position:fixed;inset:0 0 auto;z-index:100;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-inline:var(--pad);border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
-.header.solid{background:rgba(23,17,15,.94);border-bottom-color:var(--linea);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;min-width:0}
+.header{position:fixed;inset:0 0 auto;z-index:100;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding-inline:var(--gutter);border-bottom:1px solid transparent}
+.header.solid{background:var(--nero);border-bottom-color:var(--linea)}
+.brand{display:flex;align-items:center;gap:var(--s3);min-height:44px;text-decoration:none;min-width:0}
 .brand img{width:36px;height:36px;object-fit:contain}
-.brand span{font:400 1.25rem/1 var(--display);white-space:nowrap}
-.brand span em{font-style:italic}
-.nav{display:none;gap:1.9rem}
-.nav a{text-decoration:none;font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muto);padding:.8rem 0;transition:color .3s}
-.nav a:hover{color:var(--crema)}
-.nav a i{font-style:normal;color:var(--crema);margin-right:.5rem;opacity:.55}
-.header .btn{min-height:40px;padding:0 1rem;gap:.9rem;font-size:11px}
+.brand span{font:400 var(--t3)/1 var(--display);white-space:nowrap}
+.nav{display:none;gap:var(--s6)}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font:500 var(--t2)/1 var(--sans);color:var(--muto)}
+.nav a:hover,.nav a:active{color:var(--crema)}
+.nav .nn{color:var(--crema);margin-right:var(--s2);font-variant-numeric:tabular-nums}
+.header .btn{min-height:44px;padding:0 var(--s4)}
 .header .btn .long{display:none}
 @media (min-width:420px){.header .btn .long{display:inline}.header .btn .short{display:none}}
-@media (max-width:360px){.brand span{font-size:1.05rem}}
 @media (min-width:1200px){.nav{display:flex}}
-@media (min-width:1100px){:root{--header:72px}.header .btn{min-height:44px;padding:0 1.25rem}}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;isolation:isolate}
-.hero-img{position:absolute;inset:-6% 0;z-index:-2;will-change:transform}
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;isolation:isolate}
+.hero-img{position:absolute;inset:-6% 0;z-index:-2}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.8) contrast(1.05)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(18,13,11,.6)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,var(--scrim-alto) 0,var(--scrim-medio) 30%,var(--scrim-medio) 50%,var(--scrim-basso) 100%)}
 .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.hero-inner{position:absolute;inset:var(--header) 0 0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--pad) clamp(1.25rem,3vw,2.25rem)}
-.hero-top{position:absolute;top:calc(var(--header) + 1.25rem);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;gap:1rem;white-space:nowrap}
-.sec-head .label{white-space:nowrap}
+.hero-inner{position:absolute;inset:auto 0 0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--gutter) var(--s6)}
+.hero-top{position:absolute;z-index:1;top:calc(var(--header) + var(--s5));left:var(--gutter);right:var(--gutter);display:flex;justify-content:space-between;gap:var(--s4);white-space:nowrap}
+.hero .label{color:var(--crema)}
 @media (max-width:599px){.hero-top .label:last-child,.sec-head .label:last-child{display:none}}
-.hero h1{font-size:clamp(3rem,9vw,8rem);line-height:.92;letter-spacing:-.025em;margin-bottom:clamp(1.5rem,4vw,3rem)}
-.hero h1 em{display:block;padding-left:.5em;white-space:nowrap}
-@media (min-width:900px){.hero h1 em{padding-left:1.1em}}
-.hero-foot{display:grid;grid-template-columns:1fr;gap:.9rem;padding-top:1rem;border-top:1px solid var(--linea-forte)}
-.hero-foot .label{display:flex;align-items:center;gap:.6rem}
+.hero h1{font-size:var(--t5);line-height:var(--lh-display);letter-spacing:-.025em;margin-bottom:var(--s5)}
+.hero h1 .ln{display:block}
+@media (min-width:600px){.hero h1 .ln:nth-child(3){padding-left:.5em}}
+@media (min-width:900px){.hero h1 .ln:nth-child(3){padding-left:1.1em}}
+.hero-lead{max-width:60ch;color:var(--crema);margin:0 0 var(--s6)}
+.hero-foot{display:grid;grid-template-columns:1fr;gap:var(--s3);padding-top:var(--s4);border-top:1px solid var(--linea-forte)}
+.hero-foot .label{display:flex;align-items:center;gap:var(--s2)}
 @media (min-width:900px){
   .hero-foot{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:center}
   .hero-foot .a{grid-column:1/5}.hero-foot .b{grid-column:5/9}.hero-foot .c{grid-column:9/13;justify-self:end}
 }
-.dot{width:7px;height:7px;border-radius:50%;background:var(--muto);flex:none}
-.is-open .dot{background:#6fbf73}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muto);flex:none}
+.is-open .dot{background:var(--aperto)}
 
-/* ---------- 01 La cucina ---------- */
-.s{padding-block:clamp(4.5rem,10vw,9rem)}
-.statement{grid-column:1/-1;font:400 clamp(1.75rem,3.9vw,3.6rem)/1.12 var(--display);letter-spacing:-.012em;margin:clamp(2.5rem,6vw,5rem) 0 clamp(3rem,8vw,7rem)}
-.statement em{color:var(--muto)}
-@media (min-width:900px){.statement{grid-column:1/11}}
-.cucina-img{grid-column:1/6;margin:0}
-.cucina-txt{grid-column:1/-1;margin-top:2.5rem}
-@media (min-width:900px){
-  .cucina-img{grid-column:1/8}
-  .cucina-txt{grid-column:9/13;margin-top:0;align-self:end}
-}
+/* ---------- Sezioni ---------- */
+.s{padding-block:var(--sec)}
+.statement,.statement-coda{grid-column:1/-1;font:400 var(--t4)/var(--lh-head) var(--display);letter-spacing:-.012em;max-width:none}
+.statement{margin:var(--s8) 0 var(--s2)}
+.statement-coda{color:var(--muto);margin:0 0 var(--s8)}
+@media (min-width:900px){.statement,.statement-coda{grid-column:1/11}.statement{margin-top:var(--s9)}.statement-coda{margin-bottom:var(--s9)}}
 figure{margin:0}
 .frame{overflow:hidden;position:relative;background:var(--nero-2)}
 .frame img{width:100%;height:100%;object-fit:cover}
-figcaption{display:flex;justify-content:space-between;gap:1rem;padding-top:.75rem;font:500 12px/1.4 var(--sans);color:var(--muto)}
-figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacing:.18em;text-transform:uppercase;font-size:11px}
+figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);padding-top:var(--s3);font:500 var(--t1)/var(--lh-label) var(--sans);color:var(--muto)}
+figcaption .label{color:var(--crema);white-space:nowrap}
+
+/* ---------- 01 La cucina ---------- */
+.cucina-img{grid-column:1/-1}
 .cucina-img .frame{aspect-ratio:4/5}
-@media (min-width:900px){.cucina-img .frame{aspect-ratio:7/6}.cucina-img .frame img{object-position:50% 70%}}
-.cucina-txt p{color:var(--muto);font-size:1rem}
+.cucina-txt{grid-column:1/-1;margin-top:var(--s7)}
+.cucina-txt p{color:var(--muto)}
 .cucina-txt p:first-child{color:var(--crema)}
-.facts{list-style:none;margin:2rem 0 0;padding:0}
-.facts li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:.9rem 0;border-top:1px solid var(--linea);font-size:.92rem;color:var(--muto)}
+@media (min-width:600px){.cucina-img{grid-column:1/6}}
+@media (min-width:900px){
+  .cucina-img{grid-column:1/8;position:sticky;top:calc(var(--header) + var(--s6));align-self:start}
+  .cucina-img .frame{aspect-ratio:7/6}
+  .cucina-img .frame img{object-position:50% 70%}
+  .cucina-txt{grid-column:9/13;margin-top:0;align-self:start}
+}
+.facts{list-style:none;margin:var(--s6) 0 0;padding:0}
+.facts li{display:grid;grid-template-columns:7.5rem 1fr;gap:var(--s4);align-items:baseline;padding:var(--s3) 0;border-top:1px solid var(--linea);color:var(--muto)}
 .facts li:last-child{border-bottom:1px solid var(--linea)}
-.facts span{font:600 11px/1.9 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--crema)}
+.facts .label{color:var(--crema)}
 
 /* ---------- Nastro tipografico ---------- */
-.ribbon{overflow:hidden;border-block:1px solid var(--linea);padding-block:clamp(1rem,2.5vw,2rem);white-space:nowrap}
-.ribbon-track{display:inline-flex;gap:.5em;font:italic 400 clamp(3rem,10vw,9.5rem)/1 var(--display);letter-spacing:-.02em;will-change:transform}
-.ribbon-track span:nth-child(even){font-style:normal;color:var(--muto);font-size:.4em;align-self:center;letter-spacing:.1em}
+.ribbon{overflow:hidden;border-block:1px solid var(--linea);padding-block:var(--s5);white-space:nowrap}
+.ribbon-track{display:inline-flex;align-items:center;gap:var(--s6);font:italic 400 var(--t5)/1 var(--display);letter-spacing:-.02em;will-change:transform}
+.ribbon-track .sep{display:block;width:.5em;height:1px;background:var(--muto);flex:none}
 
 /* ---------- 02 Il menù ---------- */
-.menu-intro{grid-column:1/-1;margin:clamp(2.5rem,6vw,5rem) 0 2.5rem}
-.menu-intro h2{font-size:clamp(3rem,8vw,7rem);letter-spacing:-.025em}
-.menu-intro p{color:var(--muto);max-width:22rem;margin-top:1.5rem}
-.menu-list{grid-column:1/-1;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;column-gap:var(--gap)}
-.menu-list li{display:grid;align-content:start;grid-template-columns:2.4rem 1fr;gap:0 .75rem;padding:1.35rem 0 1.5rem;border-top:1px solid var(--linea)}
-.menu-list .n{font:italic 400 1rem/1.6 var(--display);color:var(--muto)}
-.menu-list h3{font-size:clamp(1.45rem,2.2vw,1.9rem);line-height:1.1}
-.menu-list p{grid-column:2;margin:.4rem 0 0;color:var(--muto);font-size:.92rem}
-@media (min-width:700px){.menu-list{grid-template-columns:1fr 1fr}}
+.menu-intro{grid-column:1/-1;margin:var(--s8) 0 var(--s7)}
+.menu-intro h2{font-size:var(--t4);line-height:var(--lh-display);letter-spacing:-.02em}
+.menu-intro p{color:var(--muto);margin-top:var(--s5)}
+.menu-list{grid-column:1/-1;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);column-gap:var(--gap)}
+.menu-list li{display:grid;align-content:start;grid-template-columns:2.5rem minmax(0,1fr);gap:0 var(--s3);padding:var(--s5) 0;border-top:1px solid var(--linea)}
+.menu-list .n{font:400 var(--t2)/var(--lh-body) var(--display);color:var(--muto)}
+.menu-list h3,.menu-list h4{grid-column:2;font-size:var(--t3)}
+.menu-list p{grid-column:2;margin:var(--s2) 0 0;color:var(--muto)}
+@media (min-width:700px){.menu-list{grid-template-columns:repeat(2,minmax(0,1fr))}.menu-list li:last-child:nth-child(odd){grid-column:1/-1}}
 @media (min-width:900px){
-  .menu-intro{grid-column:1/5;margin:4rem 0 0;align-self:start;position:sticky;top:calc(var(--header) + 2rem)}
-  .menu-list{grid-column:6/13;margin-top:4rem}
+  .menu-intro{grid-column:1/5;margin:var(--s8) 0 0;align-self:start;position:sticky;top:calc(var(--header) + var(--s6))}
+  .menu-list{grid-column:6/13;margin-top:var(--s8)}
 }
-.menu-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;margin-top:2rem}
+.menu-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:var(--s4) var(--s6);align-items:center;margin-top:var(--s6)}
 @media (min-width:900px){.menu-actions{grid-column:6/13}}
 
 /* Piatti: impaginazione asimmetrica */
-.piatti{margin-top:clamp(4rem,10vw,8rem);row-gap:2.5rem}
-.p1{grid-column:1/-1}
-.p1{grid-row:1}
+.piatti{margin-top:var(--s9);row-gap:var(--s7)}
+.p1{grid-column:1/-1;grid-row:1}
 .p2{grid-column:1/4;grid-row:2}
-.p3{grid-column:4/7;grid-row:2;margin-top:5rem}
+.p3{grid-column:4/7;grid-row:2;margin-top:var(--s8)}
 .p1 .frame{aspect-ratio:4/5}
 .p2 .frame,.p3 .frame{aspect-ratio:3/4}
+@media (max-width:599px){.p2 figcaption,.p3 figcaption{flex-direction:column;gap:var(--s1)}}
 @media (min-width:900px){
   .p1{grid-column:1/8;grid-row:1/3}
   .p1 .frame{aspect-ratio:1/1}
@@ -226,147 +268,158 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   .p3{grid-column:10/13;grid-row:2;margin-top:0;align-self:end}
 }
 
-/* ---------- 03 Prenota (unico blocco d'accento) ---------- */
-.prenota{background:var(--bordeaux);color:var(--crema)}
-.prenota .sec-head{border-top-color:rgba(238,228,211,.4)}
-.prenota .label{color:rgba(238,228,211,.72)}
-.prenota h2{grid-column:1/-1;font-size:clamp(3.4rem,12vw,11rem);line-height:.86;letter-spacing:-.03em;margin:clamp(2.5rem,6vw,5rem) 0 clamp(2rem,5vw,4rem)}
-.prenota h2 em{display:block;padding-left:1.2em}
-.prenota-txt{grid-column:1/-1}
-.prenota-txt p{max-width:30rem;color:rgba(238,228,211,.82)}
-.prenota-cta{grid-column:1/-1;display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
-.prenota-cta .btn{min-height:60px;font-size:13px}
-.prenota .tlink{border-color:rgba(238,228,211,.4);align-self:flex-start}
-.note{font-size:.85rem;color:rgba(238,228,211,.75);margin:1rem 0 0;padding-top:1rem;border-top:1px solid rgba(238,228,211,.25);max-width:30rem}
-@media (min-width:900px){
-  .prenota-txt{grid-column:1/6}
-  .prenota-cta{grid-column:8/13;margin-top:0}
-}
-
-/* ---------- 04 Orari e dove ---------- */
-.orari{grid-column:1/-1;margin-top:clamp(2.5rem,6vw,5rem)}
-.orari h2,.dove h2{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em;margin-bottom:2rem}
-.status{display:flex;align-items:center;gap:.6rem;margin-bottom:1.25rem}
-.orari table{width:100%;border-collapse:collapse}
-.orari tr{border-top:1px solid var(--linea)}
-.orari tr:last-child{border-bottom:1px solid var(--linea)}
-.orari th,.orari td{padding:.95rem 0;text-align:left;font-weight:400;vertical-align:baseline}
-.orari th{font:400 1.25rem/1.2 var(--display);width:42%}
-.orari td{font-size:.92rem;color:var(--muto)}
-.orari td .x{font-style:italic}
-.orari tr.today{background:var(--bordeaux);border-top-color:var(--bordeaux)}
-.orari tr.today th,.orari tr.today td{color:var(--crema)}
-.orari tr.today th{padding-left:.9rem}
-.orari tr.today td{padding-right:.9rem}
-.orari tr.today th::after{content:"Oggi";display:block;font:600 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;margin-top:.35rem;opacity:.8}
-.dove{grid-column:1/-1;margin-top:4rem}
-.map{position:relative;aspect-ratio:4/3;background:var(--nero-2);border:1px solid var(--linea);overflow:hidden}
-.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9) sepia(.15)}
-.map .fallback{position:absolute;inset:0;display:grid;place-items:center;padding:1rem;text-align:center}
-.addr{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:1.5rem}
-.addr p{margin:0;font:400 1.35rem/1.25 var(--display)}
-.addr .label{display:block;margin-bottom:.5rem}
-.addr a{text-decoration:none;border-bottom:1px solid var(--linea-forte)}
-.addr a:hover{border-color:var(--crema)}
-@media (min-width:600px){.addr{grid-template-columns:1fr 1fr}}
-@media (min-width:900px){
-  .orari{grid-column:1/6}
-  .dove{grid-column:7/13;margin-top:clamp(2.5rem,6vw,5rem)}
-}
-
-/* ---------- Footer ---------- */
-.footer{border-top:1px solid var(--linea-forte);padding-top:clamp(3rem,6vw,5rem)}
-.f-top{row-gap:2.5rem}
-.f-seal{grid-column:1/3}
-.f-seal img{width:72px;height:72px;object-fit:contain}
-.f-col{grid-column:span 3;font-size:.92rem;color:var(--muto)}
-.f-col .label{display:block;margin-bottom:.9rem;color:var(--crema)}
-.f-col a{text-decoration:none}
-.f-col a:hover{color:var(--crema)}
-.f-col ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
-.f-parent{grid-column:1/-1;font:italic 400 1.35rem/1.3 var(--display);color:var(--crema)}
-@media (min-width:900px){
-  .f-seal{grid-column:1/2}
-  .f-parent{grid-column:2/6}
-  .f-col{grid-column:span 2}
-  .f-col.first{grid-column:7/9}
-}
-.wordmark span{display:inline-block}
-.wordmark{font:400 15vw/.82 var(--display);letter-spacing:-.045em;white-space:nowrap;margin:clamp(3rem,7vw,6rem) 0 0;overflow:hidden;color:var(--crema)}
-.wordmark em{font-style:italic}
-.f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding:1.25rem 0 1.5rem;border-top:1px solid var(--linea);margin-top:1.5rem}
-.f-bottom a{text-decoration:none}
-
-/* ---------- v3: testi estesi ---------- */
-.hero h1{margin-bottom:clamp(1rem,2.5vw,1.75rem)}
-.hero-lead{max-width:34rem;font-size:clamp(.96rem,1.2vw,1.08rem);line-height:1.6;color:rgba(238,228,211,.86);margin:0 0 clamp(1.25rem,3vw,2rem)}
-@media (min-width:900px){
-  .cucina-img{position:sticky;top:calc(var(--header) + 2rem);align-self:start}
-  .cucina-txt{align-self:start}
-}
-.dishes{margin-top:clamp(4.5rem,10vw,8rem)}
-.dishes-intro{grid-column:1/-1;margin-bottom:2rem}
-.dishes-intro h3{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em}
-.dishes-intro p{color:var(--muto);max-width:20rem;margin-top:1.25rem}
-.dish-list h3{font-style:italic}
+.dishes{margin-top:var(--s9)}
+.dishes-intro{grid-column:1/-1;margin-bottom:var(--s6)}
+.dishes-intro h3{font-size:var(--t4);line-height:var(--lh-display);letter-spacing:-.02em}
+.dishes-intro p{color:var(--muto);margin-top:var(--s5)}
+.dish-list li{grid-template-columns:minmax(0,1fr)}
+.dish-list h4,.dish-list p{grid-column:1}
 @media (min-width:900px){
   .dishes-intro{grid-column:1/5;margin-bottom:0}
   .dish-list{margin-top:0}
 }
+
+/* ---------- 03 Il palazzo ---------- */
 .pal-a,.pal-b{grid-column:1/-1}
-.pal-b{margin-top:3.5rem}
-.pal-h{font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.05;margin-bottom:1.25rem;padding-top:1.1rem;border-top:1px solid var(--linea)}
+.pal-b{margin-top:var(--s7)}
+.pal-h{font-size:var(--t3);margin-bottom:var(--s5);padding-top:var(--s4);border-top:1px solid var(--linea)}
 .pal-a p,.pal-b p{color:var(--muto)}
 .pal-a p:first-of-type{color:var(--crema)}
 @media (min-width:900px){.pal-a{grid-column:1/6}.pal-b{grid-column:8/13;margin-top:0}}
-.capsule{list-style:none;counter-reset:c;margin:1.5rem 0 0;padding:0}
-.capsule li{counter-increment:c;display:grid;grid-template-columns:2.6rem 1fr;align-items:baseline;padding:.8rem 0;border-top:1px solid var(--linea);font:400 1.25rem/1.3 var(--display)}
+.capsule{list-style:none;counter-reset:c;margin:var(--s5) 0 0;padding:0}
+.capsule li{counter-increment:c;display:grid;grid-template-columns:2.5rem 1fr;align-items:baseline;padding:var(--s3) 0;border-top:1px solid var(--linea);font:400 var(--t3)/var(--lh-head) var(--display)}
 .capsule li:last-child{border-bottom:1px solid var(--linea)}
-.capsule li::before{content:counter(c,lower-roman) ".";font-style:italic;font-size:1rem;color:var(--muto)}
-.case{margin-top:clamp(4.5rem,10vw,8rem)}
-.case-label{margin-bottom:1.25rem}
-.case-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;column-gap:var(--gap)}
-.case-list li{padding:1.1rem 0 1.6rem;border-top:1px solid var(--linea-forte)}
+.capsule li::before{content:counter(c,lower-roman) ".";font-size:var(--t2);color:var(--muto)}
+.case{margin-top:var(--s9)}
+.case-h{font-size:var(--t3);margin-bottom:var(--s5)}
+.case-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);column-gap:var(--gap)}
+.case-list li{padding:var(--s4) 0 var(--s5);border-top:1px solid var(--linea-forte)}
 .case-list li.is-here{border-top:2px solid var(--bordeaux)}
-.case-list .n{font:italic 400 1rem/1 var(--display);color:var(--muto)}
-.case-list h3{font-size:clamp(1.4rem,1.9vw,1.7rem);line-height:1.1;margin:.7rem 0 .5rem}
-.case-list p{margin:0;font-size:.88rem;color:var(--muto)}
-@media (min-width:600px){.case-list{grid-template-columns:1fr 1fr}}
+.case-list .n{font:400 var(--t2)/1 var(--display);color:var(--muto)}
+.case-list h4{font-size:var(--t3);margin:var(--s3) 0 var(--s2)}
+.case-list p{margin:0;color:var(--muto)}
+@media (min-width:600px){.case-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1000px){.case-list{grid-template-columns:repeat(5,minmax(0,1fr))}}
-.practical{margin:2rem 0 0}
-.practical div{display:grid;grid-template-columns:1fr;gap:.35rem;padding:1rem 0;border-top:1px solid rgba(238,228,211,.25)}
-.practical div:last-child{border-bottom:1px solid rgba(238,228,211,.25)}
-.practical dt{font:600 11px/1.9 var(--sans);letter-spacing:.2em;text-transform:uppercase}
-.practical dd{margin:0;font-size:.95rem;color:rgba(238,228,211,.84)}
-@media (min-width:520px){.practical div{grid-template-columns:10rem 1fr;gap:1rem}}
-@media (min-width:900px){.prenota-txt{grid-column:1/7}}
-.small{font-size:.85rem;color:var(--muto);margin-top:1.1rem}
-.come{color:var(--muto);margin:1.5rem 0 0;max-width:38rem}
-.vicino{margin-top:2rem}
-.vicino ul{list-style:none;margin:.75rem 0 0;padding:0;display:grid;grid-template-columns:1fr;column-gap:var(--gap)}
-.vicino li{padding:.7rem 0;border-top:1px solid var(--linea);font:400 1.15rem/1.3 var(--display)}
-@media (min-width:600px){.vicino ul{grid-template-columns:1fr 1fr}}
-.f-about{grid-column:1/-1}
-.f-story{color:var(--muto);font-size:.92rem;max-width:30rem;margin:1rem 0 0}
-@media (min-width:900px){.f-about{grid-column:2/6}}
 
-/* ---------- Motion ---------- */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
-.js .rv.in{opacity:1;transform:none}
-.js .rv-img{clip-path:inset(100% 0 0 0);transition:clip-path 1.3s cubic-bezier(.7,0,.2,1)}
-.js .rv-img img{transform:scale(1.12);transition:transform 1.8s cubic-bezier(.2,.7,.2,1)}
-.js .rv-img.in{clip-path:inset(0 0 0 0)}
-.js .rv-img.in img{transform:none}
-.d1{transition-delay:.12s!important}.d2{transition-delay:.24s!important}
-.js .hero h1 .ln{display:block;overflow:hidden}
-.js .hero h1 .ln>span{display:block;transform:translateY(105%);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.js .hero.ready h1 .ln>span{transform:none}
-.js .hero.ready h1 .ln:nth-child(2)>span{transition-delay:.1s}
-.js .hero.ready h1 .ln:nth-child(3)>span{transition-delay:.2s}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{transition:none!important;animation:none!important}
-  .js .rv,.js .rv-img,.js .rv-img img,.js .hero h1 .ln>span{opacity:1;transform:none;clip-path:none}
+/* ---------- 04 Prenota (unico blocco d'accento) ---------- */
+.prenota{background:var(--bordeaux);color:var(--crema)}
+.prenota .sec-head{border-top-color:var(--linea-bordeaux)}
+.prenota .label{color:var(--su-bordeaux)}
+.prenota .label b{color:var(--crema)}
+.prenota h2{grid-column:1/-1;font-size:var(--t5);line-height:.88;letter-spacing:-.03em;margin:var(--s8) 0 var(--s7)}
+.prenota h2 .ln{display:block}
+.prenota h2 .ln+.ln{padding-left:1.2em}
+.prenota-txt{grid-column:1/-1}
+.prenota-txt>p{color:var(--su-bordeaux)}
+.practical{margin:var(--s6) 0 0}
+.practical div{display:grid;grid-template-columns:1fr;gap:var(--s1);padding:var(--s4) 0;border-top:1px solid var(--linea-bordeaux-tenue)}
+.practical div:last-child{border-bottom:1px solid var(--linea-bordeaux-tenue)}
+.practical dt.label{color:var(--crema)}
+.practical dd{margin:0;max-width:60ch;color:var(--su-bordeaux)}
+@media (min-width:520px){.practical div{grid-template-columns:10rem 1fr;gap:var(--s4)}}
+.prenota-cta{grid-column:1/-1;display:flex;flex-direction:column;gap:var(--s4);margin-top:var(--s7)}
+.prenota-cta .btn{min-height:52px}
+.prenota .tlink{border-color:var(--linea-bordeaux);align-self:flex-start}
+.prenota .tlink:hover{border-color:var(--crema)}
+.note{color:var(--su-bordeaux);margin:var(--s4) 0 0;padding-top:var(--s4);border-top:1px solid var(--linea-bordeaux-tenue);max-width:60ch}
+@media (min-width:900px){
+  .prenota-txt{grid-column:1/7}
+  .prenota-cta{grid-column:8/13;margin-top:0}
+}
+
+/* ---------- 05 Orari e dove ---------- */
+.orari{grid-column:1/-1;margin-top:var(--s8)}
+.orari h2,.dove h2{font-size:var(--t4);line-height:var(--lh-display);letter-spacing:-.02em;margin-bottom:var(--s6)}
+.status{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s5)}
+.orari table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.orari tr{border-top:1px solid var(--linea)}
+.orari tr:last-child{border-bottom:1px solid var(--linea)}
+.orari th,.orari td{padding:var(--s4) 0;text-align:left;font-weight:400;vertical-align:baseline}
+.orari th{font:400 var(--t3)/var(--lh-head) var(--display);width:42%}
+.orari td{color:var(--muto)}
+.orari td .x{font-style:italic}
+.orari tr.today{background:var(--bordeaux);border-top-color:var(--bordeaux)}
+.orari tr.today th,.orari tr.today td{color:var(--crema)}
+.orari tr.today th{padding-left:var(--s4)}
+.orari tr.today td{padding-right:var(--s4)}
+.orari tr.today th::after{content:"Oggi";display:block;font:600 var(--t1)/1 var(--sans);margin-top:var(--s2);color:var(--su-bordeaux)}
+.orari .small{color:var(--muto);margin-top:var(--s4)}
+.dove{grid-column:1/-1;margin-top:var(--s8)}
+.map{position:relative;aspect-ratio:4/3;background:var(--nero-2);border:1px solid var(--linea);overflow:hidden}
+.map:focus-within{outline:2px solid var(--crema);outline-offset:3px}
+.map iframe:focus{outline:2px solid var(--crema);outline-offset:-4px}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9) sepia(.15)}
+.map .fallback{position:absolute;inset:0;display:grid;place-items:center;padding:var(--s4);text-align:center}
+.come{color:var(--muto);margin:var(--s5) 0 0}
+.addr{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s5);margin-top:var(--s5)}
+.addr p{margin:0;font:400 var(--t3)/var(--lh-head) var(--display)}
+.addr .label{display:block;margin-bottom:var(--s2)}
+.addr a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;border-bottom:1px solid var(--linea-forte)}
+.addr a:hover{border-color:var(--crema)}
+.addr .mail{font:500 var(--t2)/1 var(--sans);overflow-wrap:anywhere}
+@media (min-width:600px){.addr{grid-template-columns:repeat(2,minmax(0,1fr))}.addr>div:last-child:nth-child(odd){grid-column:1/-1}}
+.vicino{margin-top:var(--s6)}
+.vicino ul{list-style:none;margin:var(--s3) 0 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);column-gap:var(--gap)}
+.vicino li{padding:var(--s3) 0;border-top:1px solid var(--linea);font:400 var(--t3)/var(--lh-head) var(--display)}
+@media (min-width:600px){.vicino ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dir{margin-top:var(--s6)}
+@media (min-width:900px){
+  .orari{grid-column:1/6}
+  .dove{grid-column:7/13}
+}
+
+/* ---------- Footer ---------- */
+.footer{border-top:1px solid var(--linea-forte);padding-top:var(--s8)}
+.f-top{row-gap:var(--s7)}
+.f-seal{grid-column:1/3}
+.f-seal img{width:72px;height:72px;object-fit:contain}
+.f-about{grid-column:1/-1}
+.f-parent{font:400 var(--t3)/var(--lh-head) var(--display);color:var(--crema)}
+.f-story{color:var(--muto);margin:var(--s4) 0 0}
+.f-col{grid-column:1/-1;color:var(--muto)}
+.f-col .label{display:block;margin-bottom:var(--s3);color:var(--crema)}
+.f-col ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--s1)}
+.f-col li+li.gap{margin-top:var(--s3)}
+.f-col a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.f-col a:hover{color:var(--crema)}
+@media (min-width:600px){.f-col{grid-column:span 3}}
+@media (min-width:900px){
+  .f-seal{grid-column:1/2}
+  .f-about{grid-column:2/-1}
+  .f-col{grid-column:span 4}
+  .f-col.first{grid-column:1/5}
+}
+@media (min-width:1400px){
+  .f-about{grid-column:2/6}
+  .f-col{grid-column:span 2}
+  .f-col.first{grid-column:7/9}
+  .f-col a{white-space:nowrap}
+}
+.wordmark{font:400 15vw/.82 var(--display);letter-spacing:-.045em;white-space:nowrap;margin:var(--s8) 0 0;overflow:hidden;color:var(--crema);max-width:none}
+.wordmark span{display:inline-block}
+.f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--s2) var(--s5);padding:var(--s4) 0 var(--s5);border-top:1px solid var(--linea);margin-top:var(--s5)}
+.f-bottom a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.f-bottom a:hover{color:var(--crema)}
+
+/* ---------- Movimento: solo se l'utente non chiede di ridurlo ---------- */
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .btn{transition:background-color .2s,border-color .2s,color .2s,transform .12s}
+  .tlink,.addr a{transition:border-color .2s,color .2s}
+  .nav a,.f-col a,.f-bottom a{transition:color .2s}
+  .header{transition:background-color .3s,border-color .3s}
+  .hero-img{will-change:transform}
+  /* ingresso dell'hero: unica eccezione oltre i 700ms */
+  .js .hero h1 .ln{overflow:hidden}
+  .js .hero h1 .ln>span{display:block;transform:translateY(105%);transition:transform 1s var(--ease)}
+  .js .hero.ready h1 .ln>span{transform:none}
+  .js .hero.ready h1 .ln:nth-child(2)>span{transition-delay:.08s}
+  .js .hero.ready h1 .ln:nth-child(3)>span{transition-delay:.16s}
+  /* un solo reveal: il sipario sulle fotografie, nessuno spostamento di layout */
+  .js .rv-img{clip-path:inset(100% 0 0 0);transition:clip-path .7s var(--ease)}
+  .js .rv-img.in{clip-path:inset(0 0 0 0)}
+  .js .rv-img.d1{transition-delay:.1s}
+  .js .rv-img.d2{transition-delay:.2s}
 }
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -375,18 +428,18 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 <a class="skip" href="#contenuto">Vai al contenuto</a>
 
 <header class="header" id="header">
-  <a class="brand" href="#top" aria-label="La Real Cucina, torna all'inizio">
+  <a class="brand" href="#top" aria-label="La Real Cucina, torna all’inizio">
     <img src="assets/logo-la-real-cucina.png" width="560" height="560" alt="">
-    <span>La Real <em>Cucina</em></span>
+    <span>La Real Cucina</span>
   </a>
   <nav class="nav" aria-label="Navigazione principale">
-    <a href="#cucina"><i>01</i>Cucina</a>
-    <a href="#menu"><i>02</i>Menù</a>
-    <a href="#palazzo"><i>03</i>Palazzo</a>
-    <a href="#prenota"><i>04</i>Prenota</a>
-    <a href="#dove"><i>05</i>Orari e dove</a>
+    <a href="#cucina"><span class="nn">01</span>Cucina</a>
+    <a href="#menu"><span class="nn">02</span>Menù</a>
+    <a href="#palazzo"><span class="nn">03</span>Palazzo</a>
+    <a href="#prenota"><span class="nn">04</span>Prenota</a>
+    <a href="#dove"><span class="nn">05</span>Orari e dove</a>
   </nav>
-  <a class="btn" href="#prenota"><span class="long">Prenota un tavolo</span><span class="short">Prenota</span><span class="arr" aria-hidden="true">→</span></a>
+  <a class="btn" href="#prenota"><span class="long">Prenota un tavolo</span><span class="short">Prenota</span></a>
 </header>
 
 <main id="contenuto">
@@ -394,44 +447,45 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 <!-- HERO -->
 <section class="hero grain" id="top" aria-labelledby="h-title">
   <div class="hero-img" data-parallax>
-    <img src="assets/sala-interna.jpg" width="560" height="747" fetchpriority="high" alt="La sala de La Real Cucina con tavoli in legno, sedie dalla seduta blu, piastrelle decorate e lampadari in vetro">
+    <img src="assets/sala-interna.jpg" width="1200" height="1600" fetchpriority="high" alt="La sala de La Real Cucina con tavoli in legno, sedie dalla seduta blu, piastrelle decorate e lampadari in vetro">
   </div>
   <div class="hero-top">
     <span class="label">Gastronomia • Bistrot</span>
-    <span class="label">Quadrilatero Romano — Torino</span>
+    <span class="label">Quadrilatero Romano, Torino</span>
   </div>
   <div class="hero-inner">
-    <h1 id="h-title"><span class="ln"><span>Tradizione</span></span><span class="ln"><span>piemontese,</span></span><span class="ln"><span><em>fatta in casa.</em></span></span></h1>
+    <h1 id="h-title"><span class="ln"><span>Tradizione</span></span> <span class="ln"><span>piemontese,</span></span> <span class="ln"><span>fatta in casa.</span></span></h1>
     <p class="hero-lead">La gastronomia e il bistrot di Ai Savoia, la famiglia che dal 2006 accoglie ospiti nel Quadrilatero Romano. A pranzo, a cena o da asporto: ricette piemontesi e classici italiani, con prodotti freschi e di stagione.</p>
     <div class="hero-foot">
       <span class="label a">Via della Consolata 7D, Torino</span>
-      <span class="label b" data-status><i class="dot"></i><span>Orari di oggi</span></span>
-      <a class="tlink c" href="#menu">Scopri il menù <span aria-hidden="true">↓</span></a>
+      <span class="label b" data-status><i class="dot" aria-hidden="true"></i><span>Orari di oggi</span></span>
+      <a class="tlink c" href="#menu">Scopri il menù</a>
     </div>
   </div>
 </section>
 
 <!-- 01 LA CUCINA -->
 <section class="s shell" id="cucina" aria-labelledby="c-title">
-  <div class="sec-head"><span class="label"><b>01</b> — La cucina</span><span class="label">Dal 2006 nel Quadrilatero</span></div>
+  <div class="sec-head"><span class="label"><b>01</b>La cucina</span><span class="label">Dal 2006 nel Quadrilatero</span></div>
   <div class="grid">
-    <h2 id="c-title" class="statement rv">«Nelle dimore storiche la cucina era il luogo dove la casa prendeva vita.» <em>La Real Cucina nasce da qui.</em></h2>
+    <h2 id="c-title" class="statement">«Nelle dimore storiche la cucina era il luogo dove la casa prendeva vita.»</h2>
+    <p class="statement-coda">La Real Cucina nasce da qui.</p>
 
     <figure class="cucina-img">
-      <div class="frame rv-img"><img src="assets/ingresso-estate.jpg" width="560" height="747" loading="lazy" alt="L'ingresso de La Real Cucina in Via della Consolata: tende color sabbia, l'insegna Bistrot e la lavagna con i piatti del giorno"></div>
-      <figcaption><b>Fig. 01</b><span>L'ingresso su Via della Consolata 7D</span></figcaption>
+      <div class="frame rv-img"><img src="assets/ingresso-estate.jpg" width="1200" height="1600" loading="lazy" alt="L’ingresso de La Real Cucina in Via della Consolata: tende color sabbia, l’insegna Bistrot e la lavagna con i piatti del giorno"></div>
+      <figcaption><span class="label">Fig. 01</span><span>L’ingresso su Via della Consolata 7D</span></figcaption>
     </figure>
 
     <div class="cucina-txt">
-      <p class="rv">Tutto comincia alla fine degli anni Novanta, durante un viaggio in Scozia. È lì che il fondatore di Ai Savoia scopre i Bed &amp; Breakfast, allora quasi sconosciuti in Italia: non soltanto una stanza in cui dormire, ma un modo di accogliere le persone come parte della casa.</p>
-      <p class="rv">Il primo nucleo apre nel 2006, mentre Torino si prepara alle Olimpiadi invernali, grazie a un programma della Regione Piemonte per lo sviluppo dell'ospitalità turistica. La sede è un palazzo storico di Via del Carmine affacciato su Piazza Savoia, con camere arredate con mobili d'epoca: ognuna porta il nome di un re o di una regina di Casa Savoia.</p>
-      <p class="rv">Negli anni sono arrivate le Camere delle Regine, la Locanda dei Re, la Foresteria dei Savoia e la Caffetteria e Sala da Tè. La Real Cucina è il quinto capitolo, e forse il più naturale: la stessa ospitalità di famiglia, portata in tavola.</p>
-      <p class="rv">La cucina è a gestione familiare. Lavoriamo prodotti freschi, selezionati e di stagione, e cuciniamo le ricette della tradizione piemontese e i grandi classici italiani, con un tocco di creatività. Ci si può sedere a pranzo o a cena, oppure passare in gastronomia e portare a casa i piatti del giorno.</p>
-      <ul class="facts rv">
-        <li><span>Pranzo</span>Dal lunedì al venerdì, 11:00 – 15:00</li>
-        <li><span>Cena</span>Dal mercoledì al sabato, 19:15 – 22:00</li>
-        <li><span>Asporto</span>I piatti della gastronomia, da portare a casa</li>
-        <li><span>Ospiti</span>Per chi soggiorna da Ai Savoia, un voucher dedicato</li>
+      <p>Tutto comincia alla fine degli anni Novanta, durante un viaggio in Scozia. È lì che il fondatore di Ai Savoia scopre i Bed &amp; Breakfast, allora quasi sconosciuti in Italia: non soltanto una stanza in cui dormire, ma un modo di accogliere le persone come parte della casa.</p>
+      <p>Il primo nucleo apre nel 2006, mentre Torino si prepara alle Olimpiadi invernali, grazie a un programma della Regione Piemonte per lo sviluppo dell’ospitalità turistica. La sede è un palazzo storico di Via del Carmine affacciato su Piazza Savoia, con camere arredate con mobili d’epoca: ognuna porta il nome di un re o di una regina di Casa Savoia.</p>
+      <p>Negli anni sono arrivate le Camere delle Regine, la Locanda dei Re, la Foresteria dei Savoia e la Caffetteria e Sala da Tè. La Real Cucina è il quinto capitolo, e forse il più naturale: la stessa ospitalità di famiglia, portata in tavola.</p>
+      <p>La cucina è a gestione familiare. Lavoriamo prodotti freschi, selezionati e di stagione, e cuciniamo le ricette della tradizione piemontese e i grandi classici italiani, con un tocco di creatività. Ci si può sedere a pranzo o a cena, oppure passare in gastronomia e portare a casa i piatti del giorno.</p>
+      <ul class="facts tnum">
+        <li><span class="label">Pranzo</span>Dal lunedì al venerdì, 11:00 – 15:00</li>
+        <li><span class="label">Cena</span>Dal mercoledì al sabato, 19:15 – 22:00</li>
+        <li><span class="label">Asporto</span>I piatti della gastronomia, da portare a casa</li>
+        <li><span class="label">Ospiti</span>Per chi soggiorna da Ai Savoia, un voucher dedicato</li>
       </ul>
     </div>
   </div>
@@ -440,81 +494,82 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 <!-- NASTRO TIPOGRAFICO -->
 <div class="ribbon" aria-hidden="true">
   <div class="ribbon-track" data-ribbon>
-    <span>Ravioli</span><span>—</span><span>Vitello tonnato</span><span>—</span><span>Ragù bianco</span><span>—</span><span>Baccalà</span><span>—</span><span>Tiramisù</span><span>—</span><span>Ravioli</span><span>—</span><span>Vitello tonnato</span>
+    <span>Ravioli</span><i class="sep"></i><span>Vitello tonnato</span><i class="sep"></i><span>Ragù bianco</span><i class="sep"></i><span>Baccalà</span><i class="sep"></i><span>Tiramisù</span><i class="sep"></i><span>Ravioli</span><i class="sep"></i><span>Vitello tonnato</span>
   </div>
 </div>
 
 <!-- 02 IL MENÙ -->
 <section class="s shell" id="menu" aria-labelledby="m-title">
-  <div class="sec-head"><span class="label"><b>02</b> — Il menù</span><span class="label">Cambia con le stagioni</span></div>
+  <div class="sec-head"><span class="label"><b>02</b>Il menù</span><span class="label">Cambia con le stagioni</span></div>
   <div class="grid">
     <div class="menu-intro">
-      <h2 id="m-title" class="rv">La <em>carta</em></h2>
-      <p class="rv d1">La carta segue le stagioni: le categorie restano, i piatti cambiano con quello che offre il periodo. Per sapere cosa si mangia oggi, chiedete in sala o scriveteci su WhatsApp.</p>
+      <h2 id="m-title">La carta</h2>
+      <p>La carta segue le stagioni: le categorie restano, i piatti cambiano con quello che offre il periodo. Per sapere cosa si mangia oggi, chiedete in sala o scriveteci su WhatsApp.</p>
     </div>
     <ol class="menu-list">
-      <li class="rv"><span class="n">i.</span><h3>Antipasti della tradizione</h3><p>I classici con cui comincia un pranzo piemontese, a partire dal vitello tonnato con il suo cappero.</p></li>
-      <li class="rv"><span class="n">ii.</span><h3>Pasta fresca e primi piatti</h3><p>Primi di terra e di mare: dalle tagliatelle al ragù bianco agli gnocchi con gamberi e zucchine.</p></li>
-      <li class="rv"><span class="n">iii.</span><h3>Agnolotti e specialità piemontesi</h3><p>Pasta ripiena e ricette del territorio, preparate come vuole la tradizione torinese.</p></li>
-      <li class="rv"><span class="n">iv.</span><h3>Secondi di carne e di pesce</h3><p>L'arrosto con le patate al forno da una parte, il baccalà con la crema di zucchine dall'altra.</p></li>
-      <li class="rv"><span class="n">v.</span><h3>Contorni di stagione</h3><p>Le verdure del periodo, preparate in modo semplice per accompagnare i secondi.</p></li>
-      <li class="rv"><span class="n">vi.</span><h3>Dolci artigianali</h3><p>Fatti da noi, a cominciare da un tiramisù nella sua versione classica.</p></li>
-      <li class="rv"><span class="n">vii.</span><h3>Piatti da asporto</h3><p>L'anima gastronomia del locale: i piatti della cucina, pronti da portare a casa.</p></li>
+      <li><span class="n" aria-hidden="true">i.</span><h3>Antipasti della tradizione</h3><p>I classici con cui comincia un pranzo piemontese, a partire dal vitello tonnato con il suo cappero.</p></li>
+      <li><span class="n" aria-hidden="true">ii.</span><h3>Pasta fresca e primi piatti</h3><p>Primi di terra e di mare: dalle tagliatelle al ragù bianco agli gnocchi con gamberi e zucchine.</p></li>
+      <li><span class="n" aria-hidden="true">iii.</span><h3>Agnolotti e specialità piemontesi</h3><p>Pasta ripiena e ricette del territorio, preparate come vuole la tradizione torinese.</p></li>
+      <li><span class="n" aria-hidden="true">iv.</span><h3>Secondi di carne e di pesce</h3><p>L’arrosto con le patate al forno da una parte, il baccalà con la crema di zucchine dall’altra.</p></li>
+      <li><span class="n" aria-hidden="true">v.</span><h3>Contorni di stagione</h3><p>Le verdure del periodo, preparate in modo semplice per accompagnare i secondi.</p></li>
+      <li><span class="n" aria-hidden="true">vi.</span><h3>Dolci artigianali</h3><p>Fatti da noi, a cominciare da un tiramisù nella sua versione classica.</p></li>
+      <li><span class="n" aria-hidden="true">vii.</span><h3>Piatti da asporto</h3><p>L’anima gastronomia del locale: i piatti della cucina, pronti da portare a casa.</p></li>
     </ol>
-    <div class="menu-actions rv">
-      <a class="btn" href="#prenota">Prenota un tavolo <span class="arr" aria-hidden="true">→</span></a>
-      <a class="tlink" href="https://wa.me/393391257711?text=Buongiorno%2C%20quali%20sono%20i%20piatti%20del%20giorno%3F" rel="noopener">Piatti del giorno su WhatsApp <span aria-hidden="true">→</span></a>
+    <div class="menu-actions">
+      <a class="btn" href="#prenota">Prenota un tavolo</a>
+      <a class="tlink" href="https://wa.me/393391257711?text=Buongiorno%2C%20quali%20sono%20i%20piatti%20del%20giorno%3F" rel="noopener">Piatti del giorno su WhatsApp</a>
     </div>
   </div>
 
   <div class="grid piatti">
     <figure class="p1">
-      <div class="frame rv-img"><img src="assets/piatto-carne-patate.jpg" width="560" height="747" loading="lazy" alt="Arrosto con il suo sugo, patate al forno al rosmarino e insalata, accanto a un calice di vino rosso"></div>
-      <figcaption><b>Fig. 02</b><span>Arrosto con patate al forno</span></figcaption>
+      <div class="frame rv-img"><img src="assets/piatto-carne-patate.jpg" width="1200" height="1600" loading="lazy" alt="Arrosto con il suo sugo, patate al forno al rosmarino e insalata, accanto a un calice di vino rosso"></div>
+      <figcaption><span class="label">Fig. 02</span><span>Arrosto con patate al forno</span></figcaption>
     </figure>
     <figure class="p2">
-      <div class="frame rv-img d1"><img src="assets/vitello-tonnato.jpg" width="560" height="747" loading="lazy" alt="Vitello tonnato: fettine di vitello rosa con salsa tonnata e un cappero"></div>
-      <figcaption><b>Fig. 03</b><span>Vitello tonnato con cappero</span></figcaption>
+      <div class="frame rv-img d1"><img src="assets/vitello-tonnato.jpg" width="1200" height="1600" loading="lazy" alt="Vitello tonnato: fettine di vitello rosa con salsa tonnata e un cappero"></div>
+      <figcaption><span class="label">Fig. 03</span><span>Vitello tonnato con cappero</span></figcaption>
     </figure>
     <figure class="p3">
-      <div class="frame rv-img d2"><img src="assets/piatto-pasta.jpg" width="560" height="747" loading="lazy" alt="Pasta al ragù bianco in un piatto bianco con un rametto di rosmarino"></div>
-      <figcaption><b>Fig. 04</b><span>Pasta al ragù bianco</span></figcaption>
+      <div class="frame rv-img d2"><img src="assets/piatto-pasta.jpg" width="1200" height="1600" loading="lazy" alt="Pasta al ragù bianco in un piatto bianco con un rametto di rosmarino"></div>
+      <figcaption><span class="label">Fig. 04</span><span>Pasta al ragù bianco</span></figcaption>
     </figure>
   </div>
 
   <div class="grid dishes">
     <div class="dishes-intro">
-      <h3 class="rv">Alcuni <em>piatti</em></h3>
-      <p class="rv d1">Piatti che sono passati dalla nostra carta. La disponibilità cambia di giorno in giorno.</p>
+      <h3>Alcuni piatti</h3>
+      <p>Piatti che sono passati dalla nostra carta. La disponibilità cambia di giorno in giorno.</p>
     </div>
     <ul class="menu-list dish-list">
-      <li class="rv"><span class="n">—</span><h3>Ravioli con salsa</h3><p>Pasta ripiena servita con la sua salsa: il primo più classico della casa.</p></li>
-      <li class="rv"><span class="n">—</span><h3>Tagliatelle al ragù bianco</h3><p>Il ragù senza pomodoro, dove il sapore della carne resta in primo piano.</p></li>
-      <li class="rv"><span class="n">—</span><h3>Gnocchi con gamberi e zucchine</h3><p>Un primo di mare, con le zucchine a dare dolcezza ai gamberi.</p></li>
-      <li class="rv"><span class="n">—</span><h3>Arrosto con patate al forno</h3><p>Carne arrosto affettata, con il suo fondo e le patate dorate al forno.</p></li>
-      <li class="rv"><span class="n">—</span><h3>Vitello tonnato con cappero</h3><p>Fettine di vitello rosa e salsa tonnata: l'antipasto piemontese per eccellenza.</p></li>
-      <li class="rv"><span class="n">—</span><h3>Baccalà con crema di zucchine</h3><p>Il baccalà accompagnato da una crema vellutata di zucchine.</p></li>
-      <li class="rv"><span class="n">—</span><h3>Classico tiramisù</h3><p>Mascarpone, caffè e savoiardi, nella versione di sempre.</p></li>
+      <li><h4>Ravioli con salsa</h4><p>Pasta ripiena servita con la sua salsa: il primo più classico della casa.</p></li>
+      <li><h4>Tagliatelle al ragù bianco</h4><p>Il ragù senza pomodoro, dove il sapore della carne resta in primo piano.</p></li>
+      <li><h4>Gnocchi con gamberi e zucchine</h4><p>Un primo di mare, con le zucchine a dare dolcezza ai gamberi.</p></li>
+      <li><h4>Arrosto con patate al forno</h4><p>Carne arrosto affettata, con il suo fondo e le patate dorate al forno.</p></li>
+      <li><h4>Vitello tonnato con cappero</h4><p>Fettine di vitello rosa e salsa tonnata: l’antipasto piemontese per eccellenza.</p></li>
+      <li><h4>Baccalà con crema di zucchine</h4><p>Il baccalà accompagnato da una crema vellutata di zucchine.</p></li>
+      <li><h4>Classico tiramisù</h4><p>Mascarpone, caffè e savoiardi, nella versione di sempre.</p></li>
     </ul>
   </div>
 </section>
 
 <!-- 03 IL PALAZZO E IL QUARTIERE -->
 <section class="s shell" id="palazzo" aria-labelledby="q-title">
-  <div class="sec-head"><span class="label"><b>03</b> — Il palazzo e il quartiere</span><span class="label">Piazza Savoia</span></div>
+  <div class="sec-head"><span class="label"><b>03</b>Il palazzo e il quartiere</span><span class="label">Piazza Savoia</span></div>
   <div class="grid">
-    <h2 id="q-title" class="statement rv">Per secoli Torino è stata la capitale di Casa Savoia, e le sue tracce sono ovunque: Palazzo Reale, Piazza Castello, la Consolata, Via Garibaldi. <em>Il nostro nome viene da qui.</em></h2>
+    <h2 id="q-title" class="statement">Per secoli Torino è stata la capitale di Casa Savoia, e le sue tracce sono ovunque: Palazzo Reale, Piazza Castello, la Consolata, Via Garibaldi.</h2>
+    <p class="statement-coda">Il nostro nome viene da qui.</p>
 
     <div class="pal-a">
-      <h3 class="pal-h rv">Il palazzo</h3>
-      <p class="rv">Ai Savoia ha sede in un palazzo storico di Via del Carmine, con la facciata su Piazza Savoia, nello stesso complesso architettonico di Palazzo Saluzzo Paesana, costruito nel 1715.</p>
-      <p class="rv">Al civico 1F c'è la Sala dei Marmi, che ospita la Caffetteria e Sala da Tè: un'atmosfera di fine Settecento, con il camino e un dipinto di Vittorio Amedeo II. Qui si servono tè e infusioni sfusi, torte e il Messer Cremotto, un espresso con crema di latte avvolto da crema al pistacchio, al cioccolato o alla nocciola e completato dalla granella. La sala si può riservare anche per eventi privati.</p>
+      <h3 class="pal-h">Il palazzo</h3>
+      <p>Ai Savoia ha sede in un palazzo storico di Via del Carmine, con la facciata su Piazza Savoia, nello stesso complesso architettonico di Palazzo Saluzzo Paesana, costruito nel 1715.</p>
+      <p>Al civico 1F c’è la Sala dei Marmi, che ospita la Caffetteria e Sala da Tè: un’atmosfera di fine Settecento, con il camino e un dipinto di Vittorio Amedeo II. Qui si servono tè e infusioni sfusi, torte e il Messer Cremotto, un espresso con crema di latte avvolto da crema al pistacchio, al cioccolato o alla nocciola e completato dalla granella. La sala si può riservare anche per eventi privati.</p>
     </div>
 
     <div class="pal-b">
-      <h3 class="pal-h rv">La piazza dell'obelisco</h3>
-      <p class="rv">Piazza Savoia, per i torinesi «la piazza dell'obelisco». L'obelisco celebra le leggi Siccardi del 1850, che abolirono il foro ecclesiastico. Alla posa della prima pietra, sotto il monumento furono murati:</p>
-      <ol class="capsule rv">
+      <h3 class="pal-h">La piazza dell’obelisco</h3>
+      <p>Piazza Savoia, per i torinesi «la piazza dell’obelisco». L’obelisco celebra le leggi Siccardi del 1850, che abolirono il foro ecclesiastico. Alla posa della prima pietra, sotto il monumento furono murati:</p>
+      <ol class="capsule">
         <li>Due copie della Gazzetta del Popolo</li>
         <li>Una copia della legge</li>
         <li>Alcune monete</li>
@@ -526,35 +581,35 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   </div>
 
   <div class="case">
-    <p class="label case-label rv"><b>Ai Savoia</b> — Cinque case, una famiglia</p>
+    <h3 class="case-h">Ai Savoia: cinque case, una famiglia</h3>
     <ol class="case-list">
-      <li class="rv"><span class="n">i.</span><h3>Camere delle Regine</h3><p>Ospitalità</p></li>
-      <li class="rv"><span class="n">ii.</span><h3>La Locanda dei Re</h3><p>Ospitalità</p></li>
-      <li class="rv"><span class="n">iii.</span><h3>Foresteria dei Savoia</h3><p>Via della Consolata 4, primo piano, angolo Via Garibaldi</p></li>
-      <li class="rv"><span class="n">iv.</span><h3>Caffetteria e Sala da Tè</h3><p>Sala dei Marmi, Via del Carmine 1F</p></li>
-      <li class="rv is-here"><span class="n">v.</span><h3>La Real Cucina</h3><p>Gastronomia • Bistrot, Via della Consolata 7D</p></li>
+      <li><span class="n" aria-hidden="true">i.</span><h4>Camere delle Regine</h4><p>Ospitalità</p></li>
+      <li><span class="n" aria-hidden="true">ii.</span><h4>La Locanda dei Re</h4><p>Ospitalità</p></li>
+      <li><span class="n" aria-hidden="true">iii.</span><h4>Foresteria dei Savoia</h4><p>Via della Consolata 4, primo piano, angolo Via Garibaldi</p></li>
+      <li><span class="n" aria-hidden="true">iv.</span><h4>Caffetteria e Sala da Tè</h4><p>Sala dei Marmi, Via del Carmine 1F</p></li>
+      <li class="is-here"><span class="n" aria-hidden="true">v.</span><h4>La Real Cucina</h4><p>Gastronomia • Bistrot, Via della Consolata 7D</p></li>
     </ol>
   </div>
 </section>
 
 <!-- 04 PRENOTA -->
 <section class="s shell prenota" id="prenota" aria-labelledby="p-title">
-  <div class="sec-head"><span class="label"><b>04</b> — Prenota</span><span class="label">Pranzo · Cena</span></div>
+  <div class="sec-head"><span class="label"><b>04</b>Prenota</span><span class="label">Pranzo e cena</span></div>
   <div class="grid">
-    <h2 id="p-title" class="rv">Prenota <em>un tavolo.</em></h2>
-    <div class="prenota-txt rv">
-      <p>Pranzo dal lunedì al venerdì, dalle 11:00 alle 15:00. Cena dal mercoledì al sabato, dalle 19:15 alle 22:00.</p>
+    <h2 id="p-title"><span class="ln">Prenota</span> <span class="ln">un tavolo.</span></h2>
+    <div class="prenota-txt">
+      <p class="tnum">Pranzo dal lunedì al venerdì, dalle 11:00 alle 15:00. Cena dal mercoledì al sabato, dalle 19:15 alle 22:00.</p>
       <dl class="practical">
-        <div><dt>Gruppi</dt><dd>Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</dd></div>
-        <div><dt>Allergie</dt><dd>Segnalateci allergie o intolleranze al momento della prenotazione.</dd></div>
-        <div><dt>Ospiti Ai Savoia</dt><dd>Chiedete alla reception di Via del Carmine 1F il voucher dedicato a La Real Cucina.</dd></div>
-        <div><dt>Asporto</dt><dd>I piatti della gastronomia si possono portare a casa: chiamateci per sapere cosa c'è oggi.</dd></div>
+        <div><dt class="label">Gruppi</dt><dd>Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</dd></div>
+        <div><dt class="label">Allergie</dt><dd>Segnalateci allergie o intolleranze al momento della prenotazione.</dd></div>
+        <div><dt class="label">Ospiti Ai Savoia</dt><dd>Chiedete alla reception di Via del Carmine 1F il voucher dedicato a La Real Cucina.</dd></div>
+        <div><dt class="label">Asporto</dt><dd>I piatti della gastronomia si possono portare a casa: chiamateci per sapere cosa c’è oggi.</dd></div>
       </dl>
     </div>
-    <div class="prenota-cta rv d1">
+    <div class="prenota-cta">
       <!-- TODO: sostituire con link Pienissimo -->
-      <a class="btn btn--crema" id="booking-link" href="https://prenotazioni.example.com/la-real-cucina" rel="noopener"><span class="txt">Prenota online</span><span class="arr" aria-hidden="true">→</span></a>
-      <a class="tlink" href="tel:+393391257711" aria-label="Chiama La Real Cucina al +39 339 125 7711">Chiama +39 339 125 7711 <span aria-hidden="true">→</span></a>
+      <a class="btn btn--crema" id="booking-link" href="https://prenotazioni.example.com/la-real-cucina" rel="noopener"><span class="txt">Prenota online</span></a>
+      <a class="tlink" href="tel:+393391257711" aria-label="Chiama La Real Cucina al +39 339 125 7711">Chiama +39 339 125 7711</a>
       <p class="note" id="booking-note">La prenotazione online è in arrivo. Nel frattempo scriveteci su WhatsApp o chiamateci: rispondiamo appena possibile.</p>
     </div>
   </div>
@@ -562,12 +617,12 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 
 <!-- 05 ORARI E DOVE -->
 <section class="s shell" id="dove" aria-labelledby="o-title">
-  <div class="sec-head"><span class="label"><b>05</b> — Orari e dove</span><span class="label">Via della Consolata 7D</span></div>
+  <div class="sec-head"><span class="label"><b>05</b>Orari e dove</span><span class="label">Via della Consolata 7D</span></div>
   <div class="grid">
     <div class="orari">
-      <h2 id="o-title" class="rv">Orari</h2>
-      <p class="label status rv" data-status><i class="dot"></i><span>Orari di oggi</span></p>
-      <table class="rv">
+      <h2 id="o-title">Orari</h2>
+      <p class="label status" data-status><i class="dot" aria-hidden="true"></i><span>Orari di oggi</span></p>
+      <table>
         <caption class="sr-only">Orari di apertura de La Real Cucina</caption>
         <tbody>
           <tr data-day="1"><th scope="row">Lunedì</th><td>11:00 – 15:00</td></tr>
@@ -579,32 +634,32 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
           <tr data-day="0"><th scope="row">Domenica</th><td><span class="x">Chiuso</span></td></tr>
         </tbody>
       </table>
-      <p class="small rv">Il lunedì e il martedì siamo aperti solo a pranzo, il sabato solo a cena. La domenica la cucina riposa.</p>
+      <p class="small">Il lunedì e il martedì siamo aperti solo a pranzo, il sabato solo a cena. La domenica la cucina riposa.</p>
     </div>
 
     <div class="dove">
-      <h2 class="rv">Dove <em>siamo</em></h2>
-      <div class="map rv-img">
-        <div class="fallback"><a class="tlink" href="https://www.google.com/maps/search/?api=1&query=Via+della+Consolata+7D+10122+Torino" rel="noopener">Apri su Google Maps →</a></div>
+      <h2>Dove siamo</h2>
+      <div class="map">
+        <div class="fallback"><a class="tlink" href="https://www.google.com/maps/search/?api=1&query=Via+della+Consolata+7D+10122+Torino" rel="noopener">Apri su Google Maps</a></div>
         <iframe title="Mappa: La Real Cucina, Via della Consolata 7D, Torino" src="https://www.google.com/maps?q=Via+della+Consolata+7D,+10122+Torino&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
-      <p class="come rv">Siamo in Via della Consolata 7D, nel cuore del Quadrilatero Romano, a pochi passi dalla Caffetteria Ai Savoia. Via della Consolata incrocia Via Garibaldi, la lunga via pedonale tra Piazza Castello e Piazza Statuto: da Piazza Castello si arriva a piedi, percorrendo Via Garibaldi.</p>
-      <div class="addr rv">
+      <p class="come">Siamo in Via della Consolata 7D, nel cuore del Quadrilatero Romano, a pochi passi dalla Caffetteria Ai Savoia. Via della Consolata incrocia Via Garibaldi, la lunga via pedonale tra Piazza Castello e Piazza Statuto: da Piazza Castello si arriva a piedi, percorrendo Via Garibaldi.</p>
+      <div class="addr">
         <div><span class="label">Indirizzo</span><p>Via della Consolata 7D<br>10122 Torino</p></div>
-        <div><span class="label">Contatti</span><p><a href="tel:+393391257711">+39 339 125 7711</a><br><a href="mailto:aisavoia.to@gmail.com" style="font-size:.8em">aisavoia.to@gmail.com</a></p></div>
+        <div><span class="label">Contatti</span><p><a href="tel:+393391257711">+39 339 125 7711</a><br><a class="mail" href="mailto:aisavoia.to@gmail.com">aisavoia.to@gmail.com</a></p></div>
         <div><span class="label">Ai Savoia</span><p>Reception e Caffetteria<br>Via del Carmine 1F</p></div>
       </div>
-      <div class="vicino rv">
+      <div class="vicino">
         <span class="label">Nei dintorni</span>
         <ul>
-          <li>Piazza Savoia e l'obelisco</li>
+          <li>Piazza Savoia e l’obelisco</li>
           <li>Via Garibaldi, pedonale</li>
           <li>Santuario della Consolata</li>
           <li>Porta Palazzo</li>
           <li>Piazza Castello e Palazzo Reale</li>
         </ul>
       </div>
-      <p style="margin-top:1.75rem"><a class="tlink" href="https://www.google.com/maps/dir/?api=1&destination=Via+della+Consolata+7D+10122+Torino" rel="noopener">Indicazioni stradali <span aria-hidden="true">→</span></a></p>
+      <p class="dir"><a class="tlink" href="https://www.google.com/maps/dir/?api=1&destination=Via+della+Consolata+7D+10122+Torino" rel="noopener">Indicazioni stradali</a></p>
     </div>
   </div>
 </section>
@@ -614,7 +669,7 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   <div class="grid f-top">
     <div class="f-seal"><img src="assets/logo-la-real-cucina.png" width="560" height="560" loading="lazy" alt="Logo La Real Cucina"></div>
     <div class="f-about">
-      <p class="f-parent">Parte di Ai Savoia — B&amp;B, Foresteria, Caffetteria e Sala da Tè</p>
+      <p class="f-parent">Parte di Ai Savoia: B&amp;B, Foresteria, Caffetteria e Sala da Tè</p>
       <p class="f-story">Dal 2006 la famiglia di Ai Savoia accoglie ospiti nel Quadrilatero Romano di Torino. La Real Cucina porta la stessa ospitalità in tavola: cucina piemontese e classici italiani, a pranzo, a cena e da asporto.</p>
     </div>
     <div class="f-col first">
@@ -623,10 +678,10 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
         <li><a href="tel:+393391257711">+39 339 125 7711</a></li>
         <li><a href="https://wa.me/393391257711" rel="noopener">WhatsApp</a></li>
         <li><a href="mailto:aisavoia.to@gmail.com">aisavoia.to@gmail.com</a></li>
-        <li><a href="https://www.instagram.com/larealcucina/" rel="noopener">Instagram — @larealcucina</a></li>
+        <li><a href="https://www.instagram.com/larealcucina/" rel="noopener">Instagram @larealcucina</a></li>
       </ul>
     </div>
-    <div class="f-col">
+    <div class="f-col tnum">
       <span class="label">Orari</span>
       <ul>
         <li>Pranzo: lun – ven, 11:00 – 15:00</li>
@@ -638,18 +693,19 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
       <span class="label">Indirizzi</span>
       <ul>
         <li>La Real Cucina<br>Via della Consolata 7D, 10122 Torino</li>
-        <li style="margin-top:.6rem">Ai Savoia — Reception e Caffetteria<br>Via del Carmine 1F, Torino</li>
+        <li class="gap">Ai Savoia, Reception e Caffetteria<br>Via del Carmine 1F, Torino</li>
       </ul>
     </div>
   </div>
-  <p class="wordmark" aria-hidden="true"><span>La Real <em>Cucina</em></span></p>
+  <p class="wordmark" aria-hidden="true"><span>La Real Cucina</span></p>
   <div class="f-bottom label">
-    <span>© <span id="anno">2026</span> La Real Cucina · Gastronomia • Bistrot · Quadrilatero Romano, Torino</span>
+    <span>© <span id="anno">2026</span> La Real Cucina</span>
+    <span>Gastronomia • Bistrot</span>
+    <span>Quadrilatero Romano, Torino</span>
     <!-- TODO: collegare la privacy policy (es. iubenda, come su aisavoia.it) -->
     <a href="#privacy">Privacy policy</a>
   </div>
 </footer>
-
 
 <script>
 (function(){
@@ -697,8 +753,8 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   // Titolo hero
   requestAnimationFrame(function(){ hero.classList.add('ready'); });
 
-  // Reveal allo scroll
-  var els = document.querySelectorAll('.rv, .rv-img');
+  // Reveal allo scroll: solo il sipario sulle fotografie
+  var els = document.querySelectorAll('.rv-img');
   if (reduce || !('IntersectionObserver' in window)) {
     els.forEach(function(el){ el.classList.add('in'); });
   } else {
