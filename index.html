@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Real Cucina · Bistrot e Gastronomia a Torino centro, Quadrilatero Romano</title>
-<meta name="description" content="Bistrot e gastronomia nel Quadrilatero Romano di Torino: cucina piemontese fatta in casa, pasta fresca, agnolotti e piatti da asporto. Pranzo e cena in Via della Consolata 7D. Prenota un tavolo.">
+<meta name="description" content="Gastronomia e bistrot di Ai Savoia nel Quadrilatero Romano di Torino: cucina piemontese e classici italiani con prodotti di stagione. Pranzo, cena e asporto. Prenota un tavolo.">
 <meta name="theme-color" content="#17110f">
 
 <!-- TODO: sostituire https://raunchy1.github.io/la-real-cucina con il dominio definitivo (canonical, Open Graph, Twitter, JSON-LD) -->
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="La Real Cucina">
 <meta property="og:title" content="La Real Cucina · Bistrot e Gastronomia a Torino">
-<meta property="og:description" content="Tradizione piemontese fatta in casa nel cuore del Quadrilatero Romano. Pranzo, cena e asporto. Prenota un tavolo.">
+<meta property="og:description" content="La gastronomia e il bistrot di Ai Savoia, in Via della Consolata 7D: ricette piemontesi e classici italiani, a pranzo, a cena e da asporto.">
 <meta property="og:url" content="https://raunchy1.github.io/la-real-cucina/">
 <meta property="og:image" content="https://raunchy1.github.io/la-real-cucina/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
 <meta property="og:image:alt" content="La Real Cucina, gastronomia e bistrot in Via della Consolata a Torino">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="La Real Cucina · Bistrot e Gastronomia a Torino">
-<meta name="twitter:description" content="Tradizione piemontese fatta in casa nel Quadrilatero Romano. Prenota un tavolo.">
+<meta name="twitter:description" content="La gastronomia e il bistrot di Ai Savoia nel Quadrilatero Romano di Torino. Prenota un tavolo.">
 <meta name="twitter:image" content="https://raunchy1.github.io/la-real-cucina/assets/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
   "@type": "Restaurant",
   "name": "La Real Cucina",
   "alternateName": "La Real Cucina — Gastronomia • Bistrot",
-  "description": "Gastronomia e bistrot nel Quadrilatero Romano di Torino: tradizione piemontese e grandi classici italiani, pasta fresca, piatti da asporto.",
+  "description": "Gastronomia e bistrot a gestione familiare di Ai Savoia, nel Quadrilatero Romano di Torino. Ricette della tradizione piemontese e grandi classici italiani con prodotti freschi, selezionati e di stagione: antipasti, pasta fresca e primi, agnolotti, secondi di carne e di pesce, dolci artigianali e piatti da asporto.",
   "url": "https://raunchy1.github.io/la-real-cucina/",
   "image": [
     "https://raunchy1.github.io/la-real-cucina/assets/sala-interna.jpg",
@@ -125,13 +125,13 @@ em{font-style:italic}
 .tlink:hover{border-color:var(--crema)}
 
 /* ---------- Header ---------- */
-.header{position:fixed;inset:0 0 auto;z-index:100;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-inline:var(--pad);border-bottom:1px solid transparent;background:linear-gradient(to bottom,rgba(23,17,15,.72),rgba(23,17,15,0));transition:background .4s,border-color .4s}
+.header{position:fixed;inset:0 0 auto;z-index:100;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-inline:var(--pad);border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
 .header.solid{background:rgba(23,17,15,.94);border-bottom-color:var(--linea);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;min-width:0}
 .brand img{width:36px;height:36px;object-fit:contain}
 .brand span{font:400 1.25rem/1 var(--display);white-space:nowrap}
 .brand span em{font-style:italic}
-.nav{display:none;gap:2.2rem}
+.nav{display:none;gap:1.9rem}
 .nav a{text-decoration:none;font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muto);padding:.8rem 0;transition:color .3s}
 .nav a:hover{color:var(--crema)}
 .nav a i{font-style:normal;color:var(--crema);margin-right:.5rem;opacity:.55}
@@ -139,7 +139,8 @@ em{font-style:italic}
 .header .btn .long{display:none}
 @media (min-width:420px){.header .btn .long{display:inline}.header .btn .short{display:none}}
 @media (max-width:360px){.brand span{font-size:1.05rem}}
-@media (min-width:1100px){.nav{display:flex}:root{--header:72px}.header .btn{min-height:44px;padding:0 1.25rem}}
+@media (min-width:1200px){.nav{display:flex}}
+@media (min-width:1100px){:root{--header:72px}.header .btn{min-height:44px;padding:0 1.25rem}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;isolation:isolate}
@@ -296,6 +297,59 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 .f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding:1.25rem 0 1.5rem;border-top:1px solid var(--linea);margin-top:1.5rem}
 .f-bottom a{text-decoration:none}
 
+/* ---------- v3: testi estesi ---------- */
+.hero h1{margin-bottom:clamp(1rem,2.5vw,1.75rem)}
+.hero-lead{max-width:34rem;font-size:clamp(.96rem,1.2vw,1.08rem);line-height:1.6;color:rgba(238,228,211,.86);margin:0 0 clamp(1.25rem,3vw,2rem)}
+@media (min-width:900px){
+  .cucina-img{position:sticky;top:calc(var(--header) + 2rem);align-self:start}
+  .cucina-txt{align-self:start}
+}
+.dishes{margin-top:clamp(4.5rem,10vw,8rem)}
+.dishes-intro{grid-column:1/-1;margin-bottom:2rem}
+.dishes-intro h3{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em}
+.dishes-intro p{color:var(--muto);max-width:20rem;margin-top:1.25rem}
+.dish-list h3{font-style:italic}
+@media (min-width:900px){
+  .dishes-intro{grid-column:1/5;margin-bottom:0}
+  .dish-list{margin-top:0}
+}
+.pal-a,.pal-b{grid-column:1/-1}
+.pal-b{margin-top:3.5rem}
+.pal-h{font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.05;margin-bottom:1.25rem;padding-top:1.1rem;border-top:1px solid var(--linea)}
+.pal-a p,.pal-b p{color:var(--muto)}
+.pal-a p:first-of-type{color:var(--crema)}
+@media (min-width:900px){.pal-a{grid-column:1/6}.pal-b{grid-column:8/13;margin-top:0}}
+.capsule{list-style:none;counter-reset:c;margin:1.5rem 0 0;padding:0}
+.capsule li{counter-increment:c;display:grid;grid-template-columns:2.6rem 1fr;align-items:baseline;padding:.8rem 0;border-top:1px solid var(--linea);font:400 1.25rem/1.3 var(--display)}
+.capsule li:last-child{border-bottom:1px solid var(--linea)}
+.capsule li::before{content:counter(c,lower-roman) ".";font-style:italic;font-size:1rem;color:var(--muto)}
+.case{margin-top:clamp(4.5rem,10vw,8rem)}
+.case-label{margin-bottom:1.25rem}
+.case-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;column-gap:var(--gap)}
+.case-list li{padding:1.1rem 0 1.6rem;border-top:1px solid var(--linea-forte)}
+.case-list li.is-here{border-top:2px solid var(--bordeaux)}
+.case-list .n{font:italic 400 1rem/1 var(--display);color:var(--muto)}
+.case-list h3{font-size:clamp(1.4rem,1.9vw,1.7rem);line-height:1.1;margin:.7rem 0 .5rem}
+.case-list p{margin:0;font-size:.88rem;color:var(--muto)}
+@media (min-width:600px){.case-list{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.case-list{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.practical{margin:2rem 0 0}
+.practical div{display:grid;grid-template-columns:1fr;gap:.35rem;padding:1rem 0;border-top:1px solid rgba(238,228,211,.25)}
+.practical div:last-child{border-bottom:1px solid rgba(238,228,211,.25)}
+.practical dt{font:600 11px/1.9 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.practical dd{margin:0;font-size:.95rem;color:rgba(238,228,211,.84)}
+@media (min-width:520px){.practical div{grid-template-columns:10rem 1fr;gap:1rem}}
+@media (min-width:900px){.prenota-txt{grid-column:1/7}}
+.small{font-size:.85rem;color:var(--muto);margin-top:1.1rem}
+.come{color:var(--muto);margin:1.5rem 0 0;max-width:38rem}
+.vicino{margin-top:2rem}
+.vicino ul{list-style:none;margin:.75rem 0 0;padding:0;display:grid;grid-template-columns:1fr;column-gap:var(--gap)}
+.vicino li{padding:.7rem 0;border-top:1px solid var(--linea);font:400 1.15rem/1.3 var(--display)}
+@media (min-width:600px){.vicino ul{grid-template-columns:1fr 1fr}}
+.f-about{grid-column:1/-1}
+.f-story{color:var(--muto);font-size:.92rem;max-width:30rem;margin:1rem 0 0}
+@media (min-width:900px){.f-about{grid-column:2/6}}
+
 /* ---------- Motion ---------- */
 .js .rv{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
 .js .rv.in{opacity:1;transform:none}
@@ -328,8 +382,9 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   <nav class="nav" aria-label="Navigazione principale">
     <a href="#cucina"><i>01</i>Cucina</a>
     <a href="#menu"><i>02</i>Menù</a>
-    <a href="#prenota"><i>03</i>Prenota</a>
-    <a href="#dove"><i>04</i>Orari e dove</a>
+    <a href="#palazzo"><i>03</i>Palazzo</a>
+    <a href="#prenota"><i>04</i>Prenota</a>
+    <a href="#dove"><i>05</i>Orari e dove</a>
   </nav>
   <a class="btn" href="#prenota"><span class="long">Prenota un tavolo</span><span class="short">Prenota</span><span class="arr" aria-hidden="true">→</span></a>
 </header>
@@ -347,6 +402,7 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   </div>
   <div class="hero-inner">
     <h1 id="h-title"><span class="ln"><span>Tradizione</span></span><span class="ln"><span>piemontese,</span></span><span class="ln"><span><em>fatta in casa.</em></span></span></h1>
+    <p class="hero-lead">La gastronomia e il bistrot di Ai Savoia, la famiglia che dal 2006 accoglie ospiti nel Quadrilatero Romano. A pranzo, a cena o da asporto: ricette piemontesi e classici italiani, con prodotti freschi e di stagione.</p>
     <div class="hero-foot">
       <span class="label a">Via della Consolata 7D, Torino</span>
       <span class="label b" data-status><i class="dot"></i><span>Orari di oggi</span></span>
@@ -359,21 +415,23 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 <section class="s shell" id="cucina" aria-labelledby="c-title">
   <div class="sec-head"><span class="label"><b>01</b> — La cucina</span><span class="label">Dal 2006 nel Quadrilatero</span></div>
   <div class="grid">
-    <h2 id="c-title" class="statement rv">Da oltre vent'anni la famiglia di Ai Savoia accoglie ospiti nel cuore del Quadrilatero Romano. <em>Adesso li accoglie anche a tavola.</em></h2>
+    <h2 id="c-title" class="statement rv">«Nelle dimore storiche la cucina era il luogo dove la casa prendeva vita.» <em>La Real Cucina nasce da qui.</em></h2>
 
     <figure class="cucina-img">
       <div class="frame rv-img"><img src="assets/ingresso-estate.jpg" width="560" height="747" loading="lazy" alt="L'ingresso de La Real Cucina in Via della Consolata: tende color sabbia, l'insegna Bistrot e la lavagna con i piatti del giorno"></div>
-      <figcaption><b>Fig. 01</b><span>L'ingresso su Via della Consolata, d'estate</span></figcaption>
+      <figcaption><b>Fig. 01</b><span>L'ingresso su Via della Consolata 7D</span></figcaption>
     </figure>
 
     <div class="cucina-txt">
-      <p class="rv">Tutto è cominciato ai tempi delle Olimpiadi invernali del 2006, con l'idea di un'ospitalità di casa in un palazzo storico. Poi sono arrivate la Foresteria, la Caffetteria e Sala da Tè e, più di recente, la nostra cucina.</p>
-      <p class="rv d1">In tavola portiamo la tradizione piemontese e i grandi classici italiani: pasta fresca, agnolotti, brasati, vitello tonnato. Ingredienti di stagione e preparazioni fatte in casa.</p>
-      <p class="rv d2">Siamo una gastronomia e un bistrot: potete sedervi da noi o portare a casa i nostri piatti.</p>
+      <p class="rv">Tutto comincia alla fine degli anni Novanta, durante un viaggio in Scozia. È lì che il fondatore di Ai Savoia scopre i Bed &amp; Breakfast, allora quasi sconosciuti in Italia: non soltanto una stanza in cui dormire, ma un modo di accogliere le persone come parte della casa.</p>
+      <p class="rv">Il primo nucleo apre nel 2006, mentre Torino si prepara alle Olimpiadi invernali, grazie a un programma della Regione Piemonte per lo sviluppo dell'ospitalità turistica. La sede è un palazzo storico di Via del Carmine affacciato su Piazza Savoia, con camere arredate con mobili d'epoca: ognuna porta il nome di un re o di una regina di Casa Savoia.</p>
+      <p class="rv">Negli anni sono arrivate le Camere delle Regine, la Locanda dei Re, la Foresteria dei Savoia e la Caffetteria e Sala da Tè. La Real Cucina è il quinto capitolo, e forse il più naturale: la stessa ospitalità di famiglia, portata in tavola.</p>
+      <p class="rv">La cucina è a gestione familiare. Lavoriamo prodotti freschi, selezionati e di stagione, e cuciniamo le ricette della tradizione piemontese e i grandi classici italiani, con un tocco di creatività. Ci si può sedere a pranzo o a cena, oppure passare in gastronomia e portare a casa i piatti del giorno.</p>
       <ul class="facts rv">
-        <li><span>Pranzo</span>Dal lunedì al venerdì</li>
-        <li><span>Cena</span>Dal mercoledì al sabato</li>
-        <li><span>Asporto</span>La gastronomia da portare a casa</li>
+        <li><span>Pranzo</span>Dal lunedì al venerdì, 11:00 – 15:00</li>
+        <li><span>Cena</span>Dal mercoledì al sabato, 19:15 – 22:00</li>
+        <li><span>Asporto</span>I piatti della gastronomia, da portare a casa</li>
+        <li><span>Ospiti</span>Per chi soggiorna da Ai Savoia, un voucher dedicato</li>
       </ul>
     </div>
   </div>
@@ -382,7 +440,7 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 <!-- NASTRO TIPOGRAFICO -->
 <div class="ribbon" aria-hidden="true">
   <div class="ribbon-track" data-ribbon>
-    <span>Agnolotti</span><span>—</span><span>Vitello tonnato</span><span>—</span><span>Tajarin</span><span>—</span><span>Brasato</span><span>—</span><span>Dolci della casa</span><span>—</span><span>Agnolotti</span><span>—</span><span>Vitello tonnato</span>
+    <span>Ravioli</span><span>—</span><span>Vitello tonnato</span><span>—</span><span>Ragù bianco</span><span>—</span><span>Baccalà</span><span>—</span><span>Tiramisù</span><span>—</span><span>Ravioli</span><span>—</span><span>Vitello tonnato</span>
   </div>
 </div>
 
@@ -392,16 +450,16 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   <div class="grid">
     <div class="menu-intro">
       <h2 id="m-title" class="rv">La <em>carta</em></h2>
-      <p class="rv d1">Il menù cambia con le stagioni. Per i piatti del giorno, chiedete in sala o scriveteci su WhatsApp.</p>
+      <p class="rv d1">La carta segue le stagioni: le categorie restano, i piatti cambiano con quello che offre il periodo. Per sapere cosa si mangia oggi, chiedete in sala o scriveteci su WhatsApp.</p>
     </div>
     <ol class="menu-list">
-      <li class="rv"><span class="n">i.</span><h3>Antipasti della tradizione</h3><p>I classici piemontesi per cominciare.</p></li>
-      <li class="rv"><span class="n">ii.</span><h3>Pasta fresca e primi piatti</h3><p>Preparata in casa.</p></li>
-      <li class="rv"><span class="n">iii.</span><h3>Agnolotti e specialità piemontesi</h3><p>Le ricette del territorio.</p></li>
-      <li class="rv"><span class="n">iv.</span><h3>Secondi di carne e di pesce</h3><p>Cotture lente, sapori pieni.</p></li>
-      <li class="rv"><span class="n">v.</span><h3>Contorni di stagione</h3><p>Le verdure del momento.</p></li>
-      <li class="rv"><span class="n">vi.</span><h3>Dolci artigianali</h3><p>Fatti da noi.</p></li>
-      <li class="rv"><span class="n">vii.</span><h3>Piatti da asporto</h3><p>La gastronomia da portare a casa.</p></li>
+      <li class="rv"><span class="n">i.</span><h3>Antipasti della tradizione</h3><p>I classici con cui comincia un pranzo piemontese, a partire dal vitello tonnato con il suo cappero.</p></li>
+      <li class="rv"><span class="n">ii.</span><h3>Pasta fresca e primi piatti</h3><p>Primi di terra e di mare: dalle tagliatelle al ragù bianco agli gnocchi con gamberi e zucchine.</p></li>
+      <li class="rv"><span class="n">iii.</span><h3>Agnolotti e specialità piemontesi</h3><p>Pasta ripiena e ricette del territorio, preparate come vuole la tradizione torinese.</p></li>
+      <li class="rv"><span class="n">iv.</span><h3>Secondi di carne e di pesce</h3><p>L'arrosto con le patate al forno da una parte, il baccalà con la crema di zucchine dall'altra.</p></li>
+      <li class="rv"><span class="n">v.</span><h3>Contorni di stagione</h3><p>Le verdure del periodo, preparate in modo semplice per accompagnare i secondi.</p></li>
+      <li class="rv"><span class="n">vi.</span><h3>Dolci artigianali</h3><p>Fatti da noi, a cominciare da un tiramisù nella sua versione classica.</p></li>
+      <li class="rv"><span class="n">vii.</span><h3>Piatti da asporto</h3><p>L'anima gastronomia del locale: i piatti della cucina, pronti da portare a casa.</p></li>
     </ol>
     <div class="menu-actions rv">
       <a class="btn" href="#prenota">Prenota un tavolo <span class="arr" aria-hidden="true">→</span></a>
@@ -411,27 +469,87 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 
   <div class="grid piatti">
     <figure class="p1">
-      <div class="frame rv-img"><img src="assets/piatto-carne-patate.jpg" width="560" height="747" loading="lazy" alt="Brasato di manzo con il suo sugo, patate al forno al rosmarino e insalata, accanto a un calice di vino rosso"></div>
-      <figcaption><b>Fig. 02</b><span>Brasato con patate al forno</span></figcaption>
+      <div class="frame rv-img"><img src="assets/piatto-carne-patate.jpg" width="560" height="747" loading="lazy" alt="Arrosto con il suo sugo, patate al forno al rosmarino e insalata, accanto a un calice di vino rosso"></div>
+      <figcaption><b>Fig. 02</b><span>Arrosto con patate al forno</span></figcaption>
     </figure>
     <figure class="p2">
       <div class="frame rv-img d1"><img src="assets/vitello-tonnato.jpg" width="560" height="747" loading="lazy" alt="Vitello tonnato: fettine di vitello rosa con salsa tonnata e un cappero"></div>
-      <figcaption><b>Fig. 03</b><span>Vitello tonnato</span></figcaption>
+      <figcaption><b>Fig. 03</b><span>Vitello tonnato con cappero</span></figcaption>
     </figure>
     <figure class="p3">
-      <div class="frame rv-img d2"><img src="assets/piatto-pasta.jpg" width="560" height="747" loading="lazy" alt="Tajarin al ragù in un piatto bianco con un rametto di rosmarino"></div>
-      <figcaption><b>Fig. 04</b><span>Tajarin al ragù</span></figcaption>
+      <div class="frame rv-img d2"><img src="assets/piatto-pasta.jpg" width="560" height="747" loading="lazy" alt="Pasta al ragù bianco in un piatto bianco con un rametto di rosmarino"></div>
+      <figcaption><b>Fig. 04</b><span>Pasta al ragù bianco</span></figcaption>
     </figure>
+  </div>
+
+  <div class="grid dishes">
+    <div class="dishes-intro">
+      <h3 class="rv">Alcuni <em>piatti</em></h3>
+      <p class="rv d1">Piatti che sono passati dalla nostra carta. La disponibilità cambia di giorno in giorno.</p>
+    </div>
+    <ul class="menu-list dish-list">
+      <li class="rv"><span class="n">—</span><h3>Ravioli con salsa</h3><p>Pasta ripiena servita con la sua salsa: il primo più classico della casa.</p></li>
+      <li class="rv"><span class="n">—</span><h3>Tagliatelle al ragù bianco</h3><p>Il ragù senza pomodoro, dove il sapore della carne resta in primo piano.</p></li>
+      <li class="rv"><span class="n">—</span><h3>Gnocchi con gamberi e zucchine</h3><p>Un primo di mare, con le zucchine a dare dolcezza ai gamberi.</p></li>
+      <li class="rv"><span class="n">—</span><h3>Arrosto con patate al forno</h3><p>Carne arrosto affettata, con il suo fondo e le patate dorate al forno.</p></li>
+      <li class="rv"><span class="n">—</span><h3>Vitello tonnato con cappero</h3><p>Fettine di vitello rosa e salsa tonnata: l'antipasto piemontese per eccellenza.</p></li>
+      <li class="rv"><span class="n">—</span><h3>Baccalà con crema di zucchine</h3><p>Il baccalà accompagnato da una crema vellutata di zucchine.</p></li>
+      <li class="rv"><span class="n">—</span><h3>Classico tiramisù</h3><p>Mascarpone, caffè e savoiardi, nella versione di sempre.</p></li>
+    </ul>
   </div>
 </section>
 
-<!-- 03 PRENOTA -->
+<!-- 03 IL PALAZZO E IL QUARTIERE -->
+<section class="s shell" id="palazzo" aria-labelledby="q-title">
+  <div class="sec-head"><span class="label"><b>03</b> — Il palazzo e il quartiere</span><span class="label">Piazza Savoia</span></div>
+  <div class="grid">
+    <h2 id="q-title" class="statement rv">Per secoli Torino è stata la capitale di Casa Savoia, e le sue tracce sono ovunque: Palazzo Reale, Piazza Castello, la Consolata, Via Garibaldi. <em>Il nostro nome viene da qui.</em></h2>
+
+    <div class="pal-a">
+      <h3 class="pal-h rv">Il palazzo</h3>
+      <p class="rv">Ai Savoia ha sede in un palazzo storico di Via del Carmine, con la facciata su Piazza Savoia, nello stesso complesso architettonico di Palazzo Saluzzo Paesana, costruito nel 1715.</p>
+      <p class="rv">Al civico 1F c'è la Sala dei Marmi, che ospita la Caffetteria e Sala da Tè: un'atmosfera di fine Settecento, con il camino e un dipinto di Vittorio Amedeo II. Qui si servono tè e infusioni sfusi, torte e il Messer Cremotto, un espresso con crema di latte avvolto da crema al pistacchio, al cioccolato o alla nocciola e completato dalla granella. La sala si può riservare anche per eventi privati.</p>
+    </div>
+
+    <div class="pal-b">
+      <h3 class="pal-h rv">La piazza dell'obelisco</h3>
+      <p class="rv">Piazza Savoia, per i torinesi «la piazza dell'obelisco». L'obelisco celebra le leggi Siccardi del 1850, che abolirono il foro ecclesiastico. Alla posa della prima pietra, sotto il monumento furono murati:</p>
+      <ol class="capsule rv">
+        <li>Due copie della Gazzetta del Popolo</li>
+        <li>Una copia della legge</li>
+        <li>Alcune monete</li>
+        <li>Semi di riso</li>
+        <li>Grissini</li>
+        <li>Una bottiglia di Barbera</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="case">
+    <p class="label case-label rv"><b>Ai Savoia</b> — Cinque case, una famiglia</p>
+    <ol class="case-list">
+      <li class="rv"><span class="n">i.</span><h3>Camere delle Regine</h3><p>Ospitalità</p></li>
+      <li class="rv"><span class="n">ii.</span><h3>La Locanda dei Re</h3><p>Ospitalità</p></li>
+      <li class="rv"><span class="n">iii.</span><h3>Foresteria dei Savoia</h3><p>Via della Consolata 4, primo piano, angolo Via Garibaldi</p></li>
+      <li class="rv"><span class="n">iv.</span><h3>Caffetteria e Sala da Tè</h3><p>Sala dei Marmi, Via del Carmine 1F</p></li>
+      <li class="rv is-here"><span class="n">v.</span><h3>La Real Cucina</h3><p>Gastronomia • Bistrot, Via della Consolata 7D</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 04 PRENOTA -->
 <section class="s shell prenota" id="prenota" aria-labelledby="p-title">
-  <div class="sec-head"><span class="label"><b>03</b> — Prenota</span><span class="label">Pranzo · Cena</span></div>
+  <div class="sec-head"><span class="label"><b>04</b> — Prenota</span><span class="label">Pranzo · Cena</span></div>
   <div class="grid">
     <h2 id="p-title" class="rv">Prenota <em>un tavolo.</em></h2>
     <div class="prenota-txt rv">
-      <p>Pranzo dal lunedì al venerdì, cena dal mercoledì al sabato. Per gruppi o richieste particolari, chiamateci: troviamo insieme il tavolo giusto.</p>
+      <p>Pranzo dal lunedì al venerdì, dalle 11:00 alle 15:00. Cena dal mercoledì al sabato, dalle 19:15 alle 22:00.</p>
+      <dl class="practical">
+        <div><dt>Gruppi</dt><dd>Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</dd></div>
+        <div><dt>Allergie</dt><dd>Segnalateci allergie o intolleranze al momento della prenotazione.</dd></div>
+        <div><dt>Ospiti Ai Savoia</dt><dd>Chiedete alla reception di Via del Carmine 1F il voucher dedicato a La Real Cucina.</dd></div>
+        <div><dt>Asporto</dt><dd>I piatti della gastronomia si possono portare a casa: chiamateci per sapere cosa c'è oggi.</dd></div>
+      </dl>
     </div>
     <div class="prenota-cta rv d1">
       <!-- TODO: sostituire con link Pienissimo -->
@@ -442,9 +560,9 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
   </div>
 </section>
 
-<!-- 04 ORARI E DOVE -->
+<!-- 05 ORARI E DOVE -->
 <section class="s shell" id="dove" aria-labelledby="o-title">
-  <div class="sec-head"><span class="label"><b>04</b> — Orari e dove</span><span class="label">Via della Consolata 7D</span></div>
+  <div class="sec-head"><span class="label"><b>05</b> — Orari e dove</span><span class="label">Via della Consolata 7D</span></div>
   <div class="grid">
     <div class="orari">
       <h2 id="o-title" class="rv">Orari</h2>
@@ -461,6 +579,7 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
           <tr data-day="0"><th scope="row">Domenica</th><td><span class="x">Chiuso</span></td></tr>
         </tbody>
       </table>
+      <p class="small rv">Il lunedì e il martedì siamo aperti solo a pranzo, il sabato solo a cena. La domenica la cucina riposa.</p>
     </div>
 
     <div class="dove">
@@ -469,11 +588,23 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
         <div class="fallback"><a class="tlink" href="https://www.google.com/maps/search/?api=1&query=Via+della+Consolata+7D+10122+Torino" rel="noopener">Apri su Google Maps →</a></div>
         <iframe title="Mappa: La Real Cucina, Via della Consolata 7D, Torino" src="https://www.google.com/maps?q=Via+della+Consolata+7D,+10122+Torino&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
+      <p class="come rv">Siamo in Via della Consolata 7D, nel cuore del Quadrilatero Romano, a pochi passi dalla Caffetteria Ai Savoia. Via della Consolata incrocia Via Garibaldi, la lunga via pedonale tra Piazza Castello e Piazza Statuto: da Piazza Castello si arriva a piedi, percorrendo Via Garibaldi.</p>
       <div class="addr rv">
         <div><span class="label">Indirizzo</span><p>Via della Consolata 7D<br>10122 Torino</p></div>
         <div><span class="label">Contatti</span><p><a href="tel:+393391257711">+39 339 125 7711</a><br><a href="mailto:aisavoia.to@gmail.com" style="font-size:.8em">aisavoia.to@gmail.com</a></p></div>
+        <div><span class="label">Ai Savoia</span><p>Reception e Caffetteria<br>Via del Carmine 1F</p></div>
       </div>
-      <p style="margin-top:1.5rem"><a class="tlink" href="https://www.google.com/maps/dir/?api=1&destination=Via+della+Consolata+7D+10122+Torino" rel="noopener">Indicazioni stradali <span aria-hidden="true">→</span></a></p>
+      <div class="vicino rv">
+        <span class="label">Nei dintorni</span>
+        <ul>
+          <li>Piazza Savoia e l'obelisco</li>
+          <li>Via Garibaldi, pedonale</li>
+          <li>Santuario della Consolata</li>
+          <li>Porta Palazzo</li>
+          <li>Piazza Castello e Palazzo Reale</li>
+        </ul>
+      </div>
+      <p style="margin-top:1.75rem"><a class="tlink" href="https://www.google.com/maps/dir/?api=1&destination=Via+della+Consolata+7D+10122+Torino" rel="noopener">Indicazioni stradali <span aria-hidden="true">→</span></a></p>
     </div>
   </div>
 </section>
@@ -482,33 +613,43 @@ figcaption b{white-space:nowrap;font-weight:600;color:var(--crema);letter-spacin
 <footer class="footer shell">
   <div class="grid f-top">
     <div class="f-seal"><img src="assets/logo-la-real-cucina.png" width="560" height="560" loading="lazy" alt="Logo La Real Cucina"></div>
-    <p class="f-parent">Parte di Ai Savoia — B&amp;B, Foresteria, Caffetteria e Sala da Tè</p>
+    <div class="f-about">
+      <p class="f-parent">Parte di Ai Savoia — B&amp;B, Foresteria, Caffetteria e Sala da Tè</p>
+      <p class="f-story">Dal 2006 la famiglia di Ai Savoia accoglie ospiti nel Quadrilatero Romano di Torino. La Real Cucina porta la stessa ospitalità in tavola: cucina piemontese e classici italiani, a pranzo, a cena e da asporto.</p>
+    </div>
     <div class="f-col first">
       <span class="label">Contatti</span>
       <ul>
         <li><a href="tel:+393391257711">+39 339 125 7711</a></li>
         <li><a href="https://wa.me/393391257711" rel="noopener">WhatsApp</a></li>
         <li><a href="mailto:aisavoia.to@gmail.com">aisavoia.to@gmail.com</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <span class="label">Seguici</span>
-      <ul>
         <li><a href="https://www.instagram.com/larealcucina/" rel="noopener">Instagram — @larealcucina</a></li>
       </ul>
     </div>
     <div class="f-col">
-      <span class="label">Indirizzo</span>
-      <ul><li>Via della Consolata 7D</li><li>10122 Torino</li></ul>
+      <span class="label">Orari</span>
+      <ul>
+        <li>Pranzo: lun – ven, 11:00 – 15:00</li>
+        <li>Cena: mer – sab, 19:15 – 22:00</li>
+        <li>Domenica chiuso</li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <span class="label">Indirizzi</span>
+      <ul>
+        <li>La Real Cucina<br>Via della Consolata 7D, 10122 Torino</li>
+        <li style="margin-top:.6rem">Ai Savoia — Reception e Caffetteria<br>Via del Carmine 1F, Torino</li>
+      </ul>
     </div>
   </div>
   <p class="wordmark" aria-hidden="true"><span>La Real <em>Cucina</em></span></p>
   <div class="f-bottom label">
-    <span>© <span id="anno">2026</span> La Real Cucina · Gastronomia • Bistrot · Torino</span>
+    <span>© <span id="anno">2026</span> La Real Cucina · Gastronomia • Bistrot · Quadrilatero Romano, Torino</span>
     <!-- TODO: collegare la privacy policy (es. iubenda, come su aisavoia.it) -->
     <a href="#privacy">Privacy policy</a>
   </div>
 </footer>
+
 
 <script>
 (function(){
