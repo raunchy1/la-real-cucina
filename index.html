@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=boska@400,401,500,501,700,701&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&amp;display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/vitello-tonnato.jpg" imagesrcset="assets/vitello-tonnato-800.jpg 800w, assets/vitello-tonnato.jpg 1200w" imagesizes="(min-width: 1100px) 72vw, 100vw">
 
@@ -78,7 +78,7 @@
 /* Hallmark · checked · built: the project · redesign: alt direction · copy: verbatim · theme: custom (by request: the approved Claude Design canvas, paper, ink and one vermilion) · posture: committed · nav: wordmark, numbered links, phone, one action · footer: fitted wordmark over one meta row · hero: banner · job: book a table */
 /* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: E, the canvas booking form faked a sent state; it now composes the request and hands it to WhatsApp, and says so */
 /* Hallmark · waive 38iii · one coloured line, once, in the hero: fatta in casa set in vermilion italic · the approved Claude Design canvas makes this vermilion italic hero line the page signature */
-/* Hallmark · waive 38ii · real Boska italic 701 loaded and font-synthesis: none declared, used only on whole lines · the approved canvas sets fatta in casa and La carta as full italic lines, the way a printed carta opens */
+/* Hallmark · waive 38ii · real Fraunces italic loaded and font-synthesis: none declared, used only on whole lines · the approved canvas sets fatta in casa and La carta as full italic lines, the way a printed carta opens */
 /* Hallmark · waive 59 · the 48px gap sits between the hero and its own Tav. I plate, which opens just under the fold · on the approved canvas the vitello tonnato plate belongs to the hero, the numbered sections keep 96 to 160px */
 /* Hallmark · dismissed F17 · the vertical label Allergeni: chiedete in sala runs up the carta margin on purpose, as on the approved canvas */
 /* Hallmark · dismissed 58 · the owner approved every line of the Italian canvas copy, history and palazzo included */
@@ -96,7 +96,7 @@
   --velo-barra:rgba(243,238,228,.12);   /* hover nella barra fissa */
 
   /* caratteri */
-  --display:"Boska", "Bodoni 72", "Didot", Georgia, serif;
+  --display:"Fraunces", "Bodoni 72", "Didot", Georgia, serif;
   --sans:"Switzer", "Helvetica Neue", Arial, sans-serif;
 
   /* scala tipografica, da 390 a 1440 */
@@ -140,7 +140,7 @@ body{margin:0;overflow-x:clip;background:var(--carta);color:var(--inchiostro);ca
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 p{margin:0;text-wrap:pretty}
-h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;text-wrap:balance;overflow-wrap:break-word;min-width:0}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:600;font-optical-sizing:auto;text-wrap:balance;overflow-wrap:break-word;min-width:0}
 figure{margin:0}
 ul,ol,dl,dd{margin:0;padding:0;list-style:none}
 ::selection{background:var(--inchiostro);color:var(--carta)}
@@ -258,7 +258,7 @@ figcaption span:last-child{text-align:right}
 /* ---------- Testata di sezione: numerale, titolo, nota ---------- */
 .sec{margin-top:var(--sec)}
 .sec-head{display:flex;gap:var(--s4);align-items:flex-start;border-top:var(--filo);padding-top:var(--s3)}
-.num{font:700 var(--t-num)/.83 var(--display);color:var(--vermiglio);letter-spacing:-.02em}
+.num{font:600 var(--t-num)/.83 var(--display);font-optical-sizing:auto;color:var(--vermiglio);letter-spacing:-.02em}
 .sec-head .label{padding-top:2px}
 .sec-head .note{display:none}
 @media (min-width:700px){.sec-head .note{display:block;margin-left:auto;text-align:right}}
