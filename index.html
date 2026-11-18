@@ -753,16 +753,27 @@ figcaption .label{color:var(--crema);white-space:nowrap}
   // Titolo hero
   requestAnimationFrame(function(){ hero.classList.add('ready'); });
 
-  // Reveal allo scroll: solo il sipario sulle fotografie
-  var els = document.querySelectorAll('.rv-img');
-  if (reduce || !('IntersectionObserver' in window)) {
+  // Reveal allo scroll: solo il sipario sulle fotografie.
+  // Nota: il clip-path del sipario azzera l'area visibile, quindi un
+  // IntersectionObserver sull'elemento clippato non lo vede mai: si misura il
+  // rettangolo del contenitore, che non è clippato.
+  var els = [].slice.call(document.querySelectorAll('.rv-img'));
+  var reveal = function(){
+    for (var i = els.length - 1; i >= 0; i--) {
+      var r = els[i].getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92 && r.bottom > 0) {
+        els[i].classList.add('in');
+        els.splice(i, 1);
+      }
+    }
+  };
+  if (reduce) {
     els.forEach(function(el){ el.classList.add('in'); });
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, {rootMargin:'0px 0px -10% 0px', threshold:.05});
-    els.forEach(function(el){ io.observe(el); });
+    els = [];
   }
+  reveal();
+  window.addEventListener('scroll', reveal, {passive:true});
+  window.addEventListener('resize', reveal);
 
   // Parallax hero + nastro tipografico
   var px = document.querySelector('[data-parallax]');
