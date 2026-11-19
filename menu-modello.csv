@@ -1,0 +1,10 @@
+categoria,ordine,nome,descrizione,foto,attivo
+antipasti,1,Vitello tonnato con cappero,"Fettine di vitello rosa e salsa tonnata: l’antipasto piemontese per eccellenza.",vitello-tonnato.jpg,sì
+primi,1,Tagliatelle al ragù bianco,"Il ragù senza pomodoro, dove il sapore della carne resta in primo piano.",piatto-pasta.jpg,sì
+primi,2,Gnocchi con gamberi e zucchine,"Un primo di mare, con le zucchine a dare dolcezza ai gamberi.",,sì
+specialita,1,Ravioli con salsa,"Pasta ripiena servita con la sua salsa: il primo più classico della casa.",,sì
+secondi,1,Arrosto con patate al forno,"Carne arrosto affettata, con il suo fondo e le patate dorate al forno.",piatto-carne-patate.jpg,sì
+secondi,2,Baccalà con crema di zucchine,"Il baccalà accompagnato da una crema vellutata di zucchine.",,sì
+contorni,1,Verdure del periodo,"Preparate in modo semplice, per accompagnare i secondi.",,sì
+dolci,1,Classico tiramisù,"Mascarpone, caffè e savoiardi, nella versione di sempre.",,sì
+asporto,1,"La gastronomia, da portare via","I piatti della cucina, pronti da portare a casa. Chiamateci per sapere cosa c’è oggi.",,sì
