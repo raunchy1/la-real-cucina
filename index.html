@@ -88,9 +88,9 @@
   /* colore */
   --carta:#f3eee4;        /* fondo: carta calda */
   --inchiostro:#141110;   /* testo e filetti: 16.2:1 sulla carta */
-  --vermiglio:#d2452b;    /* unico accento, solo display (3.9:1, testo grande) */
-  --vermiglio-testo:#c13d24; /* accento per testo piccolo e pieni: 4.6:1 */
-  --vermiglio-scuro:#e0533a; /* accento sul fondo inchiostro: 4.9:1 */
+  --vermiglio:#7a1f2b;    /* bordeaux, unico accento, solo display (8.8:1, testo grande) */
+  --vermiglio-testo:#6e1b26; /* bordeaux per testo piccolo e pieni: 9.8:1 */
+  --vermiglio-scuro:#c97784; /* bordeaux chiaro sul fondo inchiostro: 5.3:1 */
   --velo:rgba(20,17,16,.04);
   --velo-chiaro:rgba(243,238,228,.06);  /* fondo delle tavole sul nero */
   --velo-barra:rgba(243,238,228,.12);   /* hover nella barra fissa */
@@ -326,7 +326,7 @@ figcaption span:last-child{text-align:right}
 .scuro{background:var(--inchiostro);color:var(--carta);padding:var(--s3) 0 var(--s9)}
 .scuro ::selection{background:var(--carta);color:var(--inchiostro)}
 .scuro .sec-head{border-top:0;padding-top:0}
-.scuro .num{color:var(--vermiglio)}
+.scuro .num{color:var(--vermiglio-scuro)}
 .pal-fig{max-width:var(--max);margin:var(--s6) auto 0}
 .pal-fig .frame{height:clamp(420px, 32vw + 295px, 760px);background:var(--velo-chiaro)}
 .pal-fig .frame img{object-position:50% 42%}
@@ -468,6 +468,11 @@ figcaption span:last-child{text-align:right}
 .barra .pren:hover{background:var(--vermiglio-testo);color:var(--carta)}
 .barra :focus-visible{outline:2px solid var(--carta);outline-offset:-4px}
 @media (min-width:1100px){.barra{display:none}}
+
+/* mobile: le foto si vedono intere (formato 3:4, come gli originali), senza tagli */
+@media (max-width:699px){
+  .hero-fig .frame,.cucina-fig .frame,.carta-fig .frame,.pal-fig .frame,.dove-fig .frame{height:auto;aspect-ratio:3/4}
+}
 </style>
 </head>
 <body>
