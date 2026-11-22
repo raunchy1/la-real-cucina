@@ -1,0 +1,392 @@
+{
+ "hero-food": {
+  "w": 1920,
+  "h": 1440,
+  "sizes": [
+   [
+    800,
+    600,
+    "hero-food-800.webp"
+   ],
+   [
+    1600,
+    1200,
+    "hero-food-1600.webp"
+   ]
+  ]
+ },
+ "pizzaiolo-banco": {
+  "w": 1920,
+  "h": 1754,
+  "sizes": [
+   [
+    800,
+    731,
+    "pizzaiolo-banco-800.webp"
+   ],
+   [
+    1600,
+    1462,
+    "pizzaiolo-banco-1600.webp"
+   ]
+  ]
+ },
+ "pizzaiolo": {
+  "w": 1168,
+  "h": 1752,
+  "sizes": [
+   [
+    600,
+    900,
+    "pizzaiolo-600.webp"
+   ],
+   [
+    1100,
+    1650,
+    "pizzaiolo-1100.webp"
+   ]
+  ]
+ },
+ "impasto-farina": {
+  "w": 1168,
+  "h": 1752,
+  "sizes": [
+   [
+    600,
+    900,
+    "impasto-farina-600.webp"
+   ],
+   [
+    1100,
+    1650,
+    "impasto-farina-1100.webp"
+   ]
+  ]
+ },
+ "impasto-stesura": {
+  "w": 1168,
+  "h": 1752,
+  "sizes": [
+   [
+    600,
+    900,
+    "impasto-stesura-600.webp"
+   ],
+   [
+    1100,
+    1650,
+    "impasto-stesura-1100.webp"
+   ]
+  ]
+ },
+ "condimento": {
+  "w": 1168,
+  "h": 1752,
+  "sizes": [
+   [
+    600,
+    900,
+    "condimento-600.webp"
+   ],
+   [
+    1100,
+    1650,
+    "condimento-1100.webp"
+   ]
+  ]
+ },
+ "banco-coppia": {
+  "w": 1148,
+  "h": 1722,
+  "sizes": [
+   [
+    600,
+    900,
+    "banco-coppia-600.webp"
+   ],
+   [
+    1100,
+    1650,
+    "banco-coppia-1100.webp"
+   ]
+  ]
+ },
+ "forno": {
+  "w": 768,
+  "h": 768,
+  "sizes": [
+   [
+    768,
+    768,
+    "forno-768.webp"
+   ]
+  ]
+ },
+ "cartone": {
+  "w": 1726,
+  "h": 1797,
+  "sizes": [
+   [
+    700,
+    729,
+    "cartone-700.webp"
+   ],
+   [
+    1400,
+    1458,
+    "cartone-1400.webp"
+   ]
+  ]
+ },
+ "margherita": {
+  "w": 996,
+  "h": 797,
+  "sizes": [
+   [
+    600,
+    480,
+    "margherita-600.webp"
+   ],
+   [
+    996,
+    797,
+    "margherita-996.webp"
+   ]
+  ]
+ },
+ "wurstel-fritte": {
+  "w": 1000,
+  "h": 777,
+  "sizes": [
+   [
+    600,
+    466,
+    "wurstel-fritte-600.webp"
+   ],
+   [
+    1000,
+    777,
+    "wurstel-fritte-1000.webp"
+   ]
+  ]
+ },
+ "canadese": {
+  "w": 1000,
+  "h": 815,
+  "sizes": [
+   [
+    600,
+    489,
+    "canadese-600.webp"
+   ],
+   [
+    1000,
+    815,
+    "canadese-1000.webp"
+   ]
+  ]
+ },
+ "formaggi": {
+  "w": 1000,
+  "h": 818,
+  "sizes": [
+   [
+    600,
+    491,
+    "formaggi-600.webp"
+   ],
+   [
+    1000,
+    818,
+    "formaggi-1000.webp"
+   ]
+  ]
+ },
+ "sala-ampia": {
+  "w": 1448,
+  "h": 1086,
+  "sizes": [
+   [
+    800,
+    600,
+    "sala-ampia-800.webp"
+   ],
+   [
+    1448,
+    1086,
+    "sala-ampia-1448.webp"
+   ]
+  ]
+ },
+ "sala-murale": {
+  "w": 1536,
+  "h": 1152,
+  "sizes": [
+   [
+    700,
+    525,
+    "sala-murale-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "sala-murale-1400.webp"
+   ]
+  ]
+ },
+ "sala-banco": {
+  "w": 1536,
+  "h": 1152,
+  "sizes": [
+   [
+    700,
+    525,
+    "sala-banco-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "sala-banco-1400.webp"
+   ]
+  ]
+ },
+ "sala-cassa": {
+  "w": 1536,
+  "h": 1152,
+  "sizes": [
+   [
+    700,
+    525,
+    "sala-cassa-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "sala-cassa-1400.webp"
+   ]
+  ]
+ },
+ "focaccia-kebab": {
+  "w": 1920,
+  "h": 1440,
+  "sizes": [
+   [
+    700,
+    525,
+    "focaccia-kebab-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "focaccia-kebab-1400.webp"
+   ]
+  ]
+ },
+ "burger": {
+  "w": 1920,
+  "h": 1440,
+  "sizes": [
+   [
+    700,
+    525,
+    "burger-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "burger-1400.webp"
+   ]
+  ]
+ },
+ "insalata": {
+  "w": 1920,
+  "h": 1440,
+  "sizes": [
+   [
+    700,
+    525,
+    "insalata-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "insalata-1400.webp"
+   ]
+  ]
+ },
+ "mozzarelline": {
+  "w": 1920,
+  "h": 1440,
+  "sizes": [
+   [
+    700,
+    525,
+    "mozzarelline-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "mozzarelline-1400.webp"
+   ]
+  ]
+ },
+ "bufalina": {
+  "w": 1920,
+  "h": 1440,
+  "sizes": [
+   [
+    700,
+    525,
+    "bufalina-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "bufalina-1400.webp"
+   ]
+  ]
+ },
+ "rucola-grana": {
+  "w": 1920,
+  "h": 1440,
+  "sizes": [
+   [
+    700,
+    525,
+    "rucola-grana-700.webp"
+   ],
+   [
+    1400,
+    1050,
+    "rucola-grana-1400.webp"
+   ]
+  ]
+ },
+ "dolce-smarties": {
+  "w": 1086,
+  "h": 1448,
+  "sizes": [
+   [
+    600,
+    800,
+    "dolce-smarties-600.webp"
+   ],
+   [
+    1000,
+    1333,
+    "dolce-smarties-1000.webp"
+   ]
+  ]
+ },
+ "titolare": {
+  "w": 1080,
+  "h": 1920,
+  "sizes": [
+   [
+    600,
+    1067,
+    "titolare-600.webp"
+   ]
+  ]
+ }
+}
