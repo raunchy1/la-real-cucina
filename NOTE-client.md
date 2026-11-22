@@ -13,9 +13,14 @@
 - **URL diretto dedicato (HTTPS):** `https://pugnoditerra.13.140.190.190.sslip.io`
 - **Sottodominio preconfigurato in Coolify:** `https://pugnoditerra.websardegna.xyz` (pronto appena aggiunto il record DNS `A` `pugnoditerra` -> `13.140.190.190` su Spaceship)
 
-## 3. Struttura del Redesign Editoriale
-1. **Topbar & Header Sticky:** Contatti rapidi, coordinate Sarrabus (`Località Cicillanu, Fraz. Tuerra — San Vito – Muravera`), navigazione editoriale a 5 sezioni e pulsante diretto *Chiedi disponibilità* su WhatsApp.
-2. **Hero Split Editoriale:** Citazione autentica (*«Un'esperienza di sapori e profumi unica. Questi siamo noi. Con Voi. Connessi alla Terra.»*), fotografia mattutina della tenuta sul Sarrabus, Casetta di Argilla e insegna in legno *Un pugno di terra — aromatiche officinali*.
+## 3. Struttura del Redesign Minimalista Svizzero (ispirato a `ecomunicare.ch` — *Tschierva Hütte*, *Borgo La Pievina*, *Chesa Lardelli*)
+1. **Header Minimalista Svizzero & Barra Fissa Inferiore (stile *Borgo La Pievina*):**
+   - Header bianco essenziale (`#ffffff`) con emblema geometrico, wordmark spaziato in maiuscolo (`UN PUGNO DI TERRA · SAN VITO – MURAVERA`), navigazione lineare (`DORMIRE BENE`, `ESPERIENZE`, `ERBE & OLI`, `LA TERRA`, `CONTATTI`) e menu offcanvas mobile.
+   - Barra fissa inferiore a 3 azioni dirette (`✉ EMAIL` · `✆ CHIAMA` · `✓ PRENOTA`).
+2. **Hero Slideshow + Manifesto Asimmetrico + Indice a 4 Colonne (stile *Tschierva Hütte*):**
+   - Slideshow fotografico a tutta larghezza (Panorama Sarrabus, Casetta di Argilla, Asinelli Rino e Macco, Casa Padronale) con frecce minimaliste `← 1 / 4 →`.
+   - Blocco manifesto asimmetrico a 2 colonne su fondo bianco puro con citazione *«Un'esperienza di sapori e profumi unica. Questi siamo noi. Con Voi. Connessi alla Terra.»* e crest aziendale.
+   - Barra indice a 4 colonne con linea d'accento superiore (`Dormire Bene`, `Vita & Tavola`, `Esperienze`, `Erbe & Listino`).
 3. **01 · I Nostri Servizi & Comfort (Ospitalità Rurale & Agricampeggio):**
    - **La Casetta di Argilla** (costruita in legno, argilla e paglia, fino a 6 posti letto, immersa tra corbezzoli, mirto e lavanda, con galleria esterno/portico/interni/soppalco).
    - **Roulotte Panoramica 2+1 (3 posti letto)** nella parte più alta della tenuta, con veranda ombreggiata da stuoia fatta a mano, amaca, lavandino a cielo aperto e doccia "privata" tra i cespugli di corbezzoli.
