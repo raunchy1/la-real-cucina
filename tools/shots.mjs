@@ -51,12 +51,12 @@ for (const [tag, vp] of [['desktop', { width: 1440, height: 900 }], ['mobile', {
   await page.locator('.item .add').nth(2).click();
   await page.locator('.item .add').nth(2).click();
   await page.locator('.add-chip').first().click();
-  await page.locator('input[value="consegna"]').check({ force: true });
+  await page.evaluate(() => { const r = document.querySelector('input[value="consegna"]'); r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); });
   if (tag === 'mobile') { await page.locator('#bar-menu').click(); await page.waitForTimeout(600); await page.screenshot({ path: `${out}/${tag}-10-comanda.png` }); }
   else { await page.locator('#comanda').scrollIntoViewIfNeeded(); await page.waitForTimeout(500); await page.locator('#comanda').screenshot({ path: `${out}/${tag}-10-comanda.png` }); }
   const wa = await page.locator('#wa-send').getAttribute('href');
   // filter test
-  await page.goto(url + '#menu'); await page.waitForTimeout(500);
+  await page.keyboard.press('Escape'); await page.goto(url + '?r=1#menu'); await page.waitForTimeout(500);
   if (tag === 'mobile') await page.evaluate(() => localStorage.clear());
   await page.locator('.chip[data-f="hot"]').click();
   const hotCount = await page.locator('#filt-count').textContent();

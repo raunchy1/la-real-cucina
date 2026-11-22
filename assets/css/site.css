@@ -142,7 +142,6 @@ h2{font-family:var(--display);font-size:clamp(2.6rem,5.2vw,4.6rem);line-height:.
 .chip:hover{background:rgba(35,31,32,.08)}
 .chip:active{transform:scale(.97)}
 .chip[aria-pressed="true"]{background:var(--nero);color:var(--crema)}
-.chip[aria-pressed="true"]::before{content:"✓ ";}
 .filt-count{font-size:.9rem;color:#4d4239;min-height:1.4em}
 .legend{margin-top:24px;font-size:.9rem;color:#4d4239;line-height:1.6}
 .legend span{display:inline-block;width:1.6em;font-weight:700;color:var(--nero)}
@@ -388,9 +387,9 @@ h2{font-family:var(--display);font-size:clamp(2.6rem,5.2vw,4.6rem);line-height:.
   .legend{display:none}
   .paper{margin-top:20px}
   .paper-foot::before{content:"* prodotto surgelato · ** prodotto sott’olio";display:block;margin-bottom:8px;font-weight:600;color:var(--nero)}
-  .comanda{position:fixed;left:0;right:0;bottom:0;z-index:80;transform:translateY(105%);transition:transform .4s var(--ease);visibility:hidden}
+  .comanda{position:fixed;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom));z-index:80;transform:translateY(105%);transition:transform .4s var(--ease);visibility:hidden}
   .comanda.open{transform:none;visibility:visible}
-  .ticket{max-width:none;margin:0;max-height:88svh;overflow:auto;border-radius:16px 16px 0 0;padding-bottom:calc(26px + env(safe-area-inset-bottom))}
+  .ticket{max-width:none;margin:0;max-height:calc(100svh - 150px);overflow:auto;border-radius:16px 16px 0 0;padding-bottom:22px}
   .ticket::after{display:none}
   .com-close{display:grid;place-items:center;position:absolute;right:-6px;top:-8px;width:44px;height:44px;border:0;background:none}
   .com-close svg{width:22px;height:22px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round}
