@@ -1019,9 +1019,9 @@ var migliora = function(){
   var conFoto = 0;
   voci.querySelectorAll('.piatto').forEach(function(li){
     if (!li.getAttribute('data-foto') || !canDialog) return;
+    conFoto++;
     var h = li.querySelector('.p-nome');
     if (!h || h.querySelector('.p-btn')) return;
-    conFoto++;
     var nome = h.textContent.trim();
     h.setAttribute('data-nome', nome);
     h.textContent = '';
