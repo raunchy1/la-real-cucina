@@ -34,6 +34,8 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&amp;display=swap"></noscript>
 <link rel="preload" as="image" href="assets/vitello-tonnato-800.jpg" imagesrcset="assets/vitello-tonnato-800.jpg 800w, assets/vitello-tonnato.jpg 1200w" imagesizes="(min-width: 1100px) 34vw, (min-width: 700px) 60vw, 90vw">
 
+<script>try{if(!localStorage.getItem('lrc-cms-v1')){document.documentElement.classList.add('cms-attesa');setTimeout(function(){document.documentElement.classList.remove('cms-attesa')},1500)}}catch(e){}</script>
+<style>.cms-attesa [data-k],.cms-attesa [data-img],.cms-attesa #carta-voci{visibility:hidden}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1150,12 +1152,16 @@ var applica = function(dati){
   if ('link_prenotazione' in c) applicaPrenotazione(c.link_prenotazione.trim());
   if (c.orari_settimana) { setSlots(c.orari_settimana); render(); }
   // carta
-  if (dati.menu && dati.menu.length) {
+  if (Array.isArray(dati.menu)) {
     var ordine = (c.menu_categorie || '').split('\n').map(function(x){ return x.trim(); }).filter(Boolean);
     var frag = null;
     try { frag = daRighe(dati.menu, ordine); } catch (e) {}
-    if (frag) { voci.textContent = ''; voci.appendChild(frag); attivo = null; migliora(); }
+    voci.textContent = '';
+    if (frag) voci.appendChild(frag);
+    else { var vuota = document.createElement('p'); vuota.className = 'nota'; vuota.textContent = 'La carta di oggi è scritta sulla lavagna all’ingresso: chiamateci per sapere cosa c’è.'; voci.appendChild(vuota); }
+    attivo = null; migliora();
   }
+  document.documentElement.classList.remove('cms-attesa');
 };
 
 var CHIAVE = 'lrc-cms-v1';
@@ -1170,7 +1176,7 @@ if (window.fetch && CMS.url) {
     var dati = {testi: r[0], menu: r[1]};
     applica(dati);
     try { localStorage.setItem(CHIAVE, JSON.stringify(dati)); } catch (e) {}
-  }).catch(function(){ /* pannello non raggiungibile: resta il sito com'è */ });
+  }).catch(function(){ document.documentElement.classList.remove('cms-attesa'); /* pannello non raggiungibile: resta il sito com'è */ });
 }
 migliora();
 })();
