@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>La Real Cucina · Gastronomia e bistrot nel Quadrilatero Romano, Torino</title>
-<meta name="description" content="Gastronomia e bistrot della famiglia Ai Savoia in Via della Consolata 7D, Torino: cucina piemontese fatta in casa, pasta fresca e agnolotti. Pranzo, cena e asporto. Prenota un tavolo.">
+<meta name="description" content="Gastronomia e bistrot della famiglia Ai Savoia in Via della Consolata 7D, Torino: cucina piemontese e classici italiani. Pranzo, cena e asporto. Prenota un tavolo.">
 <meta name="theme-color" content="#f3eee4">
 
 <!-- TODO: sostituire https://larealcucina.websardegna.xyz con il dominio definitivo (canonical, Open Graph, Twitter, JSON-LD) -->
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="La Real Cucina">
 <meta property="og:title" content="La Real Cucina · Tradizione piemontese, fatta in casa">
-<meta property="og:description" content="La gastronomia e il bistrot di Ai Savoia, in Via della Consolata 7D a Torino: pasta fresca, agnolotti e piatti della tradizione, a pranzo, a cena e da asporto.">
+<meta property="og:description" content="La gastronomia e il bistrot di Ai Savoia, in Via della Consolata 7D a Torino: piatti della tradizione piemontese e grandi classici italiani, a pranzo, a cena e da asporto.">
 <meta property="og:url" content="https://larealcucina.websardegna.xyz/">
 <meta property="og:image" content="https://larealcucina.websardegna.xyz/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -40,7 +40,7 @@
   "@type": "Restaurant",
   "name": "La Real Cucina",
   "alternateName": "La Real Cucina, Gastronomia e Bistrot",
-  "description": "Gastronomia e bistrot a gestione familiare di Ai Savoia, nel Quadrilatero Romano di Torino. Ricette della tradizione piemontese e grandi classici italiani con prodotti freschi, selezionati e di stagione: antipasti, pasta fresca e primi, agnolotti, secondi di carne e di pesce, dolci artigianali e piatti da asporto.",
+  "description": "Gastronomia e bistrot a gestione familiare di Ai Savoia, nel Quadrilatero Romano di Torino. Ricette della tradizione piemontese e grandi classici italiani con prodotti freschi, selezionati e di stagione: antipasti, primi, secondi di carne e di pesce, dolci artigianali e piatti da asporto.",
   "url": "https://larealcucina.websardegna.xyz/",
   "image": [
     "https://larealcucina.websardegna.xyz/assets/sala-interna.jpg",
@@ -68,7 +68,7 @@
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "19:15", "closes": "22:00" }
   ],
   "sameAs": ["https://www.instagram.com/larealcucina/"],
-  "parentOrganization": { "@type": "LodgingBusiness", "name": "Ai Savoia B&B Guest House" }
+  "parentOrganization": { "@type": "LodgingBusiness", "name": "Ai Savoia B&B Guest House", "url": "https://www.aisavoia.it/" }
 }
 </script>
 <!-- TODO: verificare lat/long esatte su Google Maps -->
@@ -388,6 +388,8 @@ a:hover .arr{transform:translateX(4px)}
 .sala-fig{width:min(100%, 26rem);margin-inline:auto}
 .sala-txt{display:flex;flex-direction:column;gap:var(--s5);max-width:38rem;margin-inline:auto}
 .sala-txt .famiglia{padding-top:var(--s5);border-top:3px double var(--carta);font-style:italic;color:rgba(243,238,228,.82)}
+.sala-txt .famiglia a{color:var(--vino-chiaro);text-decoration:underline;text-decoration-color:currentColor;text-decoration-thickness:1px;text-underline-offset:.22em;transition:color .2s var(--ease)}
+.sala-txt .famiglia a:hover{color:var(--carta)}
 .scuro .capolettera::first-letter{color:var(--vino-chiaro)}
 @media (min-width:900px){
   .scuro{padding:var(--s10) 0}
@@ -481,7 +483,7 @@ a:hover .arr{transform:translateX(4px)}
 <p class="riga-sc sc"><span>Gastronomia e bistrot</span><span aria-hidden="true">·</span><span>Quadrilatero Romano, Torino</span></p>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
 <h1 id="h-title"><span class="ln">Tradizione</span> <span class="ln">piemontese,</span> <span class="ln"><em>fatta in casa.</em></span></h1>
-<p class="lead">Pasta fresca, agnolotti e piatti della tradizione preparati nella nostra gastronomia, e serviti al tavolo nel bistrot di Via della Consolata, nel Quadrilatero Romano.</p>
+<p class="lead">Piatti della tradizione e grandi classici italiani preparati nella nostra gastronomia, e serviti al tavolo nel bistrot di Via della Consolata, nel Quadrilatero Romano.</p>
 <div class="cop-act">
 <a class="btn" data-booking href="#prenota">Prenota un tavolo <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a>
 <a class="btn vuoto" href="#carta">Leggi la carta</a>
@@ -509,10 +511,10 @@ a:hover .arr{transform:translateX(4px)}
 </figure>
 <div class="cucina-txt rivela">
 <p class="lead">Ricette della tradizione piemontese e grandi classici italiani, con prodotti freschi, selezionati e di stagione.</p>
-<p class="capolettera">In gastronomia prepariamo pasta fresca, agnolotti, sughi e dolci con prodotti freschi e di stagione. Nel bistrot li serviamo a pranzo e a cena, oppure li incartiamo da portare via.</p>
+<p class="capolettera">In gastronomia prepariamo piatti della tradizione e grandi classici italiani con prodotti freschi e di stagione. Nel bistrot li serviamo a pranzo e a cena, oppure li incartiamo da portare via.</p>
 <p>I piatti del giorno sono scritti sulla lavagna all’ingresso. Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</p>
 <ul class="elenco" aria-label="Dalla gastronomia">
-<li>Pasta fresca</li><li>Agnolotti</li><li>Sughi</li><li>Dolci</li><li>Asporto</li>
+<li>Primi</li><li>Sughi</li><li>Dolci</li><li>Asporto</li>
 </ul>
 </div>
 </div>
@@ -544,7 +546,7 @@ a:hover .arr{transform:translateX(4px)}
 </ul>
 </div>
 <div class="cat">
-<div class="cat-t"><span class="r" aria-hidden="true">II</span><h3>Pasta fresca e primi</h3></div>
+<div class="cat-t"><span class="r" aria-hidden="true">II</span><h3>Primi e paste</h3></div>
 <ul class="voci">
 <li class="piatto" data-foto="assets/piatto-pasta.jpg" data-alt="Pasta al ragù bianco con un rametto di rosmarino, in un piatto bianco a tesa larga"><h4 class="p-nome">Tagliatelle al ragù bianco</h4><p class="p-desc">Il ragù senza pomodoro, dove il sapore della carne resta in primo piano.</p></li>
 <li class="piatto"><h4 class="p-nome">Gnocchi con gamberi e zucchine</h4><p class="p-desc">Un primo di mare, con le zucchine a dare dolcezza ai gamberi.</p></li>
@@ -699,7 +701,7 @@ a:hover .arr{transform:translateX(4px)}
 <div class="sala-txt rivela">
 <p class="capolettera">Nella sala del bistrot ci sono tavoli in legno, piastrelle decorate alle pareti e lampadari in vetro; sulla lavagna, i piatti del giorno. Si pranza e si cena in Via della Consolata, nel cuore del Quadrilatero Romano.</p>
 <p>Poco lontano, l’obelisco di Piazza Savoia ricorda le leggi Siccardi del 1850: sotto la prima pietra furono murati anche grissini, semi di riso e una bottiglia di Barbera.</p>
-<p class="famiglia">La Real Cucina è il quinto capitolo della famiglia Ai Savoia, che dal 2006 accoglie ospiti nel complesso di Palazzo Saluzzo Paesana, costruito nel 1715, e oggi porta avanti cinque case.</p>
+<p class="famiglia">La Real Cucina è il quinto capitolo della famiglia <a href="https://www.aisavoia.it/" target="_blank" rel="noopener">Ai Savoia</a>, che dal 2006 accoglie ospiti nel complesso di Palazzo Saluzzo Paesana, costruito nel 1715, e oggi porta avanti cinque case.</p>
 </div>
 </div>
 </div>
@@ -897,7 +899,7 @@ var hoverMQ = window.matchMedia('(hover: hover) and (pointer: fine)');
 var ROMANI = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
 var CATEGORIE = [
   ['antipasti',  'Antipasti della tradizione'],
-  ['primi',      'Pasta fresca e primi'],
+  ['primi',      'Primi e paste'],
   ['specialita', 'Agnolotti e specialità piemontesi'],
   ['secondi',    'Secondi di carne e di pesce'],
   ['contorni',   'Contorni di stagione'],
