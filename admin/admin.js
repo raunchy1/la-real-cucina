@@ -46,7 +46,18 @@ var urlFoto = function (v) {
   v = String(v || '').trim();
   if (!v) return '';
   if (/^https:\/\//.test(v)) return v;
-  return '../' + v.replace(/^\.?\//, '');
+  return location.origin + '/' + v.replace(/^(\.\.\/|\.?\/)+/, '');
+};
+// se una foto non si carica (rete lenta, sito in aggiornamento) riprova da sola fino a 3 volte
+var conRiprova = function (img) {
+  var n = 0;
+  img.addEventListener('error', function () {
+    if (n >= 3 || !img.getAttribute('src')) return;
+    n++;
+    var base = img.getAttribute('src').replace(/[?&]r=\d+$/, '');
+    setTimeout(function () { img.src = base + (base.indexOf('?') === -1 ? '?' : '&') + 'r=' + Date.now(); }, 1500 * n);
+  });
+  return img;
 };
 var valore = function (chiave, predefinito) { return chiave in MODIFICHE ? MODIFICHE[chiave] : (chiave in VAL ? VAL[chiave] : (predefinito || '')); };
 
@@ -221,7 +232,7 @@ var vistaFoto = function (m) {
   var g = el('div', {'class': 'griglia-foto'});
   CAMPI.filter(function (c) { return c.tipo === 'foto'; }).forEach(function (c) {
     var src = valore(c.chiave, c.predefinito);
-    var img = el('img', {src: urlFoto(src), alt: ''});
+    var img = conRiprova(el('img', {src: urlFoto(src), alt: ''}));
     var box = el('div', {'class': 'scheda'}, [el('strong', {text: c.sezione + ' · ' + c.etichetta}), el('div', {style: 'height:10px'}), img]);
     var com = el('div', {'class': 'comandi'});
     com.appendChild(el('button', {'class': 'btn piccolo', type: 'button', text: 'Carica nuova foto', onclick: function () {
@@ -356,7 +367,14 @@ var vistaCarta = function (m) {
 var schedaPiatto = function (p, piatti, pi) {
   var box = el('div', {'class': 'piatto' + (p.attivo ? '' : ' spento')});
   var foto = el('div', {'class': 'foto' + (p.foto ? '' : ' vuota')});
-  var mostraFoto = function () { foto.style.backgroundImage = p.foto ? 'url("' + urlFoto(p.foto) + '")' : ''; foto.textContent = p.foto ? '' : 'Nessuna foto'; foto.className = 'foto' + (p.foto ? '' : ' vuota'); };
+  var mostraFoto = function () {
+    foto.textContent = p.foto ? '' : 'Nessuna foto'; foto.className = 'foto' + (p.foto ? '' : ' vuota');
+    foto.style.backgroundImage = '';
+    if (!p.foto) return;
+    var pre = conRiprova(new Image());
+    pre.onload = function () { foto.style.backgroundImage = 'url("' + pre.src + '")'; };
+    pre.src = urlFoto(p.foto);
+  };
   mostraFoto();
   var nome = el('input', {type: 'text', 'aria-label': 'Nome del piatto'}); nome.value = p.nome;
   var desc = el('textarea', {rows: 2, 'aria-label': 'Descrizione'}); desc.value = p.descrizione;
