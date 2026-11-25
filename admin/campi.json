@@ -1,0 +1,314 @@
+[
+ {
+  "sezione": "Prima pagina",
+  "chiave": "cop_riga1",
+  "etichetta": "Riga piccola in alto (1)",
+  "tipo": "testo",
+  "predefinito": "Gastronomia e bistrot"
+ },
+ {
+  "sezione": "Prima pagina",
+  "chiave": "cop_riga2",
+  "etichetta": "Riga piccola in alto (2)",
+  "tipo": "testo",
+  "predefinito": "Quadrilatero Romano, Torino"
+ },
+ {
+  "sezione": "Prima pagina",
+  "chiave": "cop_titolo",
+  "etichetta": "Titolo grande (una riga per linea, *corsivo*)",
+  "tipo": "righe",
+  "predefinito": "Tradizione\npiemontese,\n*fatta in casa.*"
+ },
+ {
+  "sezione": "Prima pagina",
+  "chiave": "cop_testo",
+  "etichetta": "Testo sotto il titolo",
+  "tipo": "testo",
+  "predefinito": "Piatti della tradizione e grandi classici italiani preparati nella nostra gastronomia, e serviti al tavolo nel bistrot di Via della Consolata, nel Quadrilatero Romano."
+ },
+ {
+  "sezione": "Prima pagina",
+  "chiave": "cop_orari",
+  "etichetta": "Orari in breve",
+  "tipo": "testo",
+  "predefinito": "· Pranzo lun–ven 11:00–15:00 · Cena mer–sab 19:15–22:00"
+ },
+ {
+  "sezione": "Prima pagina",
+  "chiave": "cop_foto",
+  "etichetta": "Foto grande",
+  "tipo": "foto",
+  "predefinito": "assets/vitello-tonnato-800.jpg",
+  "alt": "Vitello tonnato visto dall’alto: fettine di vitello rosa disposte a corona su un piatto bianco, con la salsa tonnata e un cappero al centro, su un tavolo di legno scuro"
+ },
+ {
+  "sezione": "Prima pagina",
+  "chiave": "cop_foto_titolo",
+  "etichetta": "Didascalia della foto",
+  "tipo": "testo",
+  "predefinito": "Vitello tonnato con cappero"
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_capitolo",
+  "etichetta": "Etichetta del capitolo",
+  "tipo": "testo",
+  "predefinito": "Capitolo I · La cucina"
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_titolo",
+  "etichetta": "Titolo (*corsivo*)",
+  "tipo": "testo",
+  "predefinito": "La stessa ospitalità di casa, *portata in tavola.*"
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_foto",
+  "etichetta": "Foto",
+  "tipo": "foto",
+  "predefinito": "assets/piatto-pasta-800.jpg",
+  "alt": "Pasta al ragù bianco con un rametto di rosmarino, in un piatto bianco a tesa larga tenuto in mano"
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_foto_titolo",
+  "etichetta": "Didascalia della foto",
+  "tipo": "testo",
+  "predefinito": "Pasta al ragù bianco"
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_lead",
+  "etichetta": "Frase in evidenza",
+  "tipo": "testo",
+  "predefinito": "Ricette della tradizione piemontese e grandi classici italiani, con prodotti freschi, selezionati e di stagione."
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_testo1",
+  "etichetta": "Primo paragrafo",
+  "tipo": "testo",
+  "predefinito": "In gastronomia prepariamo piatti della tradizione e grandi classici italiani con prodotti freschi e di stagione. Nel bistrot li serviamo a pranzo e a cena, oppure li incartiamo da portare via."
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_testo2",
+  "etichetta": "Secondo paragrafo",
+  "tipo": "testo",
+  "predefinito": "I piatti del giorno sono scritti sulla lavagna all’ingresso. Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala."
+ },
+ {
+  "sezione": "La cucina",
+  "chiave": "cuc_elenco",
+  "etichetta": "Elenco “Dalla gastronomia” (una voce per riga)",
+  "tipo": "lista",
+  "predefinito": "Primi\nSughi\nDolci\nAsporto"
+ },
+ {
+  "sezione": "La carta (testi)",
+  "chiave": "car_capitolo",
+  "etichetta": "Etichetta del capitolo",
+  "tipo": "testo",
+  "predefinito": "Capitolo II · La carta"
+ },
+ {
+  "sezione": "La carta (testi)",
+  "chiave": "car_sotto",
+  "etichetta": "Frase sotto il capitolo",
+  "tipo": "testo",
+  "predefinito": "Cambia con le stagioni. I piatti della gastronomia si possono anche portare a casa."
+ },
+ {
+  "sezione": "La carta (testi)",
+  "chiave": "car_titolo",
+  "etichetta": "Titolo della carta",
+  "tipo": "testo",
+  "predefinito": "La carta"
+ },
+ {
+  "sezione": "La carta (testi)",
+  "chiave": "car_nota",
+  "etichetta": "Nota sotto il titolo",
+  "tipo": "testo",
+  "predefinito": "I piatti del giorno sono scritti sulla lavagna all’ingresso."
+ },
+ {
+  "sezione": "La carta (testi)",
+  "chiave": "car_allergeni",
+  "etichetta": "Nota allergeni",
+  "tipo": "testo",
+  "predefinito": "Allergeni: chiedete in sala."
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_capitolo",
+  "etichetta": "Etichetta del capitolo",
+  "tipo": "testo",
+  "predefinito": "Capitolo III · Pranzo e cena"
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_titolo",
+  "etichetta": "Titolo (*corsivo*)",
+  "tipo": "testo",
+  "predefinito": "Prenota *un tavolo.*"
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_modulo",
+  "etichetta": "Spiegazione del modulo",
+  "tipo": "testo",
+  "predefinito": "Compilate e inviate: il messaggio si apre su WhatsApp e vi rispondiamo noi per confermare."
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_online",
+  "etichetta": "Nota prenotazione online",
+  "tipo": "testo",
+  "predefinito": "Prenotazione online in arrivo. Per ora la richiesta arriva a noi su WhatsApp e vi rispondiamo per confermare."
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_orari",
+  "etichetta": "Riquadro “Orari”",
+  "tipo": "testo",
+  "predefinito": "Pranzo lun–ven 11:00–15:00. Cena mer–sab 19:15–22:00. Domenica chiuso."
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_gruppi",
+  "etichetta": "Riquadro “Gruppi”",
+  "tipo": "testo",
+  "predefinito": "Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala."
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_allergie",
+  "etichetta": "Riquadro “Allergie”",
+  "tipo": "testo",
+  "predefinito": "Segnalateci allergie o intolleranze al momento della prenotazione."
+ },
+ {
+  "sezione": "Prenota",
+  "chiave": "pre_asporto",
+  "etichetta": "Riquadro “Asporto”",
+  "tipo": "testo",
+  "predefinito": "I piatti della gastronomia si possono portare a casa: chiamateci per sapere cosa c’è oggi."
+ },
+ {
+  "sezione": "La sala e il quartiere",
+  "chiave": "sal_capitolo",
+  "etichetta": "Etichetta del capitolo",
+  "tipo": "testo",
+  "predefinito": "Capitolo IV · La sala e il quartiere"
+ },
+ {
+  "sezione": "La sala e il quartiere",
+  "chiave": "sal_titolo",
+  "etichetta": "Titolo (*corsivo*)",
+  "tipo": "testo",
+  "predefinito": "A due passi dall’obelisco *di Piazza Savoia.*"
+ },
+ {
+  "sezione": "La sala e il quartiere",
+  "chiave": "sal_foto",
+  "etichetta": "Foto",
+  "tipo": "foto",
+  "predefinito": "assets/sala-interna-800.jpg",
+  "alt": "La sala del bistrot: tavoli in legno apparecchiati, sedie dalla seduta blu, piastrelle decorate alle pareti, lampadari in vetro e una lavagna"
+ },
+ {
+  "sezione": "La sala e il quartiere",
+  "chiave": "sal_foto_titolo",
+  "etichetta": "Didascalia della foto",
+  "tipo": "testo",
+  "predefinito": "La sala del bistrot"
+ },
+ {
+  "sezione": "La sala e il quartiere",
+  "chiave": "sal_testo1",
+  "etichetta": "Primo paragrafo",
+  "tipo": "testo",
+  "predefinito": "Nella sala del bistrot ci sono tavoli in legno, piastrelle decorate alle pareti e lampadari in vetro; sulla lavagna, i piatti del giorno. Si pranza e si cena in Via della Consolata, nel cuore del Quadrilatero Romano."
+ },
+ {
+  "sezione": "La sala e il quartiere",
+  "chiave": "sal_testo2",
+  "etichetta": "Secondo paragrafo",
+  "tipo": "testo",
+  "predefinito": "Poco lontano, l’obelisco di Piazza Savoia ricorda le leggi Siccardi del 1850: sotto la prima pietra furono murati anche grissini, semi di riso e una bottiglia di Barbera."
+ },
+ {
+  "sezione": "La sala e il quartiere",
+  "chiave": "sal_famiglia",
+  "etichetta": "Paragrafo famiglia (link: [testo](indirizzo))",
+  "tipo": "testo",
+  "predefinito": "La Real Cucina è il quinto capitolo della famiglia [Ai Savoia](https://www.aisavoia.it/), che dal 2006 accoglie ospiti nel complesso di Palazzo Saluzzo Paesana, costruito nel 1715, e oggi porta avanti cinque case."
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_titolo",
+  "etichetta": "Titolo (*corsivo*)",
+  "tipo": "testo",
+  "predefinito": "Orari *e dove.*"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_sottotitolo",
+  "etichetta": "Sottotitolo del biglietto",
+  "tipo": "testo",
+  "predefinito": "Gastronomia e bistrot · Torino"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_indirizzo",
+  "etichetta": "Indirizzo (una riga per linea)",
+  "tipo": "testo",
+  "predefinito": "Via della Consolata 7D\n10122 Torino\nQuadrilatero Romano"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_pranzo",
+  "etichetta": "Orario pranzo",
+  "tipo": "testo",
+  "predefinito": "lun–ven, 11:00–15:00"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_cena",
+  "etichetta": "Orario cena",
+  "tipo": "testo",
+  "predefinito": "mer–sab, 19:15–22:00"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_domenica",
+  "etichetta": "Domenica",
+  "tipo": "testo",
+  "predefinito": "chiuso"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_foto",
+  "etichetta": "Foto dell’ingresso",
+  "tipo": "foto",
+  "predefinito": "assets/ingresso-estate-800.jpg",
+  "alt": "L’ingresso de La Real Cucina in Via della Consolata 7D: tende color sabbia, l’insegna Bistrot e la lavagna con i piatti del giorno sul marciapiede"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "dov_foto_titolo",
+  "etichetta": "Didascalia della foto",
+  "tipo": "testo",
+  "predefinito": "L’ingresso"
+ },
+ {
+  "sezione": "Orari e dove",
+  "chiave": "pie_indirizzo",
+  "etichetta": "Indirizzo in fondo alla pagina",
+  "tipo": "testo",
+  "predefinito": "Via della Consolata 7D, Torino"
+ }
+]

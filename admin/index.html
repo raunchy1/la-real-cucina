@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Pannello · La Real Cucina</title>
+<link rel="icon" href="../assets/favicon-48.png">
+<style>
+:root{--carta:#f6f1e7;--bianco:#fffdf8;--inch:#1f1a17;--grigio:#6b625a;--linea:#e2d8c6;--vino:#7a2632;--vino-s:#5c1b25;--ok:#2f6b3b;--err:#a3242f;--r:10px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--carta);color:var(--inch);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:var(--vino)}
+.nascosto{display:none!important}
+/* accesso */
+.accesso{min-height:100svh;display:grid;place-items:center;padding:24px}
+.accesso form{width:min(380px,100%);background:var(--bianco);border:1px solid var(--linea);border-radius:16px;padding:28px}
+.accesso h1{font:600 1.4rem/1.2 Georgia,serif;margin:0 0 4px}
+.accesso p{margin:0 0 20px;color:var(--grigio)}
+label{display:block;font-weight:600;font-size:.92rem;margin:14px 0 6px}
+input[type=text],input[type=email],input[type=password],input[type=url],input[type=tel],input[type=time],textarea{width:100%;padding:12px 14px;border:1px solid #cfc3ae;border-radius:var(--r);background:#fff;font-size:16px}
+select{width:100%;padding:11px 12px;border:1px solid #cfc3ae;border-radius:var(--r);background:#fff;font-size:16px}
+textarea{min-height:90px;resize:vertical;line-height:1.45}
+input:focus,textarea:focus{outline:2px solid var(--vino);outline-offset:1px;border-color:var(--vino)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:var(--r);border:1px solid var(--vino);background:var(--vino);color:#fff;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--vino-s)}
+.btn.secondario{background:#fff;color:var(--vino)}
+.btn.secondario:hover{background:#fbf3f3}
+.btn.piccolo{min-height:38px;padding:0 12px;font-size:.92rem}
+.btn.pericolo{background:#fff;color:var(--err);border-color:#e2b8bc}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.largo{width:100%;margin-top:20px}
+.errore{color:var(--err);font-size:.95rem;margin-top:12px;min-height:1.4em}
+/* testata */
+.testata{position:sticky;top:0;z-index:10;background:var(--inch);color:#fff}
+.testata .riga{max-width:960px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.testata strong{font:600 1.05rem Georgia,serif}
+.testata .azioni{display:flex;gap:8px;align-items:center}
+.testata a,.testata button{color:#fff;background:none;border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:7px 12px;text-decoration:none;font-size:.92rem;cursor:pointer}
+.schede{background:#2b2420;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.schede .riga{max-width:960px;margin:0 auto;padding:0 8px;display:flex;gap:2px}
+.schede button{background:none;border:0;color:#d9cfc2;padding:12px 14px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent}
+.schede button[aria-selected=true]{color:#fff;border-bottom-color:#e0b0b6}
+main{max-width:960px;margin:0 auto;padding:20px 16px 120px}
+.intro{color:var(--grigio);margin:0 0 18px}
+h2{font:600 1.35rem/1.2 Georgia,serif;margin:28px 0 12px}
+h2:first-child{margin-top:4px}
+.scheda{background:var(--bianco);border:1px solid var(--linea);border-radius:14px;padding:16px;margin-bottom:12px}
+.aiuto{font-size:.88rem;color:var(--grigio);margin-top:6px}
+.campo{margin-bottom:14px}
+.campo:last-child{margin-bottom:0}
+.campo .piede{display:flex;gap:10px;align-items:center;margin-top:6px;flex-wrap:wrap}
+.link-ripristina{background:none;border:0;padding:0;color:var(--grigio);text-decoration:underline;font-size:.85rem;cursor:pointer}
+.modificato{border-color:#c98a1e!important;background:#fffaf0!important}
+.barra-salva{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bianco);border-top:1px solid var(--linea);box-shadow:0 -6px 20px rgba(0,0,0,.08);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+.barra-salva .riga{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.barra-salva span{font-weight:600}
+/* carta */
+.cat{margin-bottom:22px}
+.cat-testa{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cat-testa h3{flex:1;margin:0;font:600 1.15rem Georgia,serif}
+.piatto{background:var(--bianco);border:1px solid var(--linea);border-radius:14px;padding:14px;margin-bottom:10px;display:grid;grid-template-columns:96px 1fr;gap:14px}
+.piatto.spento{opacity:.6}
+.piatto .foto{width:96px;height:128px;border-radius:8px;background:#efe6d6 center/cover no-repeat;display:flex;align-items:flex-end;justify-content:center;color:var(--grigio);font-size:.8rem;text-align:center;padding:6px;overflow:hidden}
+.piatto .foto.vuota{align-items:center}
+.piatto .campi{min-width:0}
+.piatto .riga2{display:grid;grid-template-columns:1fr 220px;gap:10px}
+.piatto .comandi{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.interruttore{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;cursor:pointer;margin:0}
+.interruttore input{width:20px;height:20px;accent-color:var(--ok)}
+.sposta{display:inline-flex;gap:4px}
+.sposta button{width:38px;height:38px;border-radius:8px;border:1px solid var(--linea);background:#fff;cursor:pointer;font-size:1rem}
+.stato{font-size:.9rem;font-weight:600}
+.stato.ok{color:var(--ok)}
+.stato.err{color:var(--err)}
+@media (max-width:560px){
+  .piatto{grid-template-columns:1fr}
+  .piatto .foto{width:100%;height:180px}
+  .piatto .riga2{grid-template-columns:1fr}
+}
+/* foto */
+.griglia-foto{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.griglia-foto .scheda img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;background:#efe6d6;display:block}
+.griglia-foto .comandi{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+/* orari */
+.orari{width:100%;border-collapse:collapse}
+.orari th,.orari td{padding:10px 6px;border-bottom:1px solid var(--linea);text-align:left;vertical-align:middle}
+.orari th{font-size:.85rem;color:var(--grigio)}
+.orari td.giorno{font-weight:600;width:110px}
+.fascia{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fascia input[type=time]{width:132px;padding:8px}
+.fascia .interruttore{font-weight:400}
+@media (max-width:640px){
+  .orari thead{display:none}
+  .orari tr{display:block;border-bottom:1px solid var(--linea);padding:8px 0}
+  .orari td{display:block;border:0;padding:4px 0}
+  .orari td[data-l]::before{content:attr(data-l);display:block;font-size:.8rem;color:var(--grigio)}
+}
+.avviso{background:#fff7e6;border:1px solid #ecd29b;border-radius:12px;padding:12px 14px;margin:0 0 16px;font-size:.95rem}
+.toast{position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:50;background:var(--inch);color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);font-weight:600;max-width:92vw}
+.toast.err{background:var(--err)}
+.caricamento{padding:40px;text-align:center;color:var(--grigio)}
+</style>
+</head>
+<body>
+
+<!-- ACCESSO -->
+<section class="accesso" id="v-accesso">
+  <form id="f-accesso" autocomplete="on">
+    <h1>La Real Cucina</h1>
+    <p>Pannello per modificare il sito</p>
+    <label for="email">Email</label>
+    <input type="email" id="email" autocomplete="username" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" autocomplete="current-password" required>
+    <button class="btn largo" type="submit" id="b-accedi">Entra</button>
+    <p class="errore" id="err-accesso" role="alert"></p>
+  </form>
+</section>
+
+<!-- PANNELLO -->
+<div id="v-pannello" class="nascosto">
+  <header class="testata">
+    <div class="riga">
+      <strong>La Real Cucina · Pannello</strong>
+      <div class="azioni">
+        <a href="../" target="_blank" rel="noopener">Vedi il sito</a>
+        <button type="button" id="b-esci">Esci</button>
+      </div>
+    </div>
+    <nav class="schede" aria-label="Sezioni del pannello">
+      <div class="riga" role="tablist">
+        <button role="tab" data-scheda="carta" aria-selected="true">La carta</button>
+        <button role="tab" data-scheda="testi" aria-selected="false">Testi</button>
+        <button role="tab" data-scheda="foto" aria-selected="false">Foto</button>
+        <button role="tab" data-scheda="orari" aria-selected="false">Orari</button>
+        <button role="tab" data-scheda="contatti" aria-selected="false">Contatti</button>
+        <button role="tab" data-scheda="google" aria-selected="false">Google</button>
+      </div>
+    </nav>
+  </header>
+  <main id="contenuto"><p class="caricamento">Caricamento…</p></main>
+  <div class="barra-salva nascosto" id="barra-salva">
+    <div class="riga"><span id="barra-testo">Ci sono modifiche non salvate</span><button class="btn" type="button" id="b-salva">Salva le modifiche</button></div>
+  </div>
+</div>
+
+<input type="file" id="file" accept="image/jpeg,image/png,image/webp" class="nascosto">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.min.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

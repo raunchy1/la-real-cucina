@@ -283,6 +283,7 @@ a:hover .arr{transform:translateX(4px)}
 .piatto{padding:var(--s4) 0;border-bottom:1px solid rgba(20,17,16,.18)}
 .piatto:last-child{border-bottom:0}
 .p-nome{font:500 var(--t-dish)/1.25 var(--serif);letter-spacing:-.005em}
+.p-prezzo{margin-top:var(--s1);font-size:var(--t-small);color:var(--vino-testo);font-variant-numeric:lining-nums tabular-nums}
 .p-desc{margin:var(--s1) auto 0;max-width:40ch;font-size:var(--t-small);font-style:italic;line-height:1.55;color:var(--inchiostro-2)}
 .p-btn{display:inline-block;padding:0 0 var(--s1);margin:0;background:none;border:0;color:inherit;font:inherit;letter-spacing:inherit;text-align:inherit;cursor:pointer;transition:color .2s var(--ease)}
 .p-btn .p-n{text-decoration:underline;text-decoration-color:rgba(110,27,38,.45);text-decoration-thickness:1px;text-underline-offset:.22em}
@@ -459,7 +460,7 @@ a:hover .arr{transform:translateX(4px)}
 <a href="#dove">Orari e dove</a>
 </nav>
 <div class="head-act">
-<a class="head-tel tnum" href="tel:+393391257711">+39 339 125 7711</a>
+<a class="head-tel tnum" href="tel:+393391257711" data-l="tel">+39 339 125 7711</a>
 <a class="btn btn-sc" data-booking href="#prenota">Prenota<span class="sr-only"> un tavolo</span></a>
 <button class="menu-btn sc" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
 </div>
@@ -471,7 +472,7 @@ a:hover .arr{transform:translateX(4px)}
 <a href="#prenota"><span class="sc">III</span>Prenota un tavolo</a>
 <a href="#sala"><span class="sc">IV</span>La sala e il quartiere</a>
 <a href="#dove"><span class="sc">V</span>Orari e dove</a>
-<a class="menu-tel tnum" href="tel:+393391257711">Chiamate il +39 339 125 7711</a>
+<a class="menu-tel tnum" href="tel:+393391257711" data-l="tel">Chiamate il +39 339 125 7711</a>
 </nav>
 
 <main id="contenuto">
@@ -480,19 +481,19 @@ a:hover .arr{transform:translateX(4px)}
 <section class="copertina shell" id="top" aria-labelledby="h-title">
 <div class="cop-grid">
 <div class="cop-txt">
-<p class="riga-sc sc"><span>Gastronomia e bistrot</span><span aria-hidden="true">·</span><span>Quadrilatero Romano, Torino</span></p>
+<p class="riga-sc sc"><span data-k="cop_riga1" data-t="testo">Gastronomia e bistrot</span><span aria-hidden="true">·</span><span data-k="cop_riga2" data-t="testo">Quadrilatero Romano, Torino</span></p>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
-<h1 id="h-title"><span class="ln">Tradizione</span> <span class="ln">piemontese,</span> <span class="ln"><em>fatta in casa.</em></span></h1>
-<p class="lead">Piatti della tradizione e grandi classici italiani preparati nella nostra gastronomia, e serviti al tavolo nel bistrot di Via della Consolata, nel Quadrilatero Romano.</p>
+<h1 id="h-title" data-k="cop_titolo" data-t="righe"><span class="ln">Tradizione</span> <span class="ln">piemontese,</span> <span class="ln"><em>fatta in casa.</em></span></h1>
+<p class="lead" data-k="cop_testo" data-t="testo">Piatti della tradizione e grandi classici italiani preparati nella nostra gastronomia, e serviti al tavolo nel bistrot di Via della Consolata, nel Quadrilatero Romano.</p>
 <div class="cop-act">
 <a class="btn" data-booking href="#prenota">Prenota un tavolo <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a>
 <a class="btn vuoto" href="#carta">Leggi la carta</a>
 </div>
-<p class="cop-orari tnum"><span data-status>Pranzo e cena</span> · Pranzo lun–ven 11:00–15:00 · Cena mer–sab 19:15–22:00</p>
+<p class="cop-orari tnum"><span data-status>Pranzo e cena</span> <span data-k="cop_orari" data-t="testo">· Pranzo lun–ven 11:00–15:00 · Cena mer–sab 19:15–22:00</span></p>
 </div>
 <figure class="tavola cop-fig">
-<div class="img"><img src="assets/vitello-tonnato-800.jpg" srcset="assets/vitello-tonnato-800.jpg 800w, assets/vitello-tonnato.jpg 1200w" sizes="(min-width: 1100px) 34vw, (min-width: 700px) 60vw, 90vw" width="1200" height="1600" fetchpriority="high" decoding="async" alt="Vitello tonnato visto dall’alto: fettine di vitello rosa disposte a corona su un piatto bianco, con la salsa tonnata e un cappero al centro, su un tavolo di legno scuro"></div>
-<figcaption><span class="sc">Tav. I</span><span>Vitello tonnato con cappero</span></figcaption>
+<div class="img"><img data-img="cop_foto" src="assets/vitello-tonnato-800.jpg" srcset="assets/vitello-tonnato-800.jpg 800w, assets/vitello-tonnato.jpg 1200w" sizes="(min-width: 1100px) 34vw, (min-width: 700px) 60vw, 90vw" width="1200" height="1600" fetchpriority="high" decoding="async" alt="Vitello tonnato visto dall’alto: fettine di vitello rosa disposte a corona su un piatto bianco, con la salsa tonnata e un cappero al centro, su un tavolo di legno scuro"></div>
+<figcaption><span class="sc">Tav. I</span><span data-k="cop_foto_titolo" data-t="testo">Vitello tonnato con cappero</span></figcaption>
 </figure>
 </div>
 </section>
@@ -500,20 +501,20 @@ a:hover .arr{transform:translateX(4px)}
 <!-- I · LA CUCINA -->
 <section class="sec cucina shell" id="cucina" aria-labelledby="c-title">
 <div class="capo rivela">
-<span class="sc vino">Capitolo I · La cucina</span>
-<h2 id="c-title">La stessa ospitalità di casa, <em>portata in tavola.</em></h2>
+<span class="sc vino" data-k="cuc_capitolo" data-t="testo">Capitolo I · La cucina</span>
+<h2 id="c-title" data-k="cuc_titolo" data-t="testo">La stessa ospitalità di casa, <em>portata in tavola.</em></h2>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
 </div>
 <div class="cucina-grid">
 <figure class="tavola cucina-fig rivela">
-<div class="img"><img src="assets/piatto-pasta-800.jpg" srcset="assets/piatto-pasta-800.jpg 800w, assets/piatto-pasta.jpg 1200w" sizes="(min-width: 900px) 30rem, 90vw" width="1200" height="1600" loading="lazy" decoding="async" alt="Pasta al ragù bianco con un rametto di rosmarino, in un piatto bianco a tesa larga tenuto in mano"></div>
-<figcaption><span class="sc">Tav. II</span><span>Pasta al ragù bianco</span></figcaption>
+<div class="img"><img data-img="cuc_foto" src="assets/piatto-pasta-800.jpg" srcset="assets/piatto-pasta-800.jpg 800w, assets/piatto-pasta.jpg 1200w" sizes="(min-width: 900px) 30rem, 90vw" width="1200" height="1600" loading="lazy" decoding="async" alt="Pasta al ragù bianco con un rametto di rosmarino, in un piatto bianco a tesa larga tenuto in mano"></div>
+<figcaption><span class="sc">Tav. II</span><span data-k="cuc_foto_titolo" data-t="testo">Pasta al ragù bianco</span></figcaption>
 </figure>
 <div class="cucina-txt rivela">
-<p class="lead">Ricette della tradizione piemontese e grandi classici italiani, con prodotti freschi, selezionati e di stagione.</p>
-<p class="capolettera">In gastronomia prepariamo piatti della tradizione e grandi classici italiani con prodotti freschi e di stagione. Nel bistrot li serviamo a pranzo e a cena, oppure li incartiamo da portare via.</p>
-<p>I piatti del giorno sono scritti sulla lavagna all’ingresso. Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</p>
-<ul class="elenco" aria-label="Dalla gastronomia">
+<p class="lead" data-k="cuc_lead" data-t="testo">Ricette della tradizione piemontese e grandi classici italiani, con prodotti freschi, selezionati e di stagione.</p>
+<p class="capolettera" data-k="cuc_testo1" data-t="testo">In gastronomia prepariamo piatti della tradizione e grandi classici italiani con prodotti freschi e di stagione. Nel bistrot li serviamo a pranzo e a cena, oppure li incartiamo da portare via.</p>
+<p data-k="cuc_testo2" data-t="testo">I piatti del giorno sono scritti sulla lavagna all’ingresso. Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</p>
+<ul class="elenco" aria-label="Dalla gastronomia" data-k="cuc_elenco" data-t="lista">
 <li>Primi</li><li>Sughi</li><li>Dolci</li><li>Asporto</li>
 </ul>
 </div>
@@ -521,20 +522,20 @@ a:hover .arr{transform:translateX(4px)}
 </section>
 
 <!-- II · LA CARTA
-     Il menu qui sotto è il "fallback": si vede sempre senza JavaScript o se il foglio Google non risponde.
-     Se MENU_CSV_URL (nello script in fondo) è impostato, le voci vengono sostituite con quelle del foglio. -->
+     Il menu qui sotto è il "fallback": si vede sempre senza JavaScript o se il pannello non risponde.
+     Le voci vere arrivano dal pannello /admin (tabella site_menu). -->
 <section class="sec carta shell" id="carta" aria-labelledby="m-title">
 <div class="capo rivela">
-<span class="sc vino">Capitolo II · La carta</span>
-<p class="sotto">Cambia con le stagioni. I piatti della gastronomia si possono anche portare a casa.</p>
+<span class="sc vino" data-k="car_capitolo" data-t="testo">Capitolo II · La carta</span>
+<p class="sotto" data-k="car_sotto" data-t="testo">Cambia con le stagioni. I piatti della gastronomia si possono anche portare a casa.</p>
 </div>
 <div class="carta-grid">
 <div class="foglio">
 <div class="foglio-head">
 <p class="sc">La Real Cucina</p>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
-<h2 id="m-title">La carta</h2>
-<p class="nota">I piatti del giorno sono scritti sulla lavagna all’ingresso.</p>
+<h2 id="m-title" data-k="car_titolo" data-t="testo">La carta</h2>
+<p class="nota" data-k="car_nota" data-t="testo">I piatti del giorno sono scritti sulla lavagna all’ingresso.</p>
 <p class="istruzioni sc" hidden data-istruzioni>I piatti segnati si possono vedere in foto</p>
 </div>
 
@@ -585,7 +586,7 @@ a:hover .arr{transform:translateX(4px)}
 </div>
 </div>
 
-<p class="allergeni">Allergeni: chiedete in sala.</p>
+<p class="allergeni" data-k="car_allergeni" data-t="testo">Allergeni: chiedete in sala.</p>
 </div>
 
 <div class="carta-tav" aria-hidden="true">
@@ -601,15 +602,15 @@ a:hover .arr{transform:translateX(4px)}
 <!-- III · PRENOTA -->
 <section class="sec prenota shell" id="prenota" aria-labelledby="p-title">
 <div class="capo">
-<span class="sc vino">Capitolo III · Pranzo e cena</span>
-<h2 id="p-title">Prenota <em>un tavolo.</em></h2>
+<span class="sc vino" data-k="pre_capitolo" data-t="testo">Capitolo III · Pranzo e cena</span>
+<h2 id="p-title" data-k="pre_titolo" data-t="testo">Prenota <em>un tavolo.</em></h2>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
 </div>
 
 <div class="prenota-grid">
 <div class="modulo-wrap">
-<form class="modulo" id="modulo" action="https://wa.me/393391257711" method="get" target="_blank" novalidate>
-<div class="modulo-titolo"><span class="sc">Richiesta di prenotazione</span><p>Compilate e inviate: il messaggio si apre su WhatsApp e vi rispondiamo noi per confermare.</p></div>
+<form class="modulo" id="modulo" action="https://wa.me/393391257711" data-l="wa-form" method="get" target="_blank" novalidate>
+<div class="modulo-titolo"><span class="sc">Richiesta di prenotazione</span><p data-k="pre_modulo" data-t="testo">Compilate e inviate: il messaggio si apre su WhatsApp e vi rispondiamo noi per confermare.</p></div>
 <input type="hidden" name="text" id="wa-text" value="Buongiorno, vorrei prenotare un tavolo a La Real Cucina.">
 <fieldset class="campo">
 <legend class="sc">Servizio</legend>
@@ -667,20 +668,20 @@ a:hover .arr{transform:translateX(4px)}
 <div class="online">
 <!-- TODO: sostituire con link Pienissimo -->
 <a id="booking-link" href="https://prenotazioni.example.com/la-real-cucina" rel="noopener" hidden>Prenota online <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a>
-<p id="booking-note">Prenotazione online in arrivo. Per ora la richiesta arriva a noi su WhatsApp e vi rispondiamo per confermare.</p>
+<p id="booking-note" data-k="pre_online" data-t="testo">Prenotazione online in arrivo. Per ora la richiesta arriva a noi su WhatsApp e vi rispondiamo per confermare.</p>
 </div>
 
 <div class="alt-contatti">
-<a href="tel:+393391257711"><span class="sc">Oppure chiamate</span><span class="big tnum">+39 339 125 7711</span></a>
-<a href="https://wa.me/393391257711?text=Buongiorno%2C%20vorrei%20prenotare%20un%20tavolo%20a%20La%20Real%20Cucina." target="_blank" rel="noopener"><span class="sc">Scrivete su</span><span class="big">WhatsApp <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></span></a>
+<a href="tel:+393391257711" data-l="tel"><span class="sc">Oppure chiamate</span><span class="big tnum">+39 339 125 7711</span></a>
+<a data-l="wa-text" href="https://wa.me/393391257711?text=Buongiorno%2C%20vorrei%20prenotare%20un%20tavolo%20a%20La%20Real%20Cucina." target="_blank" rel="noopener"><span class="sc">Scrivete su</span><span class="big">WhatsApp <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></span></a>
 </div>
 </div>
 
 <dl class="note-pren">
-<div><dt class="sc">Orari</dt><dd class="tnum">Pranzo lun–ven 11:00–15:00. Cena mer–sab 19:15–22:00. Domenica chiuso.</dd></div>
-<div><dt class="sc">Gruppi</dt><dd>Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</dd></div>
-<div><dt class="sc">Allergie</dt><dd>Segnalateci allergie o intolleranze al momento della prenotazione.</dd></div>
-<div><dt class="sc">Asporto</dt><dd>I piatti della gastronomia si possono portare a casa: chiamateci per sapere cosa c’è oggi.</dd></div>
+<div><dt class="sc">Orari</dt><dd class="tnum" data-k="pre_orari" data-t="testo">Pranzo lun–ven 11:00–15:00. Cena mer–sab 19:15–22:00. Domenica chiuso.</dd></div>
+<div><dt class="sc">Gruppi</dt><dd data-k="pre_gruppi" data-t="testo">Per tavolate e occasioni particolari chiamateci in anticipo: organizziamo insieme la sala.</dd></div>
+<div><dt class="sc">Allergie</dt><dd data-k="pre_allergie" data-t="testo">Segnalateci allergie o intolleranze al momento della prenotazione.</dd></div>
+<div><dt class="sc">Asporto</dt><dd data-k="pre_asporto" data-t="testo">I piatti della gastronomia si possono portare a casa: chiamateci per sapere cosa c’è oggi.</dd></div>
 </dl>
 </div>
 </section>
@@ -689,19 +690,19 @@ a:hover .arr{transform:translateX(4px)}
 <section class="sec scuro" id="sala" aria-labelledby="q-title">
 <div class="shell">
 <div class="capo rivela">
-<span class="sc vino">Capitolo IV · La sala e il quartiere</span>
-<h2 id="q-title">A due passi dall’obelisco <em>di Piazza Savoia.</em></h2>
+<span class="sc vino" data-k="sal_capitolo" data-t="testo">Capitolo IV · La sala e il quartiere</span>
+<h2 id="q-title" data-k="sal_titolo" data-t="testo">A due passi dall’obelisco <em>di Piazza Savoia.</em></h2>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
 </div>
 <div class="sala-grid">
 <figure class="tavola sala-fig rivela">
-<div class="img"><img src="assets/sala-interna-800.jpg" srcset="assets/sala-interna-800.jpg 800w, assets/sala-interna.jpg 1200w" sizes="(min-width: 900px) 30rem, 90vw" width="1200" height="1600" loading="lazy" decoding="async" alt="La sala del bistrot: tavoli in legno apparecchiati, sedie dalla seduta blu, piastrelle decorate alle pareti, lampadari in vetro e una lavagna"></div>
-<figcaption><span class="sc">Tav. IV</span><span>La sala del bistrot</span></figcaption>
+<div class="img"><img data-img="sal_foto" src="assets/sala-interna-800.jpg" srcset="assets/sala-interna-800.jpg 800w, assets/sala-interna.jpg 1200w" sizes="(min-width: 900px) 30rem, 90vw" width="1200" height="1600" loading="lazy" decoding="async" alt="La sala del bistrot: tavoli in legno apparecchiati, sedie dalla seduta blu, piastrelle decorate alle pareti, lampadari in vetro e una lavagna"></div>
+<figcaption><span class="sc">Tav. IV</span><span data-k="sal_foto_titolo" data-t="testo">La sala del bistrot</span></figcaption>
 </figure>
 <div class="sala-txt rivela">
-<p class="capolettera">Nella sala del bistrot ci sono tavoli in legno, piastrelle decorate alle pareti e lampadari in vetro; sulla lavagna, i piatti del giorno. Si pranza e si cena in Via della Consolata, nel cuore del Quadrilatero Romano.</p>
-<p>Poco lontano, l’obelisco di Piazza Savoia ricorda le leggi Siccardi del 1850: sotto la prima pietra furono murati anche grissini, semi di riso e una bottiglia di Barbera.</p>
-<p class="famiglia">La Real Cucina è il quinto capitolo della famiglia <a href="https://www.aisavoia.it/">Ai Savoia</a>, che dal 2006 accoglie ospiti nel complesso di Palazzo Saluzzo Paesana, costruito nel 1715, e oggi porta avanti cinque case.</p>
+<p class="capolettera" data-k="sal_testo1" data-t="testo">Nella sala del bistrot ci sono tavoli in legno, piastrelle decorate alle pareti e lampadari in vetro; sulla lavagna, i piatti del giorno. Si pranza e si cena in Via della Consolata, nel cuore del Quadrilatero Romano.</p>
+<p data-k="sal_testo2" data-t="testo">Poco lontano, l’obelisco di Piazza Savoia ricorda le leggi Siccardi del 1850: sotto la prima pietra furono murati anche grissini, semi di riso e una bottiglia di Barbera.</p>
+<p class="famiglia" data-k="sal_famiglia" data-t="testo">La Real Cucina è il quinto capitolo della famiglia <a href="https://www.aisavoia.it/">Ai Savoia</a>, che dal 2006 accoglie ospiti nel complesso di Palazzo Saluzzo Paesana, costruito nel 1715, e oggi porta avanti cinque case.</p>
 </div>
 </div>
 </div>
@@ -711,28 +712,28 @@ a:hover .arr{transform:translateX(4px)}
 <section class="sec dove shell" id="dove" aria-labelledby="o-title">
 <div class="capo">
 <span class="sc vino">Capitolo V</span>
-<h2 id="o-title">Orari <em>e dove.</em></h2>
+<h2 id="o-title" data-k="dov_titolo" data-t="testo">Orari <em>e dove.</em></h2>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
 </div>
 <div class="dove-grid">
 <div class="biglietto">
-<div class="big-top"><strong>La Real Cucina</strong><span class="sc vino">Gastronomia e bistrot · Torino</span></div>
-<p class="indirizzo">Via della Consolata 7D<br>10122 Torino<br>Quadrilatero Romano</p>
+<div class="big-top"><strong>La Real Cucina</strong><span class="sc vino" data-k="dov_sottotitolo" data-t="testo">Gastronomia e bistrot · Torino</span></div>
+<p class="indirizzo" data-k="dov_indirizzo" data-t="testo">Via della Consolata 7D<br>10122 Torino<br>Quadrilatero Romano</p>
 <dl class="orari">
-<div data-servizio="pranzo"><dt class="sc">Pranzo</dt><dd>lun–ven, 11:00–15:00</dd></div>
-<div data-servizio="cena"><dt class="sc">Cena</dt><dd>mer–sab, 19:15–22:00</dd></div>
-<div><dt class="sc">Domenica</dt><dd>chiuso</dd></div>
+<div data-servizio="pranzo"><dt class="sc">Pranzo</dt><dd data-k="dov_pranzo" data-t="testo">lun–ven, 11:00–15:00</dd></div>
+<div data-servizio="cena"><dt class="sc">Cena</dt><dd data-k="dov_cena" data-t="testo">mer–sab, 19:15–22:00</dd></div>
+<div><dt class="sc">Domenica</dt><dd data-k="dov_domenica" data-t="testo">chiuso</dd></div>
 <div class="ora" hidden><dt class="sc">Oggi</dt><dd data-status-long></dd></div>
 </dl>
 <div class="big-foot">
-<a class="tnum" href="tel:+393391257711">+39 339 125 7711</a>
-<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+della+Consolata+7D+10122+Torino" target="_blank" rel="noopener">Indicazioni stradali</a>
-<a href="https://www.instagram.com/larealcucina/" target="_blank" rel="noopener">@larealcucina</a>
+<a class="tnum" href="tel:+393391257711" data-l="tel">+39 339 125 7711</a>
+<a data-l="maps" href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+della+Consolata+7D+10122+Torino" target="_blank" rel="noopener">Indicazioni stradali</a>
+<a href="https://www.instagram.com/larealcucina/" data-l="ig" target="_blank" rel="noopener">@larealcucina</a>
 </div>
 </div>
 <figure class="tavola dove-fig">
-<div class="img"><img src="assets/ingresso-estate-800.jpg" srcset="assets/ingresso-estate-800.jpg 800w, assets/ingresso-estate.jpg 1200w" sizes="(min-width: 900px) 26rem, 90vw" width="1200" height="1600" loading="lazy" decoding="async" alt="L’ingresso de La Real Cucina in Via della Consolata 7D: tende color sabbia, l’insegna Bistrot e la lavagna con i piatti del giorno sul marciapiede"></div>
-<figcaption><span class="sc">Tav. V</span><span>L’ingresso</span></figcaption>
+<div class="img"><img data-img="dov_foto" src="assets/ingresso-estate-800.jpg" srcset="assets/ingresso-estate-800.jpg 800w, assets/ingresso-estate.jpg 1200w" sizes="(min-width: 900px) 26rem, 90vw" width="1200" height="1600" loading="lazy" decoding="async" alt="L’ingresso de La Real Cucina in Via della Consolata 7D: tende color sabbia, l’insegna Bistrot e la lavagna con i piatti del giorno sul marciapiede"></div>
+<figcaption><span class="sc">Tav. V</span><span data-k="dov_foto_titolo" data-t="testo">L’ingresso</span></figcaption>
 </figure>
 </div>
 </section>
@@ -743,17 +744,17 @@ a:hover .arr{transform:translateX(4px)}
 <p class="wordmark" aria-hidden="true">La Real <em>Cucina</em></p>
 <svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
 <div class="f-meta sc">
-<span>Via della Consolata 7D, Torino</span>
-<a class="tnum" href="tel:+393391257711">+39 339 125 7711</a>
-<a href="https://www.instagram.com/larealcucina/" target="_blank" rel="noopener">@larealcucina</a>
+<span data-k="pie_indirizzo" data-t="testo">Via della Consolata 7D, Torino</span>
+<a class="tnum" href="tel:+393391257711" data-l="tel">+39 339 125 7711</a>
+<a href="https://www.instagram.com/larealcucina/" data-l="ig" target="_blank" rel="noopener">@larealcucina</a>
 <span>© <span id="anno">2026</span></span>
 </div>
 </footer>
 
 <nav class="barra" aria-label="Prenota o contatta">
 <a class="pren" data-booking href="#prenota"><span>Prenota un tavolo</span><svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a>
-<a href="tel:+393391257711">Chiama</a>
-<a href="https://wa.me/393391257711" target="_blank" rel="noopener">WhatsApp</a>
+<a href="tel:+393391257711" data-l="tel">Chiama</a>
+<a href="https://wa.me/393391257711" data-l="wa" target="_blank" rel="noopener">WhatsApp</a>
 </nav>
 
 <dialog class="scheda" id="scheda" aria-labelledby="scheda-t">
@@ -770,14 +771,15 @@ a:hover .arr{transform:translateX(4px)}
 
 <script>
 /* ============================================================
-   CONFIGURAZIONE MENU (Google Sheets)
-   1. Nel foglio: File → Condividi → Pubblica sul web → scheda del menu → "Valori separati da virgola (.csv)".
-   2. Incollate qui sotto il link che Google vi dà (finisce con output=csv).
-   Finché MENU_CSV_URL è vuoto, il sito mostra la carta scritta nell'HTML.
-   Colonne del foglio: categoria, ordine, nome, descrizione, foto, attivo
+   CONTENUTI DAL PANNELLO (Supabase)
+   Testi, foto, contatti, orari e carta si modificano da /admin.
+   Se il pannello non risponde, il sito mostra quello scritto qui nell'HTML.
    ============================================================ */
-var MENU_CSV_URL = ''; // es. 'https://docs.google.com/spreadsheets/d/e/XXXXXXXX/pub?gid=0&single=true&output=csv'
-var MENU_VERSION = '1'; // cambiate il numero per svuotare la copia salvata nei browser
+var CMS = {
+  url: 'https://ntcofaxoxjvzovkqgypy.supabase.co',
+  key: 'sb_publishable_tCgLTY5zUUG2M1wsUi0iSw_ErBATyaM',
+  site: 'larealcucina'
+};
 
 (function(){
 'use strict';
@@ -801,15 +803,35 @@ document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu
    Tutti i "Prenota" portano al modulo (#prenota), che invia la richiesta su WhatsApp.
    Quando il link Pienissimo sarà reale, il pulsante online compare e header, copertina e barra puntano lì. */
 var online = document.getElementById('booking-link');
-if (online.href.indexOf('example.com') === -1) {
-  online.hidden = false;
-  document.getElementById('booking-note').hidden = true;
-  document.querySelectorAll('[data-booking]').forEach(function(a){ a.href = online.href; a.target = '_blank'; a.rel = 'noopener'; });
-}
+var applicaPrenotazione = function(link){
+  if (link) online.href = link;
+  if (/^https:\/\//.test(online.href) && online.href.indexOf('example.com') === -1) {
+    online.hidden = false;
+    document.getElementById('booking-note').hidden = true;
+    document.querySelectorAll('[data-booking]').forEach(function(a){ a.href = online.href; a.target = '_blank'; a.rel = 'noopener'; });
+  }
+};
+applicaPrenotazione();
 
 /* ---------- Orari dal vivo, ora di Roma ---------- */
 var giorni = ['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
 var slots = {0:[],1:[[660,900,'pranzo']],2:[[660,900,'pranzo']],3:[[660,900,'pranzo'],[1155,1320,'cena']],4:[[660,900,'pranzo'],[1155,1320,'cena']],5:[[660,900,'pranzo'],[1155,1320,'cena']],6:[[1155,1320,'cena']]};
+// dal pannello: {"1":{"pranzo":"11:00-15:00","cena":""}, ...}
+var minuti = function(t){ var m = /^(\d{1,2})[:.](\d{2})$/.exec(String(t || '').trim()); return m ? (+m[1]) * 60 + (+m[2]) : NaN; };
+var setSlots = function(json){
+  try {
+    var o = typeof json === 'string' ? JSON.parse(json) : json, nuovi = {};
+    for (var d = 0; d < 7; d++) {
+      nuovi[d] = [];
+      ['pranzo','cena'].forEach(function(sv){
+        var v = o && o[d] && o[d][sv]; if (!v) return;
+        var p = String(v).split(/[-–]/), a = minuti(p[0]), b = minuti(p[1]);
+        if (!isNaN(a) && !isNaN(b) && b > a) nuovi[d].push([a, b, sv]);
+      });
+    }
+    slots = nuovi;
+  } catch (e) {}
+};
 var hm = function(m){ return Math.floor(m/60) + ':' + ('0' + m%60).slice(-2); };
 var stato = function(){
   var parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
@@ -853,9 +875,9 @@ var controlla = function(){
   if (!data.value) return true;
   var g = new Date(data.value + 'T12:00').getDay();
   var sv = val('servizio');
-  if (g === 0) err.textContent = 'La domenica siamo chiusi: scegliete un altro giorno.';
-  else if (sv === 'pranzo' && g === 6) err.textContent = 'Il sabato siamo aperti solo a cena.';
-  else if (sv === 'cena' && (g === 1 || g === 2)) err.textContent = 'Il lunedì e il martedì siamo aperti solo a pranzo.';
+  var aperti = (slots[g] || []).map(function(x){ return x[2]; });
+  if (!aperti.length) err.textContent = 'Il ' + giorni[g] + ' siamo chiusi: scegliete un altro giorno.';
+  else if (aperti.indexOf(sv) === -1) err.textContent = 'Il ' + giorni[g] + ' siamo aperti solo a ' + aperti.join(' e ') + '.';
   return !err.textContent;
 };
 data.addEventListener('change', controlla);
@@ -1030,27 +1052,14 @@ voci.addEventListener('focusin', function(e){
   if (li) anteprima(li);
 });
 
-/* ---------- Menu dal foglio Google (CSV), con copia salvata e ritorno all'HTML ---------- */
-var parseCSV = function(t){
-  var rows = [], row = [], f = '', q = false;
-  t = t.replace(/^﻿/, '');
-  for (var i = 0; i < t.length; i++) {
-    var c = t[i];
-    if (q) {
-      if (c === '"') { if (t[i+1] === '"') { f += '"'; i++; } else q = false; }
-      else f += c;
-    } else if (c === '"') q = true;
-    else if (c === ',') { row.push(f); f = ''; }
-    else if (c === '\n' || c === '\r') {
-      if (c === '\r' && t[i+1] === '\n') i++;
-      row.push(f); rows.push(row); row = []; f = '';
-    } else f += c;
-  }
-  if (f !== '' || row.length) { row.push(f); rows.push(row); }
-  return rows;
-};
-var norm = function(s){
-  return String(s || '').trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+/* ---------- Contenuti e carta dal pannello ---------- */
+var esc = function(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+// testo del pannello -> HTML sicuro: *corsivo*, [testo](https://...), a capo
+var marcatura = function(t){
+  var h = esc(t);
+  h = h.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|tel:[^\s)]+|mailto:[^\s)]+)\)/g, '<a href="$2">$1</a>');
+  h = h.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return h.replace(/\n/g, '<br>');
 };
 var fotoSicura = function(s){
   s = String(s || '').trim();
@@ -1060,83 +1069,108 @@ var fotoSicura = function(s){
   if (/^[\w\-]+\.(jpe?g|png|webp)$/i.test(s)) return 'assets/' + s;
   return '';
 };
-var daCSV = function(testo){
-  var rows = parseCSV(testo);
-  if (rows.length < 2) return null;
-  var head = rows[0].map(norm);
-  var col = function(n){ return head.indexOf(n); };
-  var ic = col('categoria'), io2 = col('ordine'), inm = col('nome'), ids = col('descrizione'), ifo = col('foto'), iat = col('attivo');
-  if (ic < 0 || inm < 0) return null;
-  var gruppi = {}, extra = [];
-  rows.slice(1).forEach(function(r, n){
-    var nome = (r[inm] || '').trim();
-    if (!nome) return;
-    var at = iat < 0 ? '' : norm(r[iat]);
-    if (at === 'no' || at === 'n' || at === '0' || at === 'false' || at === 'falso') return;
-    var cRaw = (r[ic] || '').trim();
-    var c = norm(cRaw);
-    var key = null;
-    for (var k = 0; k < CATEGORIE.length; k++) if (c === CATEGORIE[k][0] || c === norm(CATEGORIE[k][1])) key = CATEGORIE[k][0];
-    if (!key) { key = 'x:' + c; if (!gruppi[key]) extra.push([key, cRaw || 'Altro']); }
-    (gruppi[key] = gruppi[key] || []).push({
-      ord: parseFloat(String(io2 < 0 ? '' : r[io2]).replace(',', '.')),
-      n: n, nome: nome,
-      desc: ids < 0 ? '' : (r[ids] || '').trim(),
-      foto: ifo < 0 ? '' : fotoSicura(r[ifo])
-    });
+var CATEGORIE_BASE = CATEGORIE.map(function(c){ return c[1]; });
+var norm = function(s){ return String(s || '').trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
+var daRighe = function(righe, ordine){
+  var gruppi = {}, nomi = {};
+  righe.forEach(function(r){
+    if (!r.attivo || !String(r.nome || '').trim()) return;
+    var k = norm(r.categoria) || 'altro';
+    nomi[k] = nomi[k] || String(r.categoria || 'Altro').trim();
+    (gruppi[k] = gruppi[k] || []).push(r);
   });
-  var lista = CATEGORIE.concat(extra).filter(function(c){ return gruppi[c[0]]; });
+  var lista = [];
+  (ordine && ordine.length ? ordine : CATEGORIE_BASE).forEach(function(c){ var k = norm(c); if (gruppi[k] && lista.indexOf(k) === -1) lista.push(k); });
+  Object.keys(gruppi).forEach(function(k){ if (lista.indexOf(k) === -1) lista.push(k); });
   if (!lista.length) return null;
   var frag = document.createDocumentFragment();
-  lista.forEach(function(c, i){
-    var piatti = gruppi[c[0]].sort(function(a, b){
-      var x = isNaN(a.ord) ? 1e9 : a.ord, y = isNaN(b.ord) ? 1e9 : b.ord;
-      return x - y || a.n - b.n;
-    });
+  lista.forEach(function(k, i){
+    var piatti = gruppi[k].sort(function(a, b){ return (a.ordine || 0) - (b.ordine || 0) || a.id - b.id; });
     var cat = document.createElement('div'); cat.className = 'cat';
     var t = document.createElement('div'); t.className = 'cat-t';
     var r = document.createElement('span'); r.className = 'r'; r.setAttribute('aria-hidden', 'true'); r.textContent = ROMANI[i] || String(i + 1);
-    var h3 = document.createElement('h3'); h3.textContent = c[1];
+    var h3 = document.createElement('h3'); h3.textContent = nomi[k];
     t.appendChild(r); t.appendChild(h3); cat.appendChild(t);
     var ul = document.createElement('ul'); ul.className = 'voci';
     piatti.forEach(function(p){
       var li = document.createElement('li'); li.className = 'piatto';
-      if (p.foto) { li.setAttribute('data-foto', p.foto); li.setAttribute('data-alt', p.nome); }
+      var f = fotoSicura(p.foto);
+      if (f) { li.setAttribute('data-foto', f); li.setAttribute('data-alt', p.nome); }
       var h4 = document.createElement('h4'); h4.className = 'p-nome'; h4.textContent = p.nome; li.appendChild(h4);
-      if (p.desc) { var d = document.createElement('p'); d.className = 'p-desc'; d.textContent = p.desc; li.appendChild(d); }
+      if (p.descrizione) { var d = document.createElement('p'); d.className = 'p-desc'; d.textContent = p.descrizione; li.appendChild(d); }
+      if (p.prezzo) { var pr = document.createElement('p'); pr.className = 'p-prezzo'; pr.textContent = /€/.test(p.prezzo) ? p.prezzo : '€ ' + p.prezzo; li.appendChild(pr); }
       ul.appendChild(li);
     });
     cat.appendChild(ul); frag.appendChild(cat);
   });
   return frag;
 };
-var CHIAVE = 'lrc-menu-v' + MENU_VERSION;
-var ultimoCSV = null;
-var mostra = function(testo){
-  if (testo === ultimoCSV) return true;
-  var frag = null;
-  try { frag = daCSV(testo); } catch (e) { frag = null; }
-  if (!frag) return false;              // foglio vuoto o rovinato: resta la carta attuale
-  voci.textContent = '';
-  voci.appendChild(frag);
-  ultimoCSV = testo;
-  attivo = null;
-  migliora();
-  return true;
-};
-if (MENU_CSV_URL) {
-  try {
-    var salvato = JSON.parse(localStorage.getItem(CHIAVE) || 'null');
-    if (salvato && salvato.csv) mostra(salvato.csv);
-  } catch (e) {}
-  if (window.fetch) {
-    fetch(MENU_CSV_URL, {cache: 'no-store'})
-      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(function(testo){
-        if (mostra(testo)) { try { localStorage.setItem(CHIAVE, JSON.stringify({t: Date.now(), csv: testo})); } catch (e) {} }
-      })
-      .catch(function(){ /* nessuna rete o foglio non pubblicato: resta la carta salvata o quella dell'HTML */ });
+
+var ultimo = null;
+var applica = function(dati){
+  var firma = JSON.stringify(dati);
+  if (firma === ultimo) return;
+  ultimo = firma;
+  var c = {};
+  (dati.testi || []).forEach(function(r){ c[r.key] = r.value; });
+  // testi
+  document.querySelectorAll('[data-k]').forEach(function(el){
+    var k = el.getAttribute('data-k');
+    if (!(k in c)) return;
+    var v = c[k], tipo = el.getAttribute('data-t');
+    if (tipo === 'righe') el.innerHTML = v.split('\n').filter(Boolean).map(function(r){ return '<span class="ln">' + marcatura(r) + '</span>'; }).join(' ');
+    else if (tipo === 'lista') el.innerHTML = v.split('\n').map(function(x){ return x.trim(); }).filter(Boolean).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('');
+    else el.innerHTML = marcatura(v);
+  });
+  // foto
+  document.querySelectorAll('[data-img]').forEach(function(img){
+    var k = img.getAttribute('data-img'), f = fotoSicura(c[k]);
+    if (f) { img.removeAttribute('srcset'); img.src = f; }
+    if (c[k + '_alt']) img.alt = c[k + '_alt'];
+  });
+  // contatti
+  var tel = (c.telefono || '').trim(), num = tel.replace(/[^\d+]/g, '');
+  if (num) document.querySelectorAll('[data-l="tel"]').forEach(function(a){
+    a.href = 'tel:' + num;
+    var big = a.querySelector('.big');
+    if (big) big.textContent = tel;
+    else if (/\d{3}/.test(a.textContent)) a.textContent = a.classList.contains('menu-tel') ? 'Chiamate il ' + tel : tel;
+  });
+  var wa = (c.whatsapp || '').replace(/\D/g, '');
+  if (wa) {
+    document.querySelectorAll('[data-l="wa"]').forEach(function(a){ a.href = 'https://wa.me/' + wa; });
+    document.querySelectorAll('[data-l="wa-text"]').forEach(function(a){ a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + wa); });
+    document.querySelectorAll('[data-l="wa-form"]').forEach(function(f){ f.action = 'https://wa.me/' + wa; });
   }
+  var ig = (c.instagram || '').trim().replace(/^@/, '');
+  if (ig) document.querySelectorAll('[data-l="ig"]').forEach(function(a){ a.href = 'https://www.instagram.com/' + ig + '/'; a.textContent = '@' + ig; });
+  if (c.indirizzo_mappa) document.querySelectorAll('[data-l="maps"]').forEach(function(a){ a.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(c.indirizzo_mappa); });
+  if (c.meta_titolo) document.title = c.meta_titolo;
+  if (c.meta_descrizione) { var md = document.querySelector('meta[name="description"]'); if (md) md.content = c.meta_descrizione; }
+  if ('link_prenotazione' in c) applicaPrenotazione(c.link_prenotazione.trim());
+  if (c.orari_settimana) { setSlots(c.orari_settimana); render(); }
+  // carta
+  if (dati.menu && dati.menu.length) {
+    var ordine = (c.menu_categorie || '').split('\n').map(function(x){ return x.trim(); }).filter(Boolean);
+    var frag = null;
+    try { frag = daRighe(dati.menu, ordine); } catch (e) {}
+    if (frag) { voci.textContent = ''; voci.appendChild(frag); attivo = null; migliora(); }
+  }
+};
+
+var CHIAVE = 'lrc-cms-v1';
+try { var salvato = JSON.parse(localStorage.getItem(CHIAVE) || 'null'); if (salvato) applica(salvato); } catch (e) {}
+if (window.fetch && CMS.url) {
+  var h = {apikey: CMS.key, Authorization: 'Bearer ' + CMS.key};
+  var q = function(path){ return fetch(CMS.url + '/rest/v1/' + path, {headers: h, cache: 'no-store'}).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); }); };
+  Promise.all([
+    q('site_content?select=key,value&site=eq.' + CMS.site),
+    q('site_menu?select=id,categoria,ordine,nome,descrizione,prezzo,foto,attivo&site=eq.' + CMS.site + '&order=ordine.asc,id.asc')
+  ]).then(function(r){
+    var dati = {testi: r[0], menu: r[1]};
+    applica(dati);
+    try { localStorage.setItem(CHIAVE, JSON.stringify(dati)); } catch (e) {}
+  }).catch(function(){ /* pannello non raggiungibile: resta il sito com'è */ });
 }
 migliora();
 })();
