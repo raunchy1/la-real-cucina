@@ -36,7 +36,7 @@ var toast = function (t, errore) {
 };
 var messaggioErrore = function (e) {
   var m = (e && (e.message || e.error_description || e.msg)) || String(e || '');
-  if (/Invalid login/i.test(m)) return 'Email o password non corretti.';
+  if (/Invalid login/i.test(m)) return 'Utente o password non corretti.';
   if (/Failed to fetch|NetworkError/i.test(m)) return 'Connessione assente. Riprovate tra poco.';
   if (/row-level security|permission/i.test(m)) return 'Questo account non può modificare il sito.';
   if (/JWT|expired/i.test(m)) return 'La sessione è scaduta: uscite e rientrate.';
@@ -59,7 +59,9 @@ $('#f-accesso').addEventListener('submit', function (e) {
   e.preventDefault();
   var b = $('#b-accedi'); b.disabled = true; b.textContent = 'Accesso…';
   $('#err-accesso').textContent = '';
-  sb.auth.signInWithPassword({email: $('#email').value.trim(), password: $('#password').value})
+  var utente = $('#email').value.trim().toLowerCase();
+  if (utente.indexOf('@') === -1) utente += '@websardegna.xyz';
+  sb.auth.signInWithPassword({email: utente, password: $('#password').value})
     .then(function (r) {
       if (r.error) throw r.error;
       return avvia();
