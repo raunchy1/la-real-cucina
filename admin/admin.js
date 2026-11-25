@@ -395,10 +395,10 @@ var schedaPiatto = function (p, piatti, pi) {
     ]),
     el('button', {'class': 'btn piccolo secondario', type: 'button', text: p.foto ? 'Cambia foto' : 'Aggiungi foto', onclick: function () {
       var b = this; b.disabled = true;
-      carica_foto('piatto-' + p.id).then(function (u) { return salvaPiatto(p, {foto: u}); }).then(function () { mostraFoto(); b.textContent = 'Cambia foto'; toast('Foto del piatto salvata.'); })
+      carica_foto('piatto-' + p.id).then(function (u) { return salvaPiatto(p, {foto: u}); }).then(function () { box.replaceWith(schedaPiatto(p, piatti, pi)); toast('Foto del piatto salvata.'); })
         .catch(function (e) { if (!/Nessuna foto/.test(e.message)) toast(messaggioErrore(e), true); }).then(function () { b.disabled = false; });
     }}),
-    p.foto ? el('button', {'class': 'btn piccolo secondario', type: 'button', text: 'Togli foto', onclick: function () { salvaPiatto(p, {foto: ''}).then(disegna).catch(function (e) { toast(messaggioErrore(e), true); }); }}) : null,
+    p.foto ? el('button', {'class': 'btn piccolo secondario', type: 'button', text: 'Togli foto', onclick: function () { salvaPiatto(p, {foto: ''}).then(function () { box.replaceWith(schedaPiatto(p, piatti, pi)); }).catch(function (e) { toast(messaggioErrore(e), true); }); }}) : null,
     el('button', {'class': 'btn piccolo pericolo', type: 'button', text: 'Elimina', onclick: function () {
       if (!confirm('Eliminare “' + p.nome + '” dalla carta? (Se volete solo nasconderlo, togliete la spunta “Sul sito”.)')) return;
       sb.from('site_menu').delete().eq('id', p.id).then(function (r) { if (r.error) throw r.error; MENU = MENU.filter(function (x) { return x.id !== p.id; }); disegna(); toast('Piatto eliminato.'); }).catch(function (e) { toast(messaggioErrore(e), true); });

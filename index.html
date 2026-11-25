@@ -878,8 +878,9 @@ var controlla = function(){
   var g = new Date(data.value + 'T12:00').getDay();
   var sv = val('servizio');
   var aperti = (slots[g] || []).map(function(x){ return x[2]; });
-  if (!aperti.length) err.textContent = 'Il ' + giorni[g] + ' siamo chiusi: scegliete un altro giorno.';
-  else if (aperti.indexOf(sv) === -1) err.textContent = 'Il ' + giorni[g] + ' siamo aperti solo a ' + aperti.join(' e ') + '.';
+  var art = g === 0 ? 'La ' : 'Il ';
+  if (!aperti.length) err.textContent = art + giorni[g] + ' siamo chiusi: scegliete un altro giorno.';
+  else if (aperti.indexOf(sv) === -1) err.textContent = art + giorni[g] + ' siamo aperti solo a ' + aperti.join(' e ') + '.';
   return !err.textContent;
 };
 data.addEventListener('change', controlla);
@@ -1127,7 +1128,8 @@ var applica = function(dati){
   // foto
   document.querySelectorAll('[data-img]').forEach(function(img){
     var k = img.getAttribute('data-img'), f = fotoSicura(c[k]);
-    if (f) { img.removeAttribute('srcset'); img.src = f; }
+    if (!img.hasAttribute('data-orig')) img.setAttribute('data-orig', img.getAttribute('src'));
+    if (f && f !== img.getAttribute('data-orig')) { img.removeAttribute('srcset'); img.src = f; }
     if (c[k + '_alt']) img.alt = c[k + '_alt'];
   });
   // contatti
