@@ -885,6 +885,36 @@ var controlla = function(){
   return !err.textContent;
 };
 data.addEventListener('change', controlla);
+
+// Orari proposti nel modulo: se nel pannello cambiano le fasce, si rifanno da soli
+// (ogni mezz'ora, dall'apertura fino a 45 minuti prima della chiusura).
+var FASCE_BASE = {pranzo: '660-900', cena: '1155-1320'};
+var orariModulo = function(){
+  ['pranzo','cena'].forEach(function(sv){
+    var da = Infinity, a = -Infinity;
+    for (var d = 0; d < 7; d++) (slots[d] || []).forEach(function(x){ if (x[2] === sv) { da = Math.min(da, x[0]); a = Math.max(a, x[1]); } });
+    var radio = document.getElementById('sv-' + sv), box = form.querySelector('.orari-' + sv);
+    var aperto = da < a;
+    radio.disabled = !aperto;
+    radio.nextElementSibling.style.display = aperto ? '' : 'none';
+    if (!aperto) { if (radio.checked) { var altro = form.querySelector('[data-f="servizio"]:not(#sv-' + sv + ')'); if (altro && !altro.disabled) altro.checked = true; } return; }
+    if (da + '-' + a === FASCE_BASE[sv]) return;
+    var ore = [];
+    for (var t = da; t <= a - 45 && ore.length < 10; t += 30) ore.push(t);
+    if (!ore.length) ore.push(da);
+    var scelta = val('ora-' + sv);
+    box.textContent = '';
+    ore.forEach(function(t, i){
+      var h = hm(t).padStart(5, '0'), id = 'o-' + sv + '-' + h.replace(':', '');
+      var r = document.createElement('input');
+      r.type = 'radio'; r.id = id; r.value = h; r.name = 'g-ora-' + sv; r.setAttribute('data-f', 'ora-' + sv);
+      r.checked = h === scelta || (!ore.some(function(x){ return hm(x).padStart(5, '0') === scelta; }) && i === Math.floor((ore.length - 1) / 2));
+      var l = document.createElement('label'); l.htmlFor = id; l.textContent = h;
+      box.appendChild(r); box.appendChild(l);
+    });
+  });
+  controlla();
+};
 form.addEventListener('change', function(e){ if (e.target.getAttribute('data-f') === 'servizio') controlla(); });
 form.addEventListener('submit', function(e){
   if (!controlla()) { e.preventDefault(); data.focus(); return; }
@@ -1102,7 +1132,7 @@ var daRighe = function(righe, ordine){
       if (f) { li.setAttribute('data-foto', f); li.setAttribute('data-alt', p.nome); }
       var h4 = document.createElement('h4'); h4.className = 'p-nome'; h4.textContent = p.nome; li.appendChild(h4);
       if (p.descrizione) { var d = document.createElement('p'); d.className = 'p-desc'; d.textContent = p.descrizione; li.appendChild(d); }
-      if (p.prezzo) { var pr = document.createElement('p'); pr.className = 'p-prezzo'; pr.textContent = /€/.test(p.prezzo) ? p.prezzo : '€ ' + p.prezzo; li.appendChild(pr); }
+      if (p.prezzo) { var pr = document.createElement('p'); pr.className = 'p-prezzo'; pr.textContent = /€|euro/i.test(p.prezzo) ? p.prezzo : '€ ' + p.prezzo; li.appendChild(pr); }
       ul.appendChild(li);
     });
     cat.appendChild(ul); frag.appendChild(cat);
@@ -1129,8 +1159,12 @@ var applica = function(dati){
   // foto
   document.querySelectorAll('[data-img]').forEach(function(img){
     var k = img.getAttribute('data-img'), f = fotoSicura(c[k]);
-    if (!img.hasAttribute('data-orig')) img.setAttribute('data-orig', img.getAttribute('src'));
-    if (f && f !== img.getAttribute('data-orig')) { img.removeAttribute('srcset'); img.src = f; }
+    if (!img.hasAttribute('data-orig')) { img.setAttribute('data-orig', img.getAttribute('src')); if (img.getAttribute('srcset')) img.setAttribute('data-orig-set', img.getAttribute('srcset')); }
+    if (f && f !== img.getAttribute('data-orig')) { img.removeAttribute('srcset'); if (img.getAttribute('src') !== f) img.src = f; }
+    else if (img.getAttribute('src') !== img.getAttribute('data-orig')) {
+      if (img.getAttribute('data-orig-set')) img.setAttribute('srcset', img.getAttribute('data-orig-set'));
+      img.src = img.getAttribute('data-orig');
+    }
     if (c[k + '_alt']) img.alt = c[k + '_alt'];
   });
   // contatti
@@ -1141,19 +1175,21 @@ var applica = function(dati){
     if (big) big.textContent = tel;
     else if (/\d{3}/.test(a.textContent)) a.textContent = a.classList.contains('menu-tel') ? 'Chiamate il ' + tel : tel;
   });
-  var wa = (c.whatsapp || '').replace(/\D/g, '');
+  var wa = (c.whatsapp || '').replace(/\D/g, '').replace(/^00/, '');
+  if (/^3\d{8,9}$/.test(wa)) wa = '39' + wa;
   if (wa) {
     document.querySelectorAll('[data-l="wa"]').forEach(function(a){ a.href = 'https://wa.me/' + wa; });
     document.querySelectorAll('[data-l="wa-text"]').forEach(function(a){ a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + wa); });
     document.querySelectorAll('[data-l="wa-form"]').forEach(function(f){ f.action = 'https://wa.me/' + wa; });
   }
-  var ig = (c.instagram || '').trim().replace(/^@/, '');
+  var ig = (c.instagram || '').trim(), igm = /instagram\.com\/([^\/?#\s]+)/i.exec(ig);
+  ig = (igm ? igm[1] : ig).replace(/^@+/, '').replace(/\/+$/, '');
   if (ig) document.querySelectorAll('[data-l="ig"]').forEach(function(a){ a.href = 'https://www.instagram.com/' + ig + '/'; a.textContent = '@' + ig; });
   if (c.indirizzo_mappa) document.querySelectorAll('[data-l="maps"]').forEach(function(a){ a.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(c.indirizzo_mappa); });
   if (c.meta_titolo) document.title = c.meta_titolo;
   if (c.meta_descrizione) { var md = document.querySelector('meta[name="description"]'); if (md) md.content = c.meta_descrizione; }
   if ('link_prenotazione' in c) applicaPrenotazione(c.link_prenotazione.trim());
-  if (c.orari_settimana) { setSlots(c.orari_settimana); render(); }
+  if (c.orari_settimana) { setSlots(c.orari_settimana); render(); orariModulo(); }
   // carta
   if (Array.isArray(dati.menu)) {
     var ordine = (c.menu_categorie || '').split('\n').map(function(x){ return x.trim(); }).filter(Boolean);

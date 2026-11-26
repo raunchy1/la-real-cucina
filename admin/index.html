@@ -43,6 +43,7 @@ input:focus,textarea:focus{outline:2px solid var(--vino);outline-offset:1px;bord
 .schede .riga{max-width:960px;margin:0 auto;padding:0 8px;display:flex;gap:2px}
 .schede button{background:none;border:0;color:#d9cfc2;padding:12px 14px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent}
 .schede button[aria-selected=true]{color:#fff;border-bottom-color:#e0b0b6}
+@media (max-width:560px){.schede .riga{flex-wrap:wrap;justify-content:center}.schede button{padding:10px 9px}}
 main{max-width:960px;margin:0 auto;padding:20px 16px 120px}
 .intro{color:var(--grigio);margin:0 0 18px}
 h2{font:600 1.35rem/1.2 Georgia,serif;margin:28px 0 12px}
@@ -54,6 +55,7 @@ h2:first-child{margin-top:4px}
 .campo .piede{display:flex;gap:10px;align-items:center;margin-top:6px;flex-wrap:wrap}
 .link-ripristina{background:none;border:0;padding:0;color:var(--grigio);text-decoration:underline;font-size:.85rem;cursor:pointer}
 .modificato{border-color:#c98a1e!important;background:#fffaf0!important}
+.errato{border-color:var(--err)!important;background:#fff3f3!important}
 .barra-salva{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bianco);border-top:1px solid var(--linea);box-shadow:0 -6px 20px rgba(0,0,0,.08);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
 .barra-salva .riga{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .barra-salva span{font-weight:600}
@@ -107,7 +109,7 @@ h2:first-child{margin-top:4px}
 <body>
 
 <!-- ACCESSO -->
-<section class="accesso" id="v-accesso">
+<section class="accesso nascosto" id="v-accesso">
   <form id="f-accesso" autocomplete="on">
     <h1>La Real Cucina</h1>
     <p>Pannello per modificare il sito</p>

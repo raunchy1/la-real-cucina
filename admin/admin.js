@@ -7,6 +7,11 @@ var CFG = {
   site: 'larealcucina',
   bucket: 'site-media'
 };
+if (!window.supabase) {
+  var acc = document.getElementById('v-accesso'); acc.classList.remove('nascosto');
+  document.getElementById('err-accesso').textContent = 'Il pannello non riesce a collegarsi. Controllate la connessione e ricaricate la pagina.';
+  return;
+}
 var sb = window.supabase.createClient(CFG.url, CFG.key, {auth: {persistSession: true, storageKey: 'pannello-' + CFG.site}});
 var $ = function (s, r) { return (r || document).querySelector(s); };
 var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -27,6 +32,8 @@ var CAMPI = [];          // da campi.json (testi e foto del sito, con valori pre
 var VAL = {};            // valori salvati su Supabase: chiave -> testo
 var MENU = [];           // righe di site_menu
 var MODIFICHE = {};      // chiave -> nuovo valore (testi, foto, contatti, orari)
+var BOZZE = {};          // id piatto -> modifiche scritte ma non ancora salvate
+var quante = function () { return Object.keys(MODIFICHE).length + Object.keys(BOZZE).length; };
 var scheda = 'carta';
 
 var toast = function (t, errore) {
@@ -81,8 +88,8 @@ $('#f-accesso').addEventListener('submit', function (e) {
     .then(function () { b.disabled = false; b.textContent = 'Entra'; });
 });
 $('#b-esci').addEventListener('click', function () {
-  if (Object.keys(MODIFICHE).length && !confirm('Ci sono modifiche non salvate. Uscire lo stesso?')) return;
-  sb.auth.signOut().then(function () { MODIFICHE = {}; mostraPannello(false); });
+  if (quante() && !confirm('Ci sono modifiche non salvate. Uscire lo stesso?')) return;
+  sb.auth.signOut().then(function () { MODIFICHE = {}; BOZZE = {}; aggiornaBarra(); mostraPannello(false); });
 });
 
 var avvia = function () {
@@ -108,6 +115,7 @@ var carica = function () {
     r[1].data.forEach(function (x) { VAL[x.key] = x.value; });
     MENU = r[2].data;
     MODIFICHE = {};
+    BOZZE = {};
     aggiornaBarra();
     disegna();
   }).catch(function (e) { $('#contenuto').innerHTML = ''; $('#contenuto').appendChild(el('p', {'class': 'errore', text: messaggioErrore(e)})); });
@@ -129,7 +137,7 @@ var disegna = function () {
 
 /* ---------- modifiche e salvataggio (testi, foto, contatti, orari) ---------- */
 var aggiornaBarra = function () {
-  var n = Object.keys(MODIFICHE).length;
+  var n = quante();
   $('#barra-salva').classList.toggle('nascosto', !n);
   $('#barra-testo').textContent = n === 1 ? '1 modifica da salvare' : n + ' modifiche da salvare';
 };
@@ -139,21 +147,56 @@ var segnaModifica = function (chiave, v, input, predefinito) {
   if (input) input.classList.toggle('modificato', chiave in MODIFICHE);
   aggiornaBarra();
 };
+// contatti scritti in modo diverso dal previsto: li sistemiamo prima di salvare
+var normalizza = function (k, v) {
+  v = String(v == null ? '' : v).trim();
+  if (k === 'whatsapp') {
+    v = v.replace(/\D/g, '').replace(/^00/, '');
+    if (/^3\d{8,9}$/.test(v)) v = '39' + v;
+  } else if (k === 'instagram') {
+    var m = /instagram\.com\/([^\/?#\s]+)/i.exec(v);
+    v = (m ? m[1] : v).replace(/^@+/, '').replace(/\/+$/, '').trim();
+  } else if (k === 'link_prenotazione') {
+    if (v && !/^https?:\/\//i.test(v)) v = 'https://' + v;
+  }
+  return v;
+};
+var controllaContatti = function () {
+  if ('telefono' in MODIFICHE && (MODIFICHE.telefono.replace(/\D/g, '').length < 6)) return 'Il numero di telefono non sembra completo.';
+  if ('whatsapp' in MODIFICHE && !/^\d{11,13}$/.test(MODIFICHE.whatsapp)) return 'Il numero WhatsApp non sembra completo: scrivetelo con il 39 davanti, per esempio 393391257711.';
+  if ('link_prenotazione' in MODIFICHE && MODIFICHE.link_prenotazione && !/^https:\/\/[^\s.]+\.[^\s]+$/i.test(MODIFICHE.link_prenotazione)) return 'Il link per prenotare non è valido: deve iniziare con https://';
+  return '';
+};
+var salvaBozza = function (id) {
+  var p = MENU.filter(function (x) { return String(x.id) === String(id); })[0], z = BOZZE[id];
+  if (!p || !z) { delete BOZZE[id]; return Promise.resolve(); }
+  var vecchio = p.nome;
+  return salvaPiatto(p, {nome: z.nome.trim(), descrizione: z.descrizione.trim(), prezzo: z.prezzo.trim(), attivo: z.attivo})
+    .then(function () { delete BOZZE[id]; return allineaDidascalie(vecchio, p.nome); });
+};
 $('#b-salva').addEventListener('click', function () {
-  var b = this, chiavi = Object.keys(MODIFICHE);
-  if (!chiavi.length) return;
+  var b = this, chiavi = Object.keys(MODIFICHE), piatti = Object.keys(BOZZE);
+  if (!chiavi.length && !piatti.length) return;
+  if ($('.errato')) { toast('Correggete gli orari segnati in rosso prima di salvare.', true); return; }
+  if (piatti.some(function (id) { return !BOZZE[id].nome.trim(); })) { toast('Un piatto è senza nome: scrivetelo prima di salvare.', true); return; }
+  chiavi.forEach(function (k) { if (['telefono', 'whatsapp', 'instagram', 'link_prenotazione', 'indirizzo_mappa'].indexOf(k) !== -1) MODIFICHE[k] = normalizza(k, MODIFICHE[k]); });
+  var errore = controllaContatti();
+  if (errore) { toast(errore, true); return; }
+  var vuoti = CAMPI.filter(function (c) { return c.tipo !== 'foto' && c.predefinito && c.chiave in MODIFICHE && !MODIFICHE[c.chiave].trim(); });
+  if (vuoti.length && !confirm('Avete lasciato vuoto “' + vuoti[0].etichetta + '”' + (vuoti.length > 1 ? ' (e altri ' + (vuoti.length - 1) + ')' : '') + ': sul sito quella parte resterà vuota. Salvare lo stesso?')) return;
   b.disabled = true; b.textContent = 'Salvataggio…';
   var righe = chiavi.map(function (k) { return {site: CFG.site, key: k, value: MODIFICHE[k]}; });
-  sb.from('site_content').upsert(righe, {onConflict: 'site,key'}).then(function (r) {
+  (righe.length ? sb.from('site_content').upsert(righe, {onConflict: 'site,key'}) : Promise.resolve({})).then(function (r) {
     if (r.error) throw r.error;
-    chiavi.forEach(function (k) { VAL[k] = MODIFICHE[k]; });
-    MODIFICHE = {};
+    chiavi.forEach(function (k) { VAL[k] = MODIFICHE[k]; delete MODIFICHE[k]; });
+    return piatti.reduce(function (pr, id) { return pr.then(function () { return salvaBozza(id); }); }, Promise.resolve());
+  }).then(function () {
     aggiornaBarra(); disegna();
     toast('Salvato. Il sito è già aggiornato.');
-  }).catch(function (e) { toast(messaggioErrore(e), true); })
+  }).catch(function (e) { aggiornaBarra(); toast(messaggioErrore(e), true); })
     .then(function () { b.disabled = false; b.textContent = 'Salva le modifiche'; });
 });
-window.addEventListener('beforeunload', function (e) { if (Object.keys(MODIFICHE).length) { e.preventDefault(); e.returnValue = ''; } });
+window.addEventListener('beforeunload', function (e) { if (quante()) { e.preventDefault(); e.returnValue = ''; } });
 
 var campoTesto = function (chiave, etichetta, predefinito, opz) {
   opz = opz || {};
@@ -166,7 +209,7 @@ var campoTesto = function (chiave, etichetta, predefinito, opz) {
   inp.addEventListener('input', function () { segnaModifica(chiave, inp.value, inp, predefinito); });
   var piede = el('div', {'class': 'piede'});
   if (opz.aiuto) piede.appendChild(el('span', {'class': 'aiuto', text: opz.aiuto}));
-  if (predefinito != null && chiave in VAL && VAL[chiave] !== predefinito && !opz.senzaRipristino) {
+  if (predefinito && chiave in VAL && VAL[chiave] !== predefinito && !opz.senzaRipristino) {
     piede.appendChild(el('button', {'class': 'link-ripristina', type: 'button', text: 'Torna al testo originale', onclick: function () {
       inp.value = predefinito; segnaModifica(chiave, predefinito, inp, predefinito);
     }}));
@@ -266,7 +309,7 @@ var vistaContatti = function (m) {
 
 /* ---------- GOOGLE ---------- */
 var vistaGoogle = function (m) {
-  m.appendChild(el('p', {'class': 'intro', text: 'Come appare il sito nei risultati di Google e quando lo condividete su WhatsApp.'}));
+  m.appendChild(el('p', {'class': 'intro', text: 'Come appare il sito nei risultati di Google. Google legge le modifiche da solo, di solito entro qualche giorno.'}));
   var box = el('div', {'class': 'scheda'});
   box.appendChild(campoTesto('meta_titolo', 'Titolo (circa 60 caratteri)', '', {}));
   box.appendChild(campoTesto('meta_descrizione', 'Descrizione (circa 150 caratteri)', '', {lungo: true}));
@@ -295,7 +338,13 @@ var vistaOrari = function (m) {
       var chiuso = el('input', {type: 'checkbox'}); chiuso.checked = !o[d][sv];
       var agg = function () {
         a.disabled = b.disabled = chiuso.checked;
-        o[d][sv] = chiuso.checked || !a.value || !b.value ? '' : a.value + '-' + b.value;
+        var male = !chiuso.checked && (!a.value || !b.value || b.value <= a.value);
+        a.classList.toggle('errato', male); b.classList.toggle('errato', male);
+        if (male) {
+          if (a.value && b.value) toast(GIORNI[i] + ', ' + sv + ': l’orario di chiusura deve essere dopo quello di apertura.', true);
+          return;
+        }
+        o[d][sv] = chiuso.checked ? '' : a.value + '-' + b.value;
         salva();
       };
       a.addEventListener('change', agg); b.addEventListener('change', agg);
@@ -353,6 +402,7 @@ var vistaCarta = function (m) {
     testa.appendChild(sp);
     testa.appendChild(el('button', {'class': 'btn piccolo secondario', type: 'button', text: 'Rinomina', onclick: function () {
       var n = prompt('Nuovo nome della categoria:', cat); if (!n || !n.trim() || n.trim() === cat) return; n = n.trim();
+      if (cats.indexOf(n) !== -1) { toast('Esiste già una categoria “' + n + '”: scegliete un altro nome.', true); return; }
       var l = cats.map(function (x) { return x === cat ? n : x; });
       sb.from('site_menu').update({categoria: n}).eq('site', CFG.site).eq('categoria', cat).then(function (r) {
         if (r.error) throw r.error; MENU.forEach(function (p) { if (p.categoria === cat) p.categoria = n; }); return salvaCategorie(l);
@@ -390,15 +440,18 @@ var schedaPiatto = function (p, piatti, pi) {
     pre.src = urlFoto(p.foto);
   };
   mostraFoto();
-  var nome = el('input', {type: 'text', 'aria-label': 'Nome del piatto'}); nome.value = p.nome;
-  var desc = el('textarea', {rows: 2, 'aria-label': 'Descrizione'}); desc.value = p.descrizione;
-  var prezzo = el('input', {type: 'text', 'aria-label': 'Prezzo', placeholder: 'es. 14'}); prezzo.value = p.prezzo;
-  var attivo = el('input', {type: 'checkbox'}); attivo.checked = p.attivo;
+  var z = BOZZE[p.id] || p;
+  var nome = el('input', {type: 'text', 'aria-label': 'Nome del piatto'}); nome.value = z.nome;
+  var desc = el('textarea', {rows: 2, 'aria-label': 'Descrizione'}); desc.value = z.descrizione;
+  var prezzo = el('input', {type: 'text', 'aria-label': 'Prezzo', placeholder: 'es. 14'}); prezzo.value = z.prezzo;
+  var attivo = el('input', {type: 'checkbox'}); attivo.checked = z.attivo;
   var stato = el('span', {'class': 'stato'});
   var salva = el('button', {'class': 'btn piccolo', type: 'button', text: 'Salva', disabled: true});
   var sporco = function () {
     var d = nome.value !== p.nome || desc.value !== p.descrizione || prezzo.value !== p.prezzo || attivo.checked !== p.attivo;
     salva.disabled = !d; stato.textContent = d ? 'da salvare' : ''; stato.className = 'stato';
+    if (d) BOZZE[p.id] = {nome: nome.value, descrizione: desc.value, prezzo: prezzo.value, attivo: attivo.checked}; else delete BOZZE[p.id];
+    aggiornaBarra();
     nome.classList.toggle('modificato', nome.value !== p.nome);
     desc.classList.toggle('modificato', desc.value !== p.descrizione);
     prezzo.classList.toggle('modificato', prezzo.value !== p.prezzo);
@@ -410,7 +463,7 @@ var schedaPiatto = function (p, piatti, pi) {
     salva.disabled = true; stato.textContent = 'salvataggio…';
     var vecchioNome = p.nome;
     salvaPiatto(p, {nome: nome.value.trim(), descrizione: desc.value.trim(), prezzo: prezzo.value.trim(), attivo: attivo.checked})
-      .then(function () { return allineaDidascalie(vecchioNome, p.nome); })
+      .then(function () { delete BOZZE[p.id]; return allineaDidascalie(vecchioNome, p.nome); })
       .then(function () { nome.value = p.nome; desc.value = p.descrizione; prezzo.value = p.prezzo; box.classList.toggle('spento', !p.attivo); sporco(); stato.textContent = 'Salvato ✓'; stato.className = 'stato ok'; })
       .catch(function (e) { salva.disabled = false; stato.textContent = messaggioErrore(e); stato.className = 'stato err'; });
   });
@@ -437,7 +490,7 @@ var schedaPiatto = function (p, piatti, pi) {
     p.foto ? el('button', {'class': 'btn piccolo secondario', type: 'button', text: 'Togli foto', onclick: function () { salvaPiatto(p, {foto: ''}).then(function () { box.replaceWith(schedaPiatto(p, piatti, pi)); }).catch(function (e) { toast(messaggioErrore(e), true); }); }}) : null,
     el('button', {'class': 'btn piccolo pericolo', type: 'button', text: 'Elimina', onclick: function () {
       if (!confirm('Eliminare “' + p.nome + '” dalla carta? (Se volete solo nasconderlo, togliete la spunta “Sul sito”.)')) return;
-      sb.from('site_menu').delete().eq('id', p.id).then(function (r) { if (r.error) throw r.error; MENU = MENU.filter(function (x) { return x.id !== p.id; }); disegna(); toast('Piatto eliminato.'); }).catch(function (e) { toast(messaggioErrore(e), true); });
+      sb.from('site_menu').delete().eq('id', p.id).then(function (r) { if (r.error) throw r.error; MENU = MENU.filter(function (x) { return x.id !== p.id; }); delete BOZZE[p.id]; aggiornaBarra(); disegna(); toast('Piatto eliminato.'); }).catch(function (e) { toast(messaggioErrore(e), true); });
     }})
   ]);
   var campi = el('div', {'class': 'campi'}, [
@@ -449,11 +502,13 @@ var schedaPiatto = function (p, piatti, pi) {
     com
   ]);
   box.appendChild(foto); box.appendChild(campi);
+  if (BOZZE[p.id]) sporco();
   return box;
 };
 
 /* ---------- avvio ---------- */
 sb.auth.getSession().then(function (r) {
-  if (r.data && r.data.session) avvia().catch(function (e) { mostraPannello(false); $('#err-accesso').textContent = messaggioErrore(e); });
-});
+  if (r.data && r.data.session) return avvia().catch(function (e) { mostraPannello(false); $('#err-accesso').textContent = messaggioErrore(e); });
+  mostraPannello(false);
+}).catch(function () { mostraPannello(false); });
 })();

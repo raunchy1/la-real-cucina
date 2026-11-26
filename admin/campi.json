@@ -45,7 +45,7 @@
  {
   "sezione": "Prima pagina",
   "chiave": "cop_foto_titolo",
-  "etichetta": "Didascalia della foto grande (sotto la foto in prima pagina)",
+  "etichetta": "Didascalia sotto la foto grande in prima pagina",
   "tipo": "testo",
   "predefinito": "Vitello tonnato"
  },
