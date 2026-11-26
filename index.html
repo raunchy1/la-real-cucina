@@ -147,11 +147,12 @@
   --filo:1px solid var(--inchiostro);
   --doppio:3px double var(--inchiostro);
   --head:60px;
+  --lt:36px;
   --bar:64px;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 @media (min-width:700px){:root{--pad:2.5rem;--gap:1.5rem}}
-@media (min-width:1100px){:root{--pad:4rem;--head:84px}}
+@media (min-width:1100px){:root{--pad:4rem;--head:84px;--lt:0px}}
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -159,7 +160,7 @@ html{overflow-x:clip;font-synthesis:none;-webkit-text-size-adjust:100%;scroll-be
 body{margin:0;overflow-x:clip;background:var(--carta);color:var(--inchiostro);font:400 var(--t-body)/1.6 var(--serif);font-optical-sizing:auto;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom))}
 @media (min-width:1100px){body{padding-bottom:0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-[id]{scroll-margin-top:calc(var(--head) + 12px)}
+[id]{scroll-margin-top:calc(var(--head) + var(--lt) + 12px)}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 p{margin:0;text-wrap:pretty}
@@ -225,7 +226,7 @@ a:hover .arr{transform:translateX(4px)}
 @media (min-width:1100px) and (max-width:1279px){.nav{gap:.85rem}.brand img{width:40px;height:40px}.head-act{gap:.6rem}.lingue a{min-width:1.9rem;padding:0 .1rem}}
 
 /* menu a tutto schermo (telefono e tablet) */
-.menu{position:fixed;inset:var(--head) 0 0;z-index:40;background:var(--carta);padding:var(--s6) var(--pad) calc(var(--bar) + var(--s6));overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility 0s linear .25s;text-align:center}
+.menu{position:fixed;inset:calc(var(--head) + var(--lt)) 0 0;z-index:40;background:var(--carta);padding:var(--s6) var(--pad) calc(var(--bar) + var(--s6));overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility 0s linear .25s;text-align:center}
 .menu.open{opacity:1;visibility:visible;transition:opacity .25s var(--ease),visibility 0s}
 .menu a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s1);min-height:72px;border-bottom:var(--filo);font:500 1.875rem/1.1 var(--serif);text-decoration:none}
 .menu a:first-child{border-top:var(--doppio)}
@@ -238,6 +239,9 @@ a:hover .arr{transform:translateX(4px)}
 .lingue a:hover{opacity:1;color:var(--vino-testo)}
 .lingue a[aria-current]{opacity:1;color:var(--vino-testo);text-decoration:underline;text-underline-offset:.3em}
 .head-act .lingue{display:none}
+.lingue-top{justify-content:center;gap:.25rem;height:var(--lt);border-bottom:1px solid rgba(0,0,0,.12);font-size:.8125rem}
+.lingue-top a{min-height:var(--lt);min-width:2.75rem}
+@media (min-width:1100px){.lingue-top{display:none}}
 @media (min-width:1100px){.head-act .lingue{display:flex}}
 .menu .menu-lingue{justify-content:center;margin-top:var(--s5)}
 .menu .menu-lingue a{display:inline-flex;flex-direction:row;min-height:48px;border:0;font:500 1rem/1 var(--serif);opacity:.7}
@@ -499,6 +503,7 @@ a:hover .arr{transform:translateX(4px)}
 <a class="skip" href="#contenuto">Vai al contenuto</a>
 
 <header class="testata">
+<nav class="lingue lingue-top sc" aria-label="Lingua"><a href="/" lang="it" hreflang="it" aria-current="page">IT</a><a href="/en/" lang="en" hreflang="en">EN</a><a href="/fr/" lang="fr" hreflang="fr">FR</a><a href="/de/" lang="de" hreflang="de">DE</a></nav>
 <div class="shell">
 <a class="brand" href="#top" aria-label="La Real Cucina, torna all’inizio"><img src="/assets/logo-la-real-cucina.png" alt="" width="560" height="560" decoding="async">La Real Cucina</a>
 <nav class="nav sc" aria-label="Navigazione principale">
