@@ -325,6 +325,20 @@ var salvaPiatto = function (p, campi) {
     if (r.error) throw r.error; Object.assign(p, r.data);
   });
 };
+// Se un piatto cambia nome e una didascalia del sito porta lo stesso nome
+// (es. la foto in copertina), la aggiorna insieme: così il nome cambia ovunque.
+var allineaDidascalie = function (vecchio, nuovo) {
+  if (!vecchio || vecchio === nuovo) return Promise.resolve();
+  var righe = CAMPI.filter(function (c) {
+    return c.tipo === 'testo' && !(c.chiave in MODIFICHE) && String(valore(c.chiave, c.predefinito)).trim() === vecchio.trim();
+  }).map(function (c) { return {site: CFG.site, key: c.chiave, value: nuovo}; });
+  if (!righe.length) return Promise.resolve();
+  return sb.from('site_content').upsert(righe, {onConflict: 'site,key'}).then(function (r) {
+    if (r.error) throw r.error;
+    righe.forEach(function (x) { VAL[x.key] = x.value; });
+    toast('Aggiornata anche la didascalia della foto con il nuovo nome.');
+  });
+};
 var vistaCarta = function (m) {
   m.appendChild(el('p', {'class': 'intro', text: 'I piatti della carta. Ogni piatto si salva da solo con il suo pulsante. Togliete la spunta “Sul sito” per nascondere un piatto senza cancellarlo.'}));
   var cats = categorie();
@@ -394,7 +408,9 @@ var schedaPiatto = function (p, piatti, pi) {
   salva.addEventListener('click', function () {
     if (!nome.value.trim()) { toast('Il piatto ha bisogno di un nome.', true); nome.focus(); return; }
     salva.disabled = true; stato.textContent = 'salvataggio…';
+    var vecchioNome = p.nome;
     salvaPiatto(p, {nome: nome.value.trim(), descrizione: desc.value.trim(), prezzo: prezzo.value.trim(), attivo: attivo.checked})
+      .then(function () { return allineaDidascalie(vecchioNome, p.nome); })
       .then(function () { nome.value = p.nome; desc.value = p.descrizione; prezzo.value = p.prezzo; box.classList.toggle('spento', !p.attivo); sporco(); stato.textContent = 'Salvato ✓'; stato.className = 'stato ok'; })
       .catch(function (e) { salva.disabled = false; stato.textContent = messaggioErrore(e); stato.className = 'stato err'; });
   });

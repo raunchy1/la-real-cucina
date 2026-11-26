@@ -45,9 +45,9 @@
  {
   "sezione": "Prima pagina",
   "chiave": "cop_foto_titolo",
-  "etichetta": "Didascalia della foto",
+  "etichetta": "Didascalia della foto grande (sotto la foto in prima pagina)",
   "tipo": "testo",
-  "predefinito": "Vitello tonnato con cappero"
+  "predefinito": "Vitello tonnato"
  },
  {
   "sezione": "La cucina",
