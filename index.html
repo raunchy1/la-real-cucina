@@ -7,8 +7,7 @@
 <meta name="description" content="Gastronomia e bistrot della famiglia Ai Savoia in Via della Consolata 7D, Torino: cucina piemontese e classici italiani. Pranzo, cena e asporto. Prenota un tavolo.">
 <meta name="theme-color" content="#f3eee4">
 
-<!-- TODO: sostituire https://larealcucina.websardegna.xyz con il dominio definitivo (canonical, Open Graph, Twitter, JSON-LD) -->
-<link rel="canonical" href="https://larealcucina.websardegna.xyz/">
+<link rel="canonical" href="https://larealcucina.it/">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
@@ -17,45 +16,75 @@
 <meta property="og:site_name" content="La Real Cucina">
 <meta property="og:title" content="La Real Cucina · Tradizione piemontese, fatta in casa">
 <meta property="og:description" content="La gastronomia e il bistrot di Ai Savoia, in Via della Consolata 7D a Torino: piatti della tradizione piemontese e grandi classici italiani, a pranzo, a cena e da asporto.">
-<meta property="og:url" content="https://larealcucina.websardegna.xyz/">
-<meta property="og:image" content="https://larealcucina.websardegna.xyz/assets/og-image.jpg">
+<meta property="og:url" content="https://larealcucina.it/">
+<meta property="og:image" content="https://larealcucina.it/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="La Real Cucina, gastronomia e bistrot in Via della Consolata a Torino">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="La Real Cucina · Tradizione piemontese, fatta in casa">
 <meta name="twitter:description" content="La gastronomia e il bistrot di Ai Savoia nel Quadrilatero Romano di Torino. Prenota un tavolo.">
-<meta name="twitter:image" content="https://larealcucina.websardegna.xyz/assets/og-image.jpg">
+<meta name="twitter:image" content="https://larealcucina.it/assets/og-image.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&amp;display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&amp;display=swap"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-normal-latin.woff2" crossorigin>
+<style>
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url(assets/fonts/fraunces-italic-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url(assets/fonts/fraunces-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url(assets/fonts/fraunces-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url(assets/fonts/fraunces-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
 <link rel="preload" as="image" href="assets/vitello-tonnato-800.jpg" imagesrcset="assets/vitello-tonnato-800.jpg 800w, assets/vitello-tonnato.jpg 1200w" imagesizes="(min-width: 1100px) 34vw, (min-width: 700px) 60vw, 90vw">
 
 <script>try{if(!localStorage.getItem('lrc-cms-v1')){document.documentElement.classList.add('cms-attesa');setTimeout(function(){document.documentElement.classList.remove('cms-attesa')},1500)}}catch(e){}</script>
 <style>.cms-attesa [data-k],.cms-attesa [data-img],.cms-attesa #carta-voci{visibility:hidden}</style>
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld-json">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "La Real Cucina",
   "alternateName": "La Real Cucina, Gastronomia e Bistrot",
   "description": "Gastronomia e bistrot a gestione familiare di Ai Savoia, nel Quadrilatero Romano di Torino. Ricette della tradizione piemontese e grandi classici italiani con prodotti freschi, selezionati e di stagione: antipasti, primi, secondi di carne e di pesce, dolci artigianali e piatti da asporto.",
-  "url": "https://larealcucina.websardegna.xyz/",
+  "url": "https://larealcucina.it/",
   "image": [
-    "https://larealcucina.websardegna.xyz/assets/sala-interna.jpg",
-    "https://larealcucina.websardegna.xyz/assets/ingresso-estate.jpg",
-    "https://larealcucina.websardegna.xyz/assets/vitello-tonnato.jpg"
+    "https://larealcucina.it/assets/sala-interna.jpg",
+    "https://larealcucina.it/assets/ingresso-estate.jpg",
+    "https://larealcucina.it/assets/vitello-tonnato.jpg"
   ],
-  "logo": "https://larealcucina.websardegna.xyz/assets/logo-la-real-cucina.png",
+  "logo": "https://larealcucina.it/assets/logo-la-real-cucina.png",
   "telephone": "+39 339 125 7711",
   "email": "aisavoia.to@gmail.com",
   "priceRange": "€€",
   "servesCuisine": ["Piemontese", "Italiana"],
-  "acceptsReservations": "True",
-  "hasMenu": "https://larealcucina.websardegna.xyz/#carta",
+  "acceptsReservations": true,
+  "hasMenu": "https://larealcucina.it/#carta",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via della Consolata 7D",
@@ -1190,6 +1219,17 @@ var applica = function(dati){
   if (c.meta_descrizione) { var md = document.querySelector('meta[name="description"]'); if (md) md.content = c.meta_descrizione; }
   if ('link_prenotazione' in c) applicaPrenotazione(c.link_prenotazione.trim());
   if (c.orari_settimana) { setSlots(c.orari_settimana); render(); orariModulo(); }
+  try {
+    var ld = document.getElementById('ld-json'), dati_ld = JSON.parse(ld.textContent);
+    if (tel) dati_ld.telephone = tel;
+    if (ig) dati_ld.sameAs = ['https://www.instagram.com/' + ig + '/'];
+    if (c.orari_settimana) {
+      var EN = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], gruppi = {};
+      for (var gd = 1; gd <= 7; gd++) (slots[gd % 7] || []).forEach(function(x){ var k = hm(x[0]).padStart(5,'0') + '-' + hm(x[1]).padStart(5,'0'); (gruppi[k] = gruppi[k] || []).push(EN[gd % 7]); });
+      dati_ld.openingHoursSpecification = Object.keys(gruppi).map(function(k){ return {'@type':'OpeningHoursSpecification', dayOfWeek: gruppi[k], opens: k.split('-')[0], closes: k.split('-')[1]}; });
+    }
+    ld.textContent = JSON.stringify(dati_ld);
+  } catch (e) {}
   // carta
   if (Array.isArray(dati.menu)) {
     var ordine = (c.menu_categorie || '').split('\n').map(function(x){ return x.trim(); }).filter(Boolean);

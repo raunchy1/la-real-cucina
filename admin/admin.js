@@ -37,6 +37,7 @@ var quante = function () { return Object.keys(MODIFICHE).length + Object.keys(BO
 var scheda = 'carta';
 
 var toast = function (t, errore) {
+  $$('.toast').forEach(function (x) { x.remove(); });
   var d = el('div', {'class': 'toast' + (errore ? ' err' : ''), role: 'status', text: t});
   document.body.appendChild(d);
   setTimeout(function () { d.remove(); }, errore ? 6000 : 2800);
@@ -47,6 +48,8 @@ var messaggioErrore = function (e) {
   if (/Failed to fetch|NetworkError/i.test(m)) return 'Connessione assente. Riprovate tra poco.';
   if (/row-level security|permission/i.test(m)) return 'Questo account non può modificare il sito.';
   if (/JWT|expired/i.test(m)) return 'La sessione è scaduta: uscite e rientrate.';
+  if (/PGRST116|0 rows|no rows|multiple \(or no\) rows/i.test(m)) return 'Questo elemento non c’è più (forse è stato cambiato da un altro telefono): ricaricate la pagina.';
+  if (/Payload too large|exceeded the maximum|too large/i.test(m)) return 'La foto è troppo grande: provate con un’altra.';
   return 'Qualcosa non ha funzionato: ' + m;
 };
 var urlFoto = function (v) {
@@ -118,7 +121,11 @@ var carica = function () {
     BOZZE = {};
     aggiornaBarra();
     disegna();
-  }).catch(function (e) { $('#contenuto').innerHTML = ''; $('#contenuto').appendChild(el('p', {'class': 'errore', text: messaggioErrore(e)})); });
+  }).catch(function (e) {
+    $('#contenuto').innerHTML = '';
+    $('#contenuto').appendChild(el('p', {'class': 'errore', text: messaggioErrore(e)}));
+    $('#contenuto').appendChild(el('button', {'class': 'btn', type: 'button', text: 'Riprova', onclick: carica}));
+  });
 };
 
 /* ---------- schede ---------- */
@@ -241,8 +248,17 @@ var vistaTesti = function (m) {
 /* ---------- FOTO (caricamento ridimensionato nel browser) ---------- */
 var scegliFoto = function () {
   return new Promise(function (ok, ko) {
-    var f = $('#file'); f.value = '';
-    f.onchange = function () { f.files[0] ? ok(f.files[0]) : ko(new Error('Nessuna foto')); };
+    var f = $('#file'), fatto = false; f.value = '';
+    var fine = function (file) {
+      if (fatto) return; fatto = true;
+      window.removeEventListener('focus', alRitorno);
+      file ? ok(file) : ko(new Error('Nessuna foto'));
+    };
+    // se si chiude la finestra senza scegliere nulla
+    var alRitorno = function () { setTimeout(function () { if (!f.files.length) fine(null); }, 1200); };
+    f.onchange = function () { fine(f.files[0]); };
+    f.oncancel = function () { fine(null); };
+    window.addEventListener('focus', alRitorno);
     f.click();
   });
 };
