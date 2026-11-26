@@ -734,7 +734,7 @@ a:hover .arr{transform:translateX(4px)}
 <div class="sala-txt rivela">
 <p class="capolettera" data-k="sal_testo1" data-t="testo">Nella sala del bistrot ci sono tavoli in legno, piastrelle decorate alle pareti e lampadari in vetro; sulla lavagna, i piatti del giorno. Si pranza e si cena in Via della Consolata, nel cuore del Quadrilatero Romano.</p>
 <p data-k="sal_testo2" data-t="testo">Poco lontano, l’obelisco di Piazza Savoia ricorda le leggi Siccardi del 1850: sotto la prima pietra furono murati anche grissini, semi di riso e una bottiglia di Barbera.</p>
-<p class="famiglia" data-k="sal_famiglia" data-t="testo">La Real Cucina è il quinto capitolo della famiglia <a href="https://www.aisavoia.it/">Ai Savoia</a>, che dal 2006 accoglie ospiti nel complesso di Palazzo Saluzzo Paesana, costruito nel 1715, e oggi porta avanti cinque case.</p>
+<p class="famiglia" data-k="sal_famiglia" data-t="testo">La Real Cucina è il quinto capitolo della famiglia <a href="https://www.aisavoia.it/" target="_blank" rel="noopener">Ai Savoia</a>, che dal 2006 accoglie ospiti nel complesso di Palazzo Saluzzo Paesana, costruito nel 1715, e oggi porta avanti cinque case.</p>
 </div>
 </div>
 </div>
@@ -835,13 +835,17 @@ document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu
    Tutti i "Prenota" portano al modulo (#prenota), che invia la richiesta su WhatsApp.
    Quando il link Pienissimo sarà reale, il pulsante online compare e header, copertina e barra puntano lì. */
 var online = document.getElementById('booking-link');
+// link originali dei pulsanti "Prenota" (portano al modulo), per tornarci se il link online viene tolto
+document.querySelectorAll('[data-booking]').forEach(function(a){ a.setAttribute('data-href-orig', a.getAttribute('href')); });
 var applicaPrenotazione = function(link){
-  if (link) online.href = link;
-  if (/^https:\/\//.test(online.href) && online.href.indexOf('example.com') === -1) {
-    online.hidden = false;
-    document.getElementById('booking-note').hidden = true;
-    document.querySelectorAll('[data-booking]').forEach(function(a){ a.href = online.href; a.target = '_blank'; a.rel = 'noopener'; });
-  }
+  if (link !== undefined) online.href = link || 'https://prenotazioni.example.com/';
+  var attivo = /^https:\/\//.test(online.href) && online.href.indexOf('example.com') === -1;
+  online.hidden = !attivo;
+  document.getElementById('booking-note').hidden = attivo;
+  document.querySelectorAll('[data-booking]').forEach(function(a){
+    if (attivo) { a.href = online.href; a.target = '_blank'; a.rel = 'noopener'; }
+    else { a.setAttribute('href', a.getAttribute('data-href-orig')); a.removeAttribute('target'); a.removeAttribute('rel'); }
+  });
 };
 applicaPrenotazione();
 
@@ -1120,7 +1124,7 @@ var esc = function(t){ return String(t).replace(/[&<>"]/g, function(c){ return {
 // testo del pannello -> HTML sicuro: *corsivo*, [testo](https://...), a capo
 var marcatura = function(t){
   var h = esc(t);
-  h = h.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|tel:[^\s)]+|mailto:[^\s)]+)\)/g, '<a href="$2">$1</a>');
+  h = h.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|tel:[^\s)]+|mailto:[^\s)]+)\)/g, function(m, testo, url){ return '<a href="' + url + '"' + (/^https?:/.test(url) ? ' target="_blank" rel="noopener"' : '') + '>' + testo + '</a>'; });
   h = h.replace(/\*([^*]+)\*/g, '<em>$1</em>');
   return h.replace(/\n/g, '<br>');
 };

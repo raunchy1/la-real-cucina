@@ -50,6 +50,7 @@ var messaggioErrore = function (e) {
   if (/JWT|expired/i.test(m)) return 'La sessione è scaduta: uscite e rientrate.';
   if (/PGRST116|0 rows|no rows|multiple \(or no\) rows/i.test(m)) return 'Questo elemento non c’è più (forse è stato cambiato da un altro telefono): ricaricate la pagina.';
   if (/Payload too large|exceeded the maximum|too large/i.test(m)) return 'La foto è troppo grande: provate con un’altra.';
+  if (e && e.nostro) return m;
   return 'Qualcosa non ha funzionato: ' + m;
 };
 var urlFoto = function (v) {
@@ -98,7 +99,7 @@ $('#b-esci').addEventListener('click', function () {
 var avvia = function () {
   return sb.from('site_editors').select('site').eq('site', CFG.site).then(function (r) {
     if (r.error) throw r.error;
-    if (!r.data.length) { sb.auth.signOut(); throw new Error('Questo account non può modificare La Real Cucina.'); }
+    if (!r.data.length) { sb.auth.signOut(); var e = new Error('Questo account non può modificare La Real Cucina.'); e.nostro = true; throw e; }
     mostraPannello(true);
     return carica();
   });
@@ -271,9 +272,9 @@ var riduci = function (file, lato) {
       c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
       c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
       URL.revokeObjectURL(url);
-      c.toBlob(function (b) { b ? ok(b) : ko(new Error('Foto non leggibile')); }, 'image/jpeg', 0.84);
+      c.toBlob(function (b) { if (b) return ok(b); var e = new Error('Questa foto non si riesce a leggere: provate con un’altra.'); e.nostro = true; ko(e); }, 'image/jpeg', 0.84);
     };
-    img.onerror = function () { ko(new Error('Questo file non è una foto leggibile (usate JPG o PNG).')); };
+    img.onerror = function () { URL.revokeObjectURL(url); var e = new Error('Questo file non è una foto leggibile: scegliete una foto JPG o PNG.'); e.nostro = true; ko(e); };
     img.src = url;
   });
 };
@@ -364,7 +365,15 @@ var vistaOrari = function (m) {
         salva();
       };
       a.addEventListener('change', agg); b.addEventListener('change', agg);
-      chiuso.addEventListener('change', function () { if (!chiuso.checked && !a.value) { a.value = sv === 'pranzo' ? '12:00' : '19:00'; b.value = sv === 'pranzo' ? '15:00' : '22:00'; } agg(); });
+      chiuso.addEventListener('change', function () {
+        if (!chiuso.checked && !a.value) {
+          // stesso orario degli altri giorni, se c'è
+          var altro = IDX.map(function (x) { return o[x] && o[x][sv]; }).filter(Boolean)[0];
+          var pz = altro ? altro.split('-') : (sv === 'pranzo' ? ['12:00', '15:00'] : ['19:00', '22:00']);
+          a.value = pz[0]; b.value = pz[1];
+        }
+        agg();
+      });
       a.disabled = b.disabled = chiuso.checked;
       tr.appendChild(el('td', {'data-l': sv === 'pranzo' ? 'Pranzo' : 'Cena'}, [el('div', {'class': 'fascia'}, [a, '–', b, el('label', {'class': 'interruttore'}, [chiuso, 'chiuso'])])]));
     });
