@@ -1239,7 +1239,7 @@ var daRighe = function(righe, ordine){
   return frag;
 };
 
-var ultimo = null;
+var ultimo = null, TITOLO_ORIG = null, DESCR_ORIG = '';
 var applica = function(dati){
   var firma = JSON.stringify(dati);
   if (firma === ultimo) return;
@@ -1263,8 +1263,10 @@ var applica = function(dati){
   // testi
   document.querySelectorAll('[data-k]').forEach(function(el){
     var k = el.getAttribute('data-k');
+    if (!el.hasAttribute('data-orig-html')) el.setAttribute('data-orig-html', el.innerHTML);
     var v = testo(k);
-    if (v === undefined) return;
+    // nessun testo dal pannello (o tolto): torna quello scritto nella pagina
+    if (v === undefined) { if (el.innerHTML !== el.getAttribute('data-orig-html')) el.innerHTML = el.getAttribute('data-orig-html'); return; }
     var tipo = el.getAttribute('data-t');
     if (tipo === 'righe') el.innerHTML = v.split('\n').filter(Boolean).map(function(r){ return '<span class="ln">' + marcatura(r) + '</span>'; }).join(' ');
     else if (tipo === 'lista') el.innerHTML = v.split('\n').map(function(x){ return x.trim(); }).filter(Boolean).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('');
@@ -1279,8 +1281,9 @@ var applica = function(dati){
       if (img.getAttribute('data-orig-set')) img.setAttribute('srcset', img.getAttribute('data-orig-set'));
       img.src = img.getAttribute('data-orig');
     }
+    if (!img.hasAttribute('data-orig-alt')) img.setAttribute('data-orig-alt', img.alt);
     var alt = IT ? c[k + '_alt'] : TR_PANNELLO[k + '_alt'];
-    if (alt) img.alt = alt;
+    img.alt = alt || img.getAttribute('data-orig-alt');
   });
   // contatti
   var tel = (c.telefono || '').trim(), num = tel.replace(/[^\d+]/g, '');
@@ -1302,8 +1305,9 @@ var applica = function(dati){
   if (ig) document.querySelectorAll('[data-l="ig"]').forEach(function(a){ a.href = 'https://www.instagram.com/' + ig + '/'; a.textContent = '@' + ig; });
   if (c.indirizzo_mappa) document.querySelectorAll('[data-l="maps"]').forEach(function(a){ a.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(c.indirizzo_mappa); });
   var mt = IT ? c.meta_titolo : TR_PANNELLO.meta_titolo, mdz = IT ? c.meta_descrizione : TR_PANNELLO.meta_descrizione;
-  if (mt) document.title = mt;
-  if (mdz) { var md = document.querySelector('meta[name="description"]'); if (md) md.content = mdz; }
+  if (TITOLO_ORIG === null) { TITOLO_ORIG = document.title; var md0 = document.querySelector('meta[name="description"]'); DESCR_ORIG = md0 ? md0.content : ''; }
+  document.title = mt || TITOLO_ORIG;
+  var md = document.querySelector('meta[name="description"]'); if (md) md.content = mdz || DESCR_ORIG;
   if ('link_prenotazione' in c) applicaPrenotazione(c.link_prenotazione.trim());
   if (c.orari_settimana) { setSlots(c.orari_settimana); render(); orariModulo(); }
   try {
