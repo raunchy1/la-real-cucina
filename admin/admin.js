@@ -35,6 +35,9 @@ var MODIFICHE = {};      // chiave -> nuovo valore (testi, foto, contatti, orari
 var BOZZE = {};          // id piatto -> modifiche scritte ma non ancora salvate
 var quante = function () { return Object.keys(MODIFICHE).length + Object.keys(BOZZE).length; };
 var scheda = 'carta';
+var TRAD = {};           // da traduzioni.json: traduzioni di partenza di testi e carta
+var linguaTrad = 'en';
+var nCampo = 0;
 
 var toast = function (t, errore) {
   $$('.toast').forEach(function (x) { x.remove(); });
@@ -109,15 +112,17 @@ var carica = function () {
   $('#contenuto').innerHTML = '<p class="caricamento">Caricamento…</p>';
   return Promise.all([
     fetch('campi.json', {cache: 'no-store'}).then(function (r) { return r.json(); }),
+    fetch('traduzioni.json', {cache: 'no-store'}).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }),
     sb.from('site_content').select('key,value').eq('site', CFG.site),
     sb.from('site_menu').select('*').eq('site', CFG.site).order('ordine').order('id')
   ]).then(function (r) {
-    if (r[1].error) throw r[1].error;
     if (r[2].error) throw r[2].error;
+    if (r[3].error) throw r[3].error;
     CAMPI = r[0];
+    TRAD = r[1] || {};
     VAL = {};
-    r[1].data.forEach(function (x) { VAL[x.key] = x.value; });
-    MENU = r[2].data;
+    r[2].data.forEach(function (x) { VAL[x.key] = x.value; });
+    MENU = r[3].data;
     MODIFICHE = {};
     BOZZE = {};
     aggiornaBarra();
@@ -140,7 +145,7 @@ $$('[data-scheda]').forEach(function (b) {
 });
 var disegna = function () {
   var m = $('#contenuto'); m.innerHTML = '';
-  ({carta: vistaCarta, testi: vistaTesti, foto: vistaFoto, orari: vistaOrari, contatti: vistaContatti, google: vistaGoogle})[scheda](m);
+  ({carta: vistaCarta, testi: vistaTesti, foto: vistaFoto, orari: vistaOrari, contatti: vistaContatti, google: vistaGoogle, traduzioni: vistaTraduzioni})[scheda](m);
 };
 
 /* ---------- modifiche e salvataggio (testi, foto, contatti, orari) ---------- */
@@ -208,7 +213,7 @@ window.addEventListener('beforeunload', function (e) { if (quante()) { e.prevent
 
 var campoTesto = function (chiave, etichetta, predefinito, opz) {
   opz = opz || {};
-  var id = 'c-' + chiave;
+  var id = /^[\w-]+$/.test(chiave) ? 'c-' + chiave : 'c-t' + (++nCampo);
   var lungo = opz.lungo || (predefinito || '').length > 60 || /\n/.test(predefinito || '');
   var inp = el(lungo ? 'textarea' : 'input', {id: id, type: lungo ? null : (opz.tipo || 'text'), placeholder: opz.placeholder || null});
   inp.value = valore(chiave, predefinito);
@@ -233,6 +238,7 @@ var AIUTO = {
 };
 var vistaTesti = function (m) {
   m.appendChild(el('p', {'class': 'intro', text: 'Tutti i testi del sito, nell’ordine in cui compaiono. Cambiate quello che volete e premete “Salva le modifiche” in basso.'}));
+  m.appendChild(el('div', {'class': 'avviso', html: 'Il sito c’è anche in inglese, francese e tedesco. Se cambiate un testo importante (per esempio gli orari), aggiornatelo anche in <b>Traduzioni</b>: finché non lo fate, nelle altre lingue si vede il vostro nuovo testo in italiano.'}));
   var sezioni = {};
   CAMPI.filter(function (c) { return c.tipo !== 'foto'; }).forEach(function (c) { (sezioni[c.sezione] = sezioni[c.sezione] || []).push(c); });
   Object.keys(sezioni).forEach(function (s) {
@@ -333,12 +339,72 @@ var vistaGoogle = function (m) {
   m.appendChild(box);
 };
 
+/* ---------- TRADUZIONI (inglese, francese, tedesco) ---------- */
+var vistaTraduzioni = function (m) {
+  var lingue = Object.keys(TRAD);
+  if (!lingue.length) { m.appendChild(el('p', {'class': 'errore', text: 'Le traduzioni non si sono caricate: ricaricate la pagina.'})); return; }
+  if (lingue.indexOf(linguaTrad) === -1) linguaTrad = lingue[0];
+  var T = TRAD[linguaTrad], L = linguaTrad, pre = 'tr_' + L + ':';
+  m.appendChild(el('p', {'class': 'intro', text: 'Il sito nelle altre lingue. Qui correggete le traduzioni: se lasciate un campo com’è, resta la nostra traduzione. Le foto, i prezzi, gli orari e i contatti sono gli stessi in tutte le lingue.'}));
+  var scelta = el('div', {'class': 'comandi lingue-pannello'});
+  lingue.forEach(function (l) {
+    scelta.appendChild(el('button', {'class': 'btn piccolo' + (l === L ? '' : ' secondario'), type: 'button', 'aria-pressed': String(l === L), text: TRAD[l].nome, onclick: function () { linguaTrad = l; disegna(); }}));
+  });
+  m.appendChild(scelta);
+  m.appendChild(el('p', {'class': 'aiuto', html: 'Vedi il sito in questa lingua: <a href="../' + L + '/" target="_blank" rel="noopener">larealcucina.it/' + L + '/</a>'}));
+
+  // la carta: categorie e piatti (la chiave è il testo italiano)
+  var trCarta = function (box, it, etichetta) {
+    it = String(it || '').trim(); if (!it) return;
+    var base = (T.menu || {})[it] || '';
+    box.appendChild(campoTesto(pre + 'menu:' + it, etichetta, base, {placeholder: it, lungo: it.length > 60,
+      aiuto: 'Italiano: ' + it + (base || (pre + 'menu:' + it) in VAL ? '' : ' — non ancora tradotto: sul sito si vede in italiano.')}));
+  };
+  m.appendChild(el('h2', {text: 'La carta'}));
+  var boxC = el('div', {'class': 'scheda'});
+  categorie().forEach(function (cat) {
+    var piatti = MENU.filter(function (p) { return p.categoria === cat && p.attivo; }).sort(function (a, b) { return a.ordine - b.ordine || a.id - b.id; });
+    if (!piatti.length) return;
+    boxC.appendChild(el('h3', {'class': 'tr-cat', text: cat}));
+    trCarta(boxC, cat, 'Categoria');
+    piatti.forEach(function (p) {
+      trCarta(boxC, p.nome, 'Piatto');
+      if (p.descrizione) trCarta(boxC, p.descrizione, 'Descrizione');
+    });
+  });
+  m.appendChild(boxC);
+
+  // i testi, come nella scheda Testi
+  var sezioni = {};
+  CAMPI.filter(function (c) { return c.tipo !== 'foto'; }).forEach(function (c) { (sezioni[c.sezione] = sezioni[c.sezione] || []).push(c); });
+  Object.keys(sezioni).forEach(function (sz) {
+    m.appendChild(el('h2', {text: sz}));
+    var box = el('div', {'class': 'scheda'});
+    sezioni[sz].forEach(function (c) {
+      var base = (T.testi || {})[c.chiave] || '';
+      var it = valore(c.chiave, c.predefinito);
+      var cambiato = c.chiave in VAL && VAL[c.chiave] !== c.predefinito && !((pre + c.chiave) in VAL);
+      var campo = campoTesto(pre + c.chiave, c.etichetta.replace(/\s*\(.*\)$/, ''), base, {lungo: c.tipo !== 'testo' || base.length > 60 || /\n/.test(base),
+        aiuto: 'Italiano: ' + it.replace(/\n/g, ' / ')});
+      if (cambiato) campo.insertBefore(el('div', {'class': 'avviso', text: 'Il testo italiano è stato cambiato: aggiornate anche questa traduzione. Finché non la salvate, in questa lingua si vede il testo italiano.'}), campo.firstChild);
+      box.appendChild(campo);
+    });
+    m.appendChild(box);
+  });
+
+  m.appendChild(el('h2', {text: 'Google'}));
+  var boxG = el('div', {'class': 'scheda'});
+  boxG.appendChild(campoTesto(pre + 'meta_titolo', 'Titolo (circa 60 caratteri)', (T.testi || {}).meta_titolo || '', {}));
+  boxG.appendChild(campoTesto(pre + 'meta_descrizione', 'Descrizione (circa 150 caratteri)', (T.testi || {}).meta_descrizione || '', {lungo: true}));
+  m.appendChild(boxG);
+};
+
 /* ---------- ORARI ---------- */
 var GIORNI = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'];
 var IDX = [1, 2, 3, 4, 5, 6, 0];
 var vistaOrari = function (m) {
   m.appendChild(el('p', {'class': 'intro', text: 'Questi orari decidono la scritta “Aperto ora / Chiuso ora” e i giorni che si possono scegliere nel modulo di prenotazione.'}));
-  m.appendChild(el('div', {'class': 'avviso', html: 'Se cambiate gli orari, aggiornate anche le frasi scritte sul sito in <b>Testi</b> (Prima pagina → Orari in breve, Prenota → Riquadro “Orari”, Orari e dove).'}));
+  m.appendChild(el('div', {'class': 'avviso', html: 'Se cambiate gli orari, aggiornate anche le frasi scritte sul sito in <b>Testi</b> (Prima pagina → Orari in breve, Prenota → Riquadro “Orari”, Orari e dove) e, nelle altre lingue, in <b>Traduzioni</b>.'}));
   var o;
   try { o = JSON.parse(valore('orari_settimana', '{}')) || {}; } catch (e) { o = {}; }
   var salva = function () { segnaModifica('orari_settimana', JSON.stringify(o), null, VAL.orari_settimana); };
