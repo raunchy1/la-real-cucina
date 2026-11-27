@@ -43,8 +43,8 @@
       "dov_domenica": "closed",
       "dov_foto_titolo": "The entrance",
       "pie_indirizzo": "Via della Consolata 7D, Turin",
-      "meta_titolo": "La Real Cucina · Deli and bistro in the Quadrilatero Romano, Turin",
-      "meta_descrizione": "Deli and bistro of the Ai Savoia family on Via della Consolata 7D, Turin: Piedmontese cooking and Italian classics. Lunch, dinner and takeaway. Book a table."
+      "meta_titolo": "La Real Cucina · Piedmontese cooking in Turin, Quadrilatero Romano",
+      "meta_descrizione": "Bistro and deli on Via della Consolata 7D, Turin: vitello tonnato, ravioli del plin and homemade Piedmontese cooking. Lunch, dinner and takeaway."
     },
     "alt": {
       "cop_foto": "Vitello tonnato seen from above: slices of pink veal arranged in a ring on a white plate, with tuna sauce and a caper in the centre, on a dark wooden table",
@@ -54,8 +54,8 @@
     },
     "ld_descrizione": "Family-run deli and bistro of Ai Savoia in Turin’s Quadrilatero Romano. Traditional Piedmontese recipes and great Italian classics with fresh, carefully selected seasonal produce: starters, first courses, meat and fish main courses, homemade desserts and takeaway dishes.",
     "frasi": {
-      "La Real Cucina · Gastronomia e bistrot nel Quadrilatero Romano, Torino": "La Real Cucina · Deli and bistro in the Quadrilatero Romano, Turin",
-      "Gastronomia e bistrot della famiglia Ai Savoia in Via della Consolata 7D, Torino: cucina piemontese e classici italiani. Pranzo, cena e asporto. Prenota un tavolo.": "Deli and bistro of the Ai Savoia family on Via della Consolata 7D, Turin: Piedmontese cooking and Italian classics. Lunch, dinner and takeaway. Book a table.",
+      "La Real Cucina · Cucina piemontese a Torino, Quadrilatero Romano": "La Real Cucina · Piedmontese cooking in Turin, Quadrilatero Romano",
+      "Bistrot e gastronomia in Via della Consolata 7D, Torino: vitello tonnato, ravioli del plin e cucina piemontese fatta in casa. Pranzo, cena e asporto.": "Bistro and deli on Via della Consolata 7D, Turin: vitello tonnato, ravioli del plin and homemade Piedmontese cooking. Lunch, dinner and takeaway.",
       "La Real Cucina · Tradizione piemontese, fatta in casa": "La Real Cucina · Piedmontese tradition, homemade",
       "La gastronomia e il bistrot di Ai Savoia, in Via della Consolata 7D a Torino: piatti della tradizione piemontese e grandi classici italiani, a pranzo, a cena e da asporto.": "The deli and bistro of Ai Savoia, on Via della Consolata 7D in Turin: traditional Piedmontese dishes and great Italian classics, for lunch, dinner and takeaway.",
       "La Real Cucina, gastronomia e bistrot in Via della Consolata a Torino": "La Real Cucina, deli and bistro on Via della Consolata in Turin",
@@ -111,7 +111,22 @@
       "Prenota o contatta": "Book or contact us",
       "Chiama": "Call",
       "Chiudi": "Close",
-      "Menu": "Menu"
+      "Menu": "Menu",
+      "Domande": "Frequently asked",
+      "frequenti.": "questions.",
+      "Dove si trova La Real Cucina?": "Where is La Real Cucina?",
+      "In Via della Consolata 7D, nel Quadrilatero Romano di Torino: a due passi dall’obelisco di Piazza Savoia e dal Santuario della Consolata.": "On Via della Consolata 7D, in Turin’s Quadrilatero Romano: a short walk from the obelisk in Piazza Savoia and the Santuario della Consolata.",
+      "Che cosa si mangia?": "What kind of food do you serve?",
+      "Cucina piemontese fatta in casa e grandi classici italiani, con prodotti freschi e di stagione: vitello tonnato, ravioli del plin, tagliatelle al ragù bianco, arrosto con patate al forno e dolci artigianali.": "Homemade Piedmontese cooking and great Italian classics, made with fresh, seasonal produce: vitello tonnato, ravioli del plin, tagliatelle with white ragù, roast with oven-baked potatoes and homemade desserts.",
+      "Come si prenota un tavolo?": "How do I book a table?",
+      "Con il modulo «Prenota un tavolo» qui sopra, che vi manda la richiesta su WhatsApp, oppure chiamandoci al telefono.": "With the “Book a table” form above, which sends your request on WhatsApp, or by giving us a call.",
+      "Si può ordinare da asporto?": "Can I order takeaway?",
+      "Sì: la gastronomia prepara anche piatti da portare via, da gustare a casa.": "Yes: the deli also prepares dishes to take away and enjoy at home.",
+      "Quando siete aperti?": "When are you open?",
+      "A pranzo e a cena: gli orari sempre aggiornati sono qui sopra, nella sezione «Orari e dove».": "For lunch and dinner: you will find the up-to-date opening hours above, in the “Opening hours and location” section.",
+      "Che legame c’è con Ai Savoia?": "How are you connected to Ai Savoia?",
+      "La Real Cucina è la gastronomia e il bistrot della famiglia Ai Savoia, che dal 2006 accoglie ospiti a Palazzo Saluzzo Paesana, a pochi passi da qui.": "La Real Cucina is the deli and bistro of the Ai Savoia family, who have welcomed guests at Palazzo Saluzzo Paesana, a few steps from here, since 2006.",
+      "Capitolo VI": "Chapter VI"
     },
     "menu": {
       "Antipasti della tradizione": "Traditional starters",
@@ -185,8 +200,8 @@
       "dov_domenica": "fermé",
       "dov_foto_titolo": "L’entrée",
       "pie_indirizzo": "Via della Consolata 7D, Turin",
-      "meta_titolo": "La Real Cucina · Traiteur et bistrot dans le Quadrilatero Romano, Turin",
-      "meta_descrizione": "Traiteur et bistrot de la famille Ai Savoia, Via della Consolata 7D à Turin : cuisine piémontaise et classiques italiens. Déjeuner, dîner et à emporter. Réservez une table."
+      "meta_titolo": "La Real Cucina · Cuisine piémontaise à Turin, Quadrilatero Romano",
+      "meta_descrizione": "Bistrot et traiteur Via della Consolata 7D à Turin : vitello tonnato, ravioli del plin et cuisine piémontaise maison. Déjeuner, dîner et à emporter."
     },
     "alt": {
       "cop_foto": "Vitello tonnato vu d’en haut : fines tranches de veau rosé disposées en couronne sur une assiette blanche, avec la sauce au thon et une câpre au centre, sur une table en bois sombre",
@@ -196,8 +211,8 @@
     },
     "ld_descrizione": "Traiteur et bistrot familial de la famille Ai Savoia, dans le Quadrilatero Romano de Turin. Recettes de la tradition piémontaise et grands classiques italiens avec des produits frais, sélectionnés et de saison : entrées, premiers plats, plats de viande et de poisson, desserts maison et plats à emporter.",
     "frasi": {
-      "La Real Cucina · Gastronomia e bistrot nel Quadrilatero Romano, Torino": "La Real Cucina · Traiteur et bistrot dans le Quadrilatero Romano, Turin",
-      "Gastronomia e bistrot della famiglia Ai Savoia in Via della Consolata 7D, Torino: cucina piemontese e classici italiani. Pranzo, cena e asporto. Prenota un tavolo.": "Traiteur et bistrot de la famille Ai Savoia, Via della Consolata 7D à Turin : cuisine piémontaise et classiques italiens. Déjeuner, dîner et à emporter. Réservez une table.",
+      "La Real Cucina · Cucina piemontese a Torino, Quadrilatero Romano": "La Real Cucina · Cuisine piémontaise à Turin, Quadrilatero Romano",
+      "Bistrot e gastronomia in Via della Consolata 7D, Torino: vitello tonnato, ravioli del plin e cucina piemontese fatta in casa. Pranzo, cena e asporto.": "Bistrot et traiteur Via della Consolata 7D à Turin : vitello tonnato, ravioli del plin et cuisine piémontaise maison. Déjeuner, dîner et à emporter.",
       "La Real Cucina · Tradizione piemontese, fatta in casa": "La Real Cucina · Tradition piémontaise, faite maison",
       "La gastronomia e il bistrot di Ai Savoia, in Via della Consolata 7D a Torino: piatti della tradizione piemontese e grandi classici italiani, a pranzo, a cena e da asporto.": "Le traiteur et bistrot d’Ai Savoia, Via della Consolata 7D à Turin : plats de la tradition piémontaise et grands classiques italiens, au déjeuner, au dîner et à emporter.",
       "La Real Cucina, gastronomia e bistrot in Via della Consolata a Torino": "La Real Cucina, traiteur et bistrot Via della Consolata à Turin",
@@ -253,7 +268,22 @@
       "Prenota o contatta": "Réserver ou nous contacter",
       "Chiama": "Appeler",
       "Chiudi": "Fermer",
-      "Menu": "Menu"
+      "Menu": "Menu",
+      "Domande": "Questions",
+      "frequenti.": "fréquentes.",
+      "Dove si trova La Real Cucina?": "Où se trouve La Real Cucina ?",
+      "In Via della Consolata 7D, nel Quadrilatero Romano di Torino: a due passi dall’obelisco di Piazza Savoia e dal Santuario della Consolata.": "Via della Consolata 7D, dans le Quadrilatero Romano de Turin : à deux pas de l’obélisque de la Piazza Savoia et du sanctuaire de la Consolata.",
+      "Che cosa si mangia?": "Que mange-t-on ?",
+      "Cucina piemontese fatta in casa e grandi classici italiani, con prodotti freschi e di stagione: vitello tonnato, ravioli del plin, tagliatelle al ragù bianco, arrosto con patate al forno e dolci artigianali.": "Une cuisine piémontaise maison et les grands classiques italiens, avec des produits frais et de saison : vitello tonnato, ravioli del plin, tagliatelles au ragù blanc, rôti aux pommes de terre au four et desserts artisanaux.",
+      "Come si prenota un tavolo?": "Comment réserver une table ?",
+      "Con il modulo «Prenota un tavolo» qui sopra, che vi manda la richiesta su WhatsApp, oppure chiamandoci al telefono.": "Avec le formulaire « Réservez une table » ci-dessus, qui envoie votre demande sur WhatsApp, ou en nous appelant.",
+      "Si può ordinare da asporto?": "Peut-on commander à emporter ?",
+      "Sì: la gastronomia prepara anche piatti da portare via, da gustare a casa.": "Oui : le traiteur prépare aussi des plats à emporter, à déguster chez vous.",
+      "Quando siete aperti?": "Quand êtes-vous ouverts ?",
+      "A pranzo e a cena: gli orari sempre aggiornati sono qui sopra, nella sezione «Orari e dove».": "Le midi et le soir : les horaires à jour sont ci-dessus, dans la section « Horaires et accès ».",
+      "Che legame c’è con Ai Savoia?": "Quel est le lien avec Ai Savoia ?",
+      "La Real Cucina è la gastronomia e il bistrot della famiglia Ai Savoia, che dal 2006 accoglie ospiti a Palazzo Saluzzo Paesana, a pochi passi da qui.": "La Real Cucina est le traiteur et bistrot de la famille Ai Savoia, qui accueille des hôtes depuis 2006 au Palazzo Saluzzo Paesana, à quelques pas d’ici.",
+      "Capitolo VI": "Chapitre VI"
     },
     "menu": {
       "Antipasti della tradizione": "Entrées de la tradition",
@@ -327,8 +357,8 @@
       "dov_domenica": "geschlossen",
       "dov_foto_titolo": "Der Eingang",
       "pie_indirizzo": "Via della Consolata 7D, Turin",
-      "meta_titolo": "La Real Cucina · Feinkost und Bistro im Quadrilatero Romano, Turin",
-      "meta_descrizione": "Feinkost und Bistro der Familie Ai Savoia in der Via della Consolata 7D, Turin: piemontesische Küche und italienische Klassiker. Mittag- und Abendessen, auch zum Mitnehmen. Tisch reservieren."
+      "meta_titolo": "La Real Cucina · Piemontesische Küche in Turin, Quadrilatero Romano",
+      "meta_descrizione": "Bistro und Feinkost in der Via della Consolata 7D, Turin: Vitello tonnato, Ravioli del plin und hausgemachte piemontesische Küche. Mittag, Abend, zum Mitnehmen."
     },
     "alt": {
       "cop_foto": "Vitello tonnato von oben: dünne Scheiben rosa Kalbfleisch kreisförmig auf einem weißen Teller angerichtet, mit Thunfischsauce und einer Kaper in der Mitte, auf einem dunklen Holztisch",
@@ -338,8 +368,8 @@
     },
     "ld_descrizione": "Familiengeführte Feinkost und Bistro der Familie Ai Savoia im Quadrilatero Romano von Turin. Rezepte aus der piemontesischen Tradition und große italienische Klassiker mit frischen, ausgewählten und saisonalen Zutaten: Vorspeisen, erste Gänge, Hauptgerichte mit Fleisch und Fisch, hausgemachte Desserts und Gerichte zum Mitnehmen.",
     "frasi": {
-      "La Real Cucina · Gastronomia e bistrot nel Quadrilatero Romano, Torino": "La Real Cucina · Feinkost und Bistro im Quadrilatero Romano, Turin",
-      "Gastronomia e bistrot della famiglia Ai Savoia in Via della Consolata 7D, Torino: cucina piemontese e classici italiani. Pranzo, cena e asporto. Prenota un tavolo.": "Feinkost und Bistro der Familie Ai Savoia in der Via della Consolata 7D, Turin: piemontesische Küche und italienische Klassiker. Mittag- und Abendessen, auch zum Mitnehmen. Tisch reservieren.",
+      "La Real Cucina · Cucina piemontese a Torino, Quadrilatero Romano": "La Real Cucina · Piemontesische Küche in Turin, Quadrilatero Romano",
+      "Bistrot e gastronomia in Via della Consolata 7D, Torino: vitello tonnato, ravioli del plin e cucina piemontese fatta in casa. Pranzo, cena e asporto.": "Bistro und Feinkost in der Via della Consolata 7D, Turin: Vitello tonnato, Ravioli del plin und hausgemachte piemontesische Küche. Mittag, Abend, zum Mitnehmen.",
       "La Real Cucina · Tradizione piemontese, fatta in casa": "La Real Cucina · Piemontesische Tradition, hausgemacht",
       "La gastronomia e il bistrot di Ai Savoia, in Via della Consolata 7D a Torino: piatti della tradizione piemontese e grandi classici italiani, a pranzo, a cena e da asporto.": "Feinkost und Bistro von Ai Savoia in der Via della Consolata 7D in Turin: traditionelle piemontesische Gerichte und große italienische Klassiker, mittags, abends und zum Mitnehmen.",
       "La Real Cucina, gastronomia e bistrot in Via della Consolata a Torino": "La Real Cucina, Feinkost und Bistro in der Via della Consolata in Turin",
@@ -395,7 +425,22 @@
       "Prenota o contatta": "Reservieren oder Kontakt",
       "Chiama": "Anrufen",
       "Chiudi": "Schließen",
-      "Menu": "Menü"
+      "Menu": "Menü",
+      "Domande": "Häufige",
+      "frequenti.": "Fragen.",
+      "Dove si trova La Real Cucina?": "Wo befindet sich La Real Cucina?",
+      "In Via della Consolata 7D, nel Quadrilatero Romano di Torino: a due passi dall’obelisco di Piazza Savoia e dal Santuario della Consolata.": "In der Via della Consolata 7D, im Quadrilatero Romano von Turin: nur wenige Schritte vom Obelisken auf der Piazza Savoia und vom Santuario della Consolata entfernt.",
+      "Che cosa si mangia?": "Was gibt es zu essen?",
+      "Cucina piemontese fatta in casa e grandi classici italiani, con prodotti freschi e di stagione: vitello tonnato, ravioli del plin, tagliatelle al ragù bianco, arrosto con patate al forno e dolci artigianali.": "Hausgemachte piemontesische Küche und große italienische Klassiker mit frischen, saisonalen Zutaten: Vitello tonnato, Ravioli del plin, Tagliatelle mit weißem Ragù, Braten mit Ofenkartoffeln und hausgemachte Desserts.",
+      "Come si prenota un tavolo?": "Wie reserviere ich einen Tisch?",
+      "Con il modulo «Prenota un tavolo» qui sopra, che vi manda la richiesta su WhatsApp, oppure chiamandoci al telefono.": "Mit dem Formular „Reservieren Sie einen Tisch“ weiter oben, das Ihre Anfrage per WhatsApp sendet, oder telefonisch.",
+      "Si può ordinare da asporto?": "Kann man etwas zum Mitnehmen bestellen?",
+      "Sì: la gastronomia prepara anche piatti da portare via, da gustare a casa.": "Ja: Unsere Feinkost bereitet auch Gerichte zum Mitnehmen zu, für zu Hause.",
+      "Quando siete aperti?": "Wann haben Sie geöffnet?",
+      "A pranzo e a cena: gli orari sempre aggiornati sono qui sopra, nella sezione «Orari e dove».": "Mittags und abends: Die aktuellen Öffnungszeiten finden Sie weiter oben im Abschnitt „Öffnungszeiten und Anfahrt“.",
+      "Che legame c’è con Ai Savoia?": "Welche Verbindung gibt es zu Ai Savoia?",
+      "La Real Cucina è la gastronomia e il bistrot della famiglia Ai Savoia, che dal 2006 accoglie ospiti a Palazzo Saluzzo Paesana, a pochi passi da qui.": "La Real Cucina ist Feinkost und Bistro der Familie Ai Savoia, die seit 2006 Gäste im Palazzo Saluzzo Paesana empfängt, nur wenige Schritte von hier.",
+      "Capitolo VI": "Kapitel VI"
     },
     "menu": {
       "Antipasti della tradizione": "Traditionelle Vorspeisen",

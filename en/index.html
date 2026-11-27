@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>La Real Cucina · Deli and bistro in the Quadrilatero Romano, Turin</title>
-<meta name="description" content="Deli and bistro of the Ai Savoia family on Via della Consolata 7D, Turin: Piedmontese cooking and Italian classics. Lunch, dinner and takeaway. Book a table.">
+<title>La Real Cucina · Piedmontese cooking in Turin, Quadrilatero Romano</title>
+<meta name="description" content="Bistro and deli on Via della Consolata 7D, Turin: vitello tonnato, ravioli del plin and homemade Piedmontese cooking. Lunch, dinner and takeaway.">
 <meta name="theme-color" content="#f3eee4">
 
 <link rel="canonical" href="https://larealcucina.it/en/">
@@ -103,8 +103,8 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 45.0738,
-    "longitude": 7.6795
+    "latitude": 45.0761197,
+    "longitude": 7.6780661
   },
   "openingHoursSpecification": [
     {
@@ -132,16 +132,30 @@
     }
   ],
   "sameAs": [
-    "https://www.instagram.com/larealcucina/"
+    "https://www.instagram.com/larealcucina/",
+    "https://maps.google.com/?cid=3089324848434799446",
+    "https://www.thefork.it/ristorante/la-real-cucina-r862182"
   ],
   "parentOrganization": {
     "@type": "LodgingBusiness",
     "name": "Ai Savoia B&B Guest House",
     "url": "https://www.aisavoia.it/"
+  },
+  "hasMap": "https://maps.google.com/?cid=3089324848434799446",
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://larealcucina.it/#prenota",
+      "inLanguage": "it"
+    },
+    "result": {
+      "@type": "FoodEstablishmentReservation",
+      "name": "Prenota un tavolo"
+    }
   }
 }
 </script>
-<!-- TODO: verificare lat/long esatte su Google Maps -->
 
 <style>
 /* La Real Cucina · stile "osteria piemontese": carta calda, inchiostro, un solo bordeaux.
@@ -231,6 +245,14 @@ a:hover .arr{transform:translateX(4px)}
 .btn.vuoto:hover{background:var(--inchiostro);color:var(--carta)}
 .btn-sc{font:500 var(--t-sc)/1 var(--serif);letter-spacing:.16em;text-transform:uppercase}
 
+/* ---------- Domande frequenti ---------- */
+.faq-lista{max-width:52rem;margin-inline:auto;border-top:var(--filo)}
+.faq-voce{border-bottom:var(--filo)}
+.faq-voce summary{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);padding:var(--s5) 0;cursor:pointer;list-style:none;font:500 var(--t-dish)/1.3 var(--serif)}
+.faq-voce summary::-webkit-details-marker{display:none}
+.faq-voce summary::after{content:"+";flex:none;color:var(--vino-testo);font-size:1.4em;line-height:1;transition:transform .3s var(--ease)}
+.faq-voce[open] summary::after{transform:rotate(45deg)}
+.faq-voce p{padding:0 0 var(--s5);max-width:44rem;color:var(--inchiostro-2)}
 /* ---------- Testata (fissa in alto) ---------- */
 .testata{position:sticky;top:0;z-index:50;background:var(--carta);border-bottom:var(--doppio)}
 .testata .shell{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);height:var(--head)}
@@ -823,6 +845,23 @@ a:hover .arr{transform:translateX(4px)}
 <div class="img"><img data-img="dov_foto" src="/assets/ingresso-estate-800.jpg" srcset="/assets/ingresso-estate-800.jpg 800w, /assets/ingresso-estate.jpg 1200w" sizes="(min-width: 900px) 26rem, 90vw" width="1200" height="1600" loading="lazy" decoding="async" alt="The entrance of La Real Cucina at Via della Consolata 7D: sand-coloured awnings, the Bistrot sign and the blackboard with the dishes of the day on the pavement"></div>
 <figcaption><span class="sc">Plate V</span><span data-k="dov_foto_titolo" data-t="testo">The entrance</span></figcaption>
 </figure>
+</div>
+</section>
+
+<!-- VI · DOMANDE FREQUENTI -->
+<section class="sec faq shell" id="domande" aria-labelledby="f-title">
+<div class="capo">
+<span class="sc vino">Chapter VI</span>
+<h2 id="f-title">Frequently asked <em>questions.</em></h2>
+<svg class="fregio" aria-hidden="true"><use href="#fregio-s"/></svg>
+</div>
+<div class="faq-lista">
+<details class="faq-voce"><summary>Where is La Real Cucina?</summary><p>On Via della Consolata 7D, in Turin’s Quadrilatero Romano: a short walk from the obelisk in Piazza Savoia and the Santuario della Consolata.</p></details>
+<details class="faq-voce"><summary>What kind of food do you serve?</summary><p>Homemade Piedmontese cooking and great Italian classics, made with fresh, seasonal produce: vitello tonnato, ravioli del plin, tagliatelle with white ragù, roast with oven-baked potatoes and homemade desserts.</p></details>
+<details class="faq-voce"><summary>How do I book a table?</summary><p>With the “Book a table” form above, which sends your request on WhatsApp, or by giving us a call.</p></details>
+<details class="faq-voce"><summary>Can I order takeaway?</summary><p>Yes: the deli also prepares dishes to take away and enjoy at home.</p></details>
+<details class="faq-voce"><summary>When are you open?</summary><p>For lunch and dinner: you will find the up-to-date opening hours above, in the “Opening hours and location” section.</p></details>
+<details class="faq-voce"><summary>How are you connected to Ai Savoia?</summary><p>La Real Cucina is the deli and bistro of the Ai Savoia family, who have welcomed guests at Palazzo Saluzzo Paesana, a few steps from here, since 2006.</p></details>
 </div>
 </section>
 </main>
