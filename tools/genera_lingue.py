@@ -57,6 +57,41 @@ def json_in_html(dati):
     return json.dumps(dati, ensure_ascii=False).replace('</', '<\\/')
 
 
+def dati_extra(html, url, lang):
+    """FAQPage e Menu per Google e per gli assistenti AI, ricavati dal testo della pagina (gia tradotto)."""
+    def pulito(t):
+        t = re.sub(r'<[^>]+>', '', t)
+        return re.sub(r'\s+', ' ', t.replace('&amp;', '&').replace('&quot;', '"').replace('&lt;', '<').replace('&gt;', '>')).strip()
+    out = []
+    faq = re.findall(r'<details class="faq-voce"><summary>(.*?)</summary><p>(.*?)</p></details>', html, re.S)
+    if faq:
+        out.append({'@context': 'https://schema.org', '@type': 'FAQPage', 'inLanguage': lang, 'url': url,
+                    'mainEntity': [{'@type': 'Question', 'name': pulito(q), 'acceptedAnswer': {'@type': 'Answer', 'text': pulito(a)}} for q, a in faq]})
+    i = html.find('id="carta-voci"')
+    if i > 0:
+        blocco = html[i:html.find('</section>', i)]
+        sezioni = []
+        for cat in re.split(r'<div class="cat">', blocco)[1:]:
+            nome = re.search(r'<h3>(.*?)</h3>', cat, re.S)
+            piatti = re.findall(r'<h4 class="p-nome">(.*?)</h4>\s*<p class="p-desc">(.*?)</p>', cat, re.S)
+            if nome and piatti:
+                sezioni.append({'@type': 'MenuSection', 'name': pulito(nome.group(1)),
+                                'hasMenuItem': [{'@type': 'MenuItem', 'name': pulito(n), 'description': pulito(d)} for n, d in piatti]})
+        if sezioni:
+            out.append({'@context': 'https://schema.org', '@type': 'Menu', 'name': 'La Real Cucina', 'inLanguage': lang,
+                        'url': url + '#carta', 'hasMenuSection': sezioni})
+    return out
+
+
+def metti_extra(html, url, lang):
+    rx = re.compile(r'(<script type="application/ld\+json" id="ld-extra">)(.*?)(</script>)', re.S)
+    m = rx.search(html)
+    if not m:
+        return html, False
+    dati = json_in_html(dati_extra(html, url, lang)).replace('}, {', '},\n{')
+    return html[:m.start()] + m.group(1) + '\n' + dati + '\n' + m.group(3) + html[m.end():], True
+
+
 def genera(lang, T, src, testi_it, errori):
     s = src
     # gli script restano intatti (contengono codice, non testo da tradurre)
@@ -123,6 +158,11 @@ def genera(lang, T, src, testi_it, errori):
     else:
         errori.append('%s: JSON-LD non trovato' % lang)
 
+    # 5b. domande frequenti e carta come dati strutturati, nella lingua della pagina
+    s, ok = metti_extra(s, url, lang)
+    if not ok:
+        errori.append('%s: blocco ld-extra non trovato' % lang)
+
     # 6. dati per lo script della pagina: carta tradotta e testi italiani di partenza
     blocco = ('<script type="application/json" id="menu-tradotto">%s</script>\n'
               '<script type="application/json" id="testi-it">%s</script>\n') % (json_in_html(T['menu']), json_in_html(testi_it))
@@ -135,6 +175,11 @@ def genera(lang, T, src, testi_it, errori):
 
 def main():
     src = leggi('index.html')
+    src_extra, ok = metti_extra(src, SITO + '/', 'it')
+    if ok and src_extra != src:
+        scrivi('index.html', src_extra)
+        print('aggiornati i dati strutturati di index.html')
+    src = src_extra
     tr = json.loads(leggi('i18n/traduzioni.json'))
     campi = json.loads(leggi('admin/campi.json'))
     testi_it = {c['chiave']: c['predefinito'] for c in campi if c['tipo'] != 'foto'}
